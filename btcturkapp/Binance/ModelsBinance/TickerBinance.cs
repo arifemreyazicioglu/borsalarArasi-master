@@ -24,7 +24,7 @@
         //public string LastQty { get; set; }
 
 
-        public string bidPrice { get; set; }
+        public decimal bidPrice { get; set; }
 
 
         //public string BidQty { get; set; }
