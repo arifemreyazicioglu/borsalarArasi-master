@@ -22,7 +22,7 @@
         {
             return /*"Pair: " + Pair + "\n" + "PairNormalized: " + PairNormalized + "\n" +  "Last: " + Last.ToString();  + "\n" + "High: " + High + "\n" +
                    "Low: " + Low + "\n" + "Volume: " + Volume + "\n" +
-                   */"Bid: " + Bid + " \n\n" + "Ask: " + Ask + " ";/*"\n" +
+                   */"Bid: " + Bid.ToString("0.####") + " \n\n" + "Ask: " + Ask.ToString("0.####") + " ";/*"\n" +
                    "Open: " + Open + "\n" + "Average: " + Average + "\n" + "Daily: " + Daily + "\n" +
                    "DailyPercent: " + DailyPercent + "\n" + "DenominatorSymbol: " + DenominatorSymbol + "\n" +
                    "NumeratorSymbol: " + NumeratorSymbol + "\n" + "Timestamp: " + Timestamp; */
