@@ -196,7 +196,7 @@ namespace btcturkapp
                         binanceUsdtTextBox.Text = "0";
                     }
 
-                    var res = (double.Parse(binanceUsdtAskPrice.Text, CultureInfo.InvariantCulture) * double.Parse(binanceUsdtTextBox.Text, CultureInfo.InvariantCulture)) - ((double.Parse(binanceUsdtTextBox.Text, CultureInfo.InvariantCulture) * double.Parse("0.001", CultureInfo.InvariantCulture)) * double.Parse(binanceUsdtAskPrice.Text, CultureInfo.InvariantCulture)) ;
+                    var res = (double.Parse(binanceUsdtAskPrice.Text, CultureInfo.InvariantCulture) * double.Parse(binanceUsdtTextBox.Text, CultureInfo.InvariantCulture)) - ((double.Parse(binanceUsdtTextBox.Text, CultureInfo.InvariantCulture) * double.Parse("0.0001", CultureInfo.InvariantCulture)) * double.Parse(binanceUsdtAskPrice.Text, CultureInfo.InvariantCulture)) ;
 
                     sellUsdtOnBinance.Text = res.ToString("0.####");
 
@@ -212,7 +212,7 @@ namespace btcturkapp
                         binanceUsdtTextBox.Text = "0";
                     }
 
-                    var res = (double.Parse(btcTurkUsdtBidPrice.Text, CultureInfo.InvariantCulture) * double.Parse(binanceUsdtTextBox.Text, CultureInfo.InvariantCulture)) + ((double.Parse(binanceUsdtTextBox.Text, CultureInfo.InvariantCulture) * double.Parse("0.001", CultureInfo.InvariantCulture)) * double.Parse(btcTurkUsdtAskPrice.Text, CultureInfo.InvariantCulture));
+                    var res = (double.Parse(btcTurkUsdtBidPrice.Text, CultureInfo.InvariantCulture) * double.Parse(binanceUsdtTextBox.Text, CultureInfo.InvariantCulture)) + ((double.Parse(binanceUsdtTextBox.Text, CultureInfo.InvariantCulture) * double.Parse("0.0001", CultureInfo.InvariantCulture)) * double.Parse(btcTurkUsdtAskPrice.Text, CultureInfo.InvariantCulture));
 
                     buyUsdtOnBtcTurk.Text = res.ToString("0.####");
 
@@ -239,7 +239,7 @@ namespace btcturkapp
                         btcTurkUsdtTextBox.Text = "0";
                     }
 
-                    var res = (double.Parse(btcTurkUsdtAskPrice.Text, CultureInfo.InvariantCulture) * double.Parse(btcTurkUsdtTextBox.Text, CultureInfo.InvariantCulture)) -((double.Parse(btcTurkUsdtTextBox.Text, CultureInfo.InvariantCulture) * double.Parse("0.001", CultureInfo.InvariantCulture)) * double.Parse(btcTurkUsdtAskPrice.Text, CultureInfo.InvariantCulture));
+                    var res = (double.Parse(btcTurkUsdtAskPrice.Text, CultureInfo.InvariantCulture) * double.Parse(btcTurkUsdtTextBox.Text, CultureInfo.InvariantCulture)) -((double.Parse(btcTurkUsdtTextBox.Text, CultureInfo.InvariantCulture) * double.Parse("0.0001", CultureInfo.InvariantCulture)) * double.Parse(btcTurkUsdtAskPrice.Text, CultureInfo.InvariantCulture));
 
                     //- 
                     sellUsdtOnBtcTurk.Text = res.ToString("0.####");
@@ -257,7 +257,7 @@ namespace btcturkapp
                         btcTurkUsdtTextBox.Text = "0";
                     }
 
-                    var res = (double.Parse(btcTurkUsdtTextBox.Text, CultureInfo.InvariantCulture) * double.Parse(binanceUsdtBidPrice.Text, CultureInfo.InvariantCulture)) + ((double.Parse(btcTurkUsdtTextBox.Text, CultureInfo.InvariantCulture) * double.Parse("0.001", CultureInfo.InvariantCulture)) * double.Parse(binanceUsdtAskPrice.Text, CultureInfo.InvariantCulture));
+                    var res = (double.Parse(btcTurkUsdtTextBox.Text, CultureInfo.InvariantCulture) * double.Parse(binanceUsdtBidPrice.Text, CultureInfo.InvariantCulture)) + ((double.Parse(btcTurkUsdtTextBox.Text, CultureInfo.InvariantCulture) * double.Parse("0.0001", CultureInfo.InvariantCulture)) * double.Parse(binanceUsdtAskPrice.Text, CultureInfo.InvariantCulture));
 
                     buyUsdtOnBinance.Text = res.ToString("0.####");
 

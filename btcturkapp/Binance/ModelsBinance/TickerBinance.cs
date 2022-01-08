@@ -24,13 +24,13 @@
         //public string LastQty { get; set; }
 
 
-        public string bidPrice { get; set; }
+        public decimal bidPrice { get; set; }
 
 
         //public string BidQty { get; set; }
 
 
-        public string askPrice { get; set; }
+        public decimal askPrice { get; set; }
 
 
         //public string AskQty { get; set; }
@@ -70,7 +70,7 @@
         {
             return /*"Pair: " + Pair + "\n" + "PairNormalized: " + PairNormalized + "\n" +  "Last: " + Last.ToString();  + "\n" + "High: " + High + "\n" +
                    "Low: " + Low + "\n" + "Volume: " + Volume + "\n" +
-                   */"Bid: " + bidPrice + " \n\n" + "Ask: " + askPrice + " ";/*"\n" +
+                   */"Bid: " + bidPrice.ToString("0.####") + " \n\n" + "Ask: " + askPrice.ToString("0.####") + " ";/*"\n" +
                    "Open: " + Open + "\n" + "Average: " + Average + "\n" + "Daily: " + Daily + "\n" +
                    "DailyPercent: " + DailyPercent + "\n" + "DenominatorSymbol: " + DenominatorSymbol + "\n" +
                    "NumeratorSymbol: " + NumeratorSymbol + "\n" + "Timestamp: " + Timestamp; */
