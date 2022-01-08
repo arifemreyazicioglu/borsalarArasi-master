@@ -29,14 +29,6 @@ namespace btcturkapp
         /// </summary>
         private void InitializeComponent()
         {
-            this.btcTurkBtcUsdtBidPrice = new System.Windows.Forms.Label();
-            this.binanceUsdtBidPrice = new System.Windows.Forms.Label();
-            this.btcTurkUsdtBidPrice = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.binanceBtcUsdtBidPrice = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.farkBinancetoBtcTurkAskBtc = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -50,13 +42,6 @@ namespace btcturkapp
             this.sellUsdtOnBtcTurk = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.btcTurkUsdtTextBox = new System.Windows.Forms.TextBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.binanceUsdtAskPrice = new System.Windows.Forms.Label();
-            this.btcTurkUsdtAskPrice = new System.Windows.Forms.Label();
-            this.binanceBtcUsdtAskPrice = new System.Windows.Forms.Label();
-            this.btcTurkBtcUsdtAskPrice = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.farkBinancetoBtcTurkAskUsdt = new System.Windows.Forms.Label();
             this.farkBinancetoBtcTurkBidUsdt = new System.Windows.Forms.Label();
@@ -93,111 +78,20 @@ namespace btcturkapp
             this.coinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.askPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bidPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDifferenceGridView = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.priceDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.priceDifferenceGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btcTurkBtcUsdtBidPrice
-            // 
-            this.btcTurkBtcUsdtBidPrice.AutoSize = true;
-            this.btcTurkBtcUsdtBidPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btcTurkBtcUsdtBidPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btcTurkBtcUsdtBidPrice.Location = new System.Drawing.Point(158, 81);
-            this.btcTurkBtcUsdtBidPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.btcTurkBtcUsdtBidPrice.Name = "btcTurkBtcUsdtBidPrice";
-            this.btcTurkBtcUsdtBidPrice.Size = new System.Drawing.Size(90, 15);
-            this.btcTurkBtcUsdtBidPrice.TabIndex = 0;
-            this.btcTurkBtcUsdtBidPrice.Text = "Wait Response";
-            // 
-            // binanceUsdtBidPrice
-            // 
-            this.binanceUsdtBidPrice.AutoSize = true;
-            this.binanceUsdtBidPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.binanceUsdtBidPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.binanceUsdtBidPrice.Location = new System.Drawing.Point(158, 211);
-            this.binanceUsdtBidPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.binanceUsdtBidPrice.Name = "binanceUsdtBidPrice";
-            this.binanceUsdtBidPrice.Size = new System.Drawing.Size(90, 15);
-            this.binanceUsdtBidPrice.TabIndex = 7;
-            this.binanceUsdtBidPrice.Text = "Wait Response";
-            // 
-            // btcTurkUsdtBidPrice
-            // 
-            this.btcTurkUsdtBidPrice.AutoSize = true;
-            this.btcTurkUsdtBidPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btcTurkUsdtBidPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btcTurkUsdtBidPrice.Location = new System.Drawing.Point(158, 169);
-            this.btcTurkUsdtBidPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.btcTurkUsdtBidPrice.Name = "btcTurkUsdtBidPrice";
-            this.btcTurkUsdtBidPrice.Size = new System.Drawing.Size(90, 15);
-            this.btcTurkUsdtBidPrice.TabIndex = 6;
-            this.btcTurkUsdtBidPrice.Text = "Wait Response";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(5, 211);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(134, 15);
-            this.label20.TabIndex = 5;
-            this.label20.Text = "Binance USDTTRY :";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(5, 169);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(136, 15);
-            this.label19.TabIndex = 4;
-            this.label19.Text = "BTCTurk USDTTRY :";
-            // 
-            // binanceBtcUsdtBidPrice
-            // 
-            this.binanceBtcUsdtBidPrice.AutoSize = true;
-            this.binanceBtcUsdtBidPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.binanceBtcUsdtBidPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.binanceBtcUsdtBidPrice.Location = new System.Drawing.Point(158, 127);
-            this.binanceBtcUsdtBidPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.binanceBtcUsdtBidPrice.Name = "binanceBtcUsdtBidPrice";
-            this.binanceBtcUsdtBidPrice.Size = new System.Drawing.Size(90, 15);
-            this.binanceBtcUsdtBidPrice.TabIndex = 3;
-            this.binanceBtcUsdtBidPrice.Text = "Wait Response";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(5, 127);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(134, 15);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Binance BTCUSDT :";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(5, 81);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "BTCTurk BTCUSDT :";
             // 
             // farkBinancetoBtcTurkAskBtc
             // 
@@ -257,7 +151,7 @@ namespace btcturkapp
             this.groupBox4.Controls.Add(this.btcTurkUsdtTextBox);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox4.ForeColor = System.Drawing.Color.Black;
-            this.groupBox4.Location = new System.Drawing.Point(503, 340);
+            this.groupBox4.Location = new System.Drawing.Point(697, 340);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
@@ -347,100 +241,6 @@ namespace btcturkapp
             this.btcTurkUsdtTextBox.Text = "10000";
             this.btcTurkUsdtTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btcTurkUsdtTextBox_KeyPress);
             // 
-            // groupBox6
-            // 
-            this.groupBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox6.BackColor = System.Drawing.Color.White;
-            this.groupBox6.Controls.Add(this.binanceUsdtAskPrice);
-            this.groupBox6.Controls.Add(this.binanceUsdtBidPrice);
-            this.groupBox6.Controls.Add(this.btcTurkUsdtAskPrice);
-            this.groupBox6.Controls.Add(this.label20);
-            this.groupBox6.Controls.Add(this.binanceBtcUsdtAskPrice);
-            this.groupBox6.Controls.Add(this.btcTurkUsdtBidPrice);
-            this.groupBox6.Controls.Add(this.btcTurkBtcUsdtAskPrice);
-            this.groupBox6.Controls.Add(this.label22);
-            this.groupBox6.Controls.Add(this.label19);
-            this.groupBox6.Controls.Add(this.label21);
-            this.groupBox6.Controls.Add(this.label1);
-            this.groupBox6.Controls.Add(this.binanceBtcUsdtBidPrice);
-            this.groupBox6.Controls.Add(this.btcTurkBtcUsdtBidPrice);
-            this.groupBox6.Controls.Add(this.label2);
-            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox6.Location = new System.Drawing.Point(20, 21);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(428, 257);
-            this.groupBox6.TabIndex = 6;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Fiyatlar";
-            // 
-            // binanceUsdtAskPrice
-            // 
-            this.binanceUsdtAskPrice.AutoSize = true;
-            this.binanceUsdtAskPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.binanceUsdtAskPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.binanceUsdtAskPrice.Location = new System.Drawing.Point(276, 211);
-            this.binanceUsdtAskPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.binanceUsdtAskPrice.Name = "binanceUsdtAskPrice";
-            this.binanceUsdtAskPrice.Size = new System.Drawing.Size(90, 15);
-            this.binanceUsdtAskPrice.TabIndex = 8;
-            this.binanceUsdtAskPrice.Text = "Wait Response";
-            // 
-            // btcTurkUsdtAskPrice
-            // 
-            this.btcTurkUsdtAskPrice.AutoSize = true;
-            this.btcTurkUsdtAskPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btcTurkUsdtAskPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btcTurkUsdtAskPrice.Location = new System.Drawing.Point(276, 169);
-            this.btcTurkUsdtAskPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.btcTurkUsdtAskPrice.Name = "btcTurkUsdtAskPrice";
-            this.btcTurkUsdtAskPrice.Size = new System.Drawing.Size(90, 15);
-            this.btcTurkUsdtAskPrice.TabIndex = 7;
-            this.btcTurkUsdtAskPrice.Text = "Wait Response";
-            // 
-            // binanceBtcUsdtAskPrice
-            // 
-            this.binanceBtcUsdtAskPrice.AutoSize = true;
-            this.binanceBtcUsdtAskPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.binanceBtcUsdtAskPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.binanceBtcUsdtAskPrice.Location = new System.Drawing.Point(276, 127);
-            this.binanceBtcUsdtAskPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.binanceBtcUsdtAskPrice.Name = "binanceBtcUsdtAskPrice";
-            this.binanceBtcUsdtAskPrice.Size = new System.Drawing.Size(90, 15);
-            this.binanceBtcUsdtAskPrice.TabIndex = 5;
-            this.binanceBtcUsdtAskPrice.Text = "Wait Response";
-            // 
-            // btcTurkBtcUsdtAskPrice
-            // 
-            this.btcTurkBtcUsdtAskPrice.AutoSize = true;
-            this.btcTurkBtcUsdtAskPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btcTurkBtcUsdtAskPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btcTurkBtcUsdtAskPrice.Location = new System.Drawing.Point(276, 81);
-            this.btcTurkBtcUsdtAskPrice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.btcTurkBtcUsdtAskPrice.Name = "btcTurkBtcUsdtAskPrice";
-            this.btcTurkBtcUsdtAskPrice.Size = new System.Drawing.Size(90, 15);
-            this.btcTurkBtcUsdtAskPrice.TabIndex = 4;
-            this.btcTurkBtcUsdtAskPrice.Text = "Wait Response";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label22.Location = new System.Drawing.Point(276, 40);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(68, 13);
-            this.label22.TabIndex = 3;
-            this.label22.Text = "Satış (Ask)";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label21.Location = new System.Drawing.Point(158, 40);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(57, 13);
-            this.label21.TabIndex = 2;
-            this.label21.Text = "Alış (Bid)";
-            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -454,7 +254,7 @@ namespace btcturkapp
             this.groupBox1.Controls.Add(this.farkBinancetoBtcTurkBidBtc);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.groupBox1.Location = new System.Drawing.Point(504, 41);
+            this.groupBox1.Location = new System.Drawing.Point(1297, 341);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(399, 218);
             this.groupBox1.TabIndex = 7;
@@ -519,7 +319,7 @@ namespace btcturkapp
             this.groupBox2.Controls.Add(this.binanceUsdtTextBox);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(34, 340);
+            this.groupBox2.Location = new System.Drawing.Point(98, 340);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
@@ -623,7 +423,7 @@ namespace btcturkapp
             this.groupBox3.Controls.Add(this.btcTurkBtcTextBox);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox3.ForeColor = System.Drawing.Color.Black;
-            this.groupBox3.Location = new System.Drawing.Point(34, 640);
+            this.groupBox3.Location = new System.Drawing.Point(98, 640);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
@@ -719,19 +519,20 @@ namespace btcturkapp
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33332F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel1.Controls.Add(this.priceDataGridView, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.priceDifferenceGridView, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox4, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox6, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupBox5, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 2, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1410, 902);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1797, 902);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // groupBox5
@@ -746,11 +547,11 @@ namespace btcturkapp
             this.groupBox5.Controls.Add(this.label14);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox5.ForeColor = System.Drawing.Color.Black;
-            this.groupBox5.Location = new System.Drawing.Point(973, 40);
+            this.groupBox5.Location = new System.Drawing.Point(1280, 40);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox5.Size = new System.Drawing.Size(403, 220);
+            this.groupBox5.Size = new System.Drawing.Size(434, 220);
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Komisyonlar";
@@ -827,15 +628,16 @@ namespace btcturkapp
             // 
             // priceDataGridView
             // 
+            this.priceDataGridView.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.priceDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.priceDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.exchangeName,
             this.coinName,
             this.askPrice,
             this.bidPrice});
-            this.priceDataGridView.Location = new System.Drawing.Point(1428, 21);
+            this.priceDataGridView.Location = new System.Drawing.Point(80, 62);
             this.priceDataGridView.Name = "priceDataGridView";
-            this.priceDataGridView.Size = new System.Drawing.Size(444, 217);
+            this.priceDataGridView.Size = new System.Drawing.Size(437, 175);
             this.priceDataGridView.TabIndex = 11;
             // 
             // exchangeName
@@ -858,13 +660,54 @@ namespace btcturkapp
             this.bidPrice.HeaderText = "Alış (Bid)";
             this.bidPrice.Name = "bidPrice";
             // 
+            // priceDifferenceGridView
+            // 
+            this.priceDifferenceGridView.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.priceDifferenceGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.priceDifferenceGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
+            this.priceDifferenceGridView.Location = new System.Drawing.Point(635, 100);
+            this.priceDifferenceGridView.Name = "priceDifferenceGridView";
+            this.priceDifferenceGridView.Size = new System.Drawing.Size(525, 100);
+            this.priceDifferenceGridView.TabIndex = 12;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "USDT Satış Farkı";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 120;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "USDT Alış Farkı";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 120;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "BTC Satış Farkı";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 120;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "BTC Alış Farkı";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 120;
+            // 
             // Anasayfa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.priceDataGridView);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Anasayfa";
@@ -873,8 +716,6 @@ namespace btcturkapp
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -885,16 +726,12 @@ namespace btcturkapp
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.priceDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.priceDifferenceGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label btcTurkBtcUsdtBidPrice;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label binanceBtcUsdtBidPrice;
         private System.Windows.Forms.Label farkBinancetoBtcTurkBidBtc;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label karZararDurumu2;
@@ -908,17 +745,6 @@ namespace btcturkapp
         private System.Windows.Forms.Label farkBinancetoBtcTurkAskBtc;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label binanceUsdtBidPrice;
-        private System.Windows.Forms.Label btcTurkUsdtBidPrice;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label btcTurkBtcUsdtAskPrice;
-        private System.Windows.Forms.Label binanceBtcUsdtAskPrice;
-        private System.Windows.Forms.Label btcTurkUsdtAskPrice;
-        private System.Windows.Forms.Label binanceUsdtAskPrice;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label farkBinancetoBtcTurkAskUsdt;
         private System.Windows.Forms.Label farkBinancetoBtcTurkBidUsdt;
@@ -955,5 +781,10 @@ namespace btcturkapp
         private System.Windows.Forms.DataGridViewTextBoxColumn coinName;
         private System.Windows.Forms.DataGridViewTextBoxColumn askPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn bidPrice;
+        private System.Windows.Forms.DataGridView priceDifferenceGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }

@@ -38,8 +38,7 @@ namespace btcturkapp
             priceDataGridView.Rows.Add();
             priceDataGridView.Rows.Add();
             priceDataGridView.Rows.Add();
-            priceDataGridView.Rows.Add();
-
+ 
             priceDataGridView.Rows[0].Cells[0].Value = "Binance";
             priceDataGridView.Rows[0].Cells[1].Value = "USDTTRY";
             priceDataGridView.Rows[1].Cells[0].Value = "BTCTurk";
@@ -49,193 +48,196 @@ namespace btcturkapp
             priceDataGridView.Rows[3].Cells[0].Value = "BTCTurk";
             priceDataGridView.Rows[3].Cells[1].Value = "BTCUSDT";
 
-
-
-
-            var timer = new Timer { Interval = 500 };
+           var timer = new Timer { Interval = 500 };
             timer.Tick += async (o, args) =>
             {
 
                 //Binance Usdt Satış Fiyatı             
-                var res1 = "";
+                var binanceUsdtAskPrice = "";
                 try
                 {
-                   res1 = await binance.BinanceGetValueAsync("USDTTRY");
-                   res1 = res1.Split(' ')[3].Split(' ')[0];
-                   priceDataGridView.Rows[0].Cells[2].Value = res1;
+                   binanceUsdtAskPrice = await binance.BinanceGetValueAsync("USDTTRY");
+                   binanceUsdtAskPrice = binanceUsdtAskPrice.Split(' ')[3].Split(' ')[0];
+                   priceDataGridView.Rows[0].Cells[2].Value = binanceUsdtAskPrice;
                 }
                 catch
                 {
-                    res1 = "Server Error";
+                    priceDataGridView.Rows[0].Cells[2].Value = "Server Error";
                 }                
                
                 //Binance Usdt Alış Fiyatı
-                var res2 = "";
+                var binanceUsdtBidPrice = "";
                 try
                 {
-                    res2 = await binance.BinanceGetValueAsync("USDTTRY");
-                    res2 = res2.Split(' ')[1].Split(' ')[0];
-                    priceDataGridView.Rows[0].Cells[3].Value = res2;
+                    binanceUsdtBidPrice = await binance.BinanceGetValueAsync("USDTTRY");
+                    binanceUsdtBidPrice = binanceUsdtBidPrice.Split(' ')[1].Split(' ')[0];
+                    priceDataGridView.Rows[0].Cells[3].Value = binanceUsdtBidPrice;
                 }
                 catch
                 {
-                    res2 = "Server Error";
+                    priceDataGridView.Rows[0].Cells[3].Value = "Server Error";
                 }
 
                 //BTCTurk Usdt Satış Fiyatı
-                var res3 = "";
+                var btcTurkUsdtAskPrice = "";
                 try
                 {
-                    res3 = await btcTurk.BTCTurkGetValueAsync("USDTTRY");
-                    res3 = res3.Split(' ')[3].Split(' ')[0];
-                    priceDataGridView.Rows[1].Cells[2].Value = res3;
+                    btcTurkUsdtAskPrice = await btcTurk.BTCTurkGetValueAsync("USDTTRY");
+                    btcTurkUsdtAskPrice = btcTurkUsdtAskPrice.Split(' ')[3].Split(' ')[0];
+                    priceDataGridView.Rows[1].Cells[2].Value = btcTurkUsdtAskPrice;
                 }
                 catch
                 {
-                    res3 = "Server Error";
+                    priceDataGridView.Rows[1].Cells[2].Value = "Server Error";
                 }
 
                 //BTCTurk Usdt Alış Fiyatı
-                var res4 = "";
+                var btcTurkUsdtBidPrice = "";
                 try
                 {
-                    res4 = await btcTurk.BTCTurkGetValueAsync("USDTTRY");
-                    res4 = res4.Split(' ')[1].Split(' ')[0];
-                    priceDataGridView.Rows[1].Cells[3].Value = res4;
+                    btcTurkUsdtBidPrice = await btcTurk.BTCTurkGetValueAsync("USDTTRY");
+                    btcTurkUsdtBidPrice = btcTurkUsdtBidPrice.Split(' ')[1].Split(' ')[0];
+                    priceDataGridView.Rows[1].Cells[3].Value = btcTurkUsdtBidPrice;
                 }
                 catch
                 {
-                    res4 = "Server Error";
+                    priceDataGridView.Rows[1].Cells[3].Value = "Server Error";
                 }
                 //Binance BTC Satış Fiyatı
-                var res5 = "";
+                var binanceBtcUsdtAskPrice = "";
                 try
                 {
-                    res5 = await binance.BinanceGetValueAsync("BTCUSDT");
-                    res5 = res5.Split(' ')[3].Split(' ')[0];
-                    priceDataGridView.Rows[2].Cells[2].Value = res5;
+                    binanceBtcUsdtAskPrice = await binance.BinanceGetValueAsync("BTCUSDT");
+                    binanceBtcUsdtAskPrice = binanceBtcUsdtAskPrice.Split(' ')[3].Split(' ')[0];
+                    priceDataGridView.Rows[2].Cells[2].Value = binanceBtcUsdtAskPrice;
                 }
                 catch
                 {
-                    res5 = "Server Error";
+                    priceDataGridView.Rows[2].Cells[2].Value = "Server Error";
                 }
 
                 //Binance BTC Alış Fiyatı
-                var res6 = "";
+                var binanceBtcUsdtBidPrice = "";
                 try
                 {
-                    res6 = await binance.BinanceGetValueAsync("BTCUSDT");
-                    res6 = res6.Split(' ')[1].Split(' ')[0];
-                    priceDataGridView.Rows[2].Cells[3].Value = res6;
+                    binanceBtcUsdtBidPrice = await binance.BinanceGetValueAsync("BTCUSDT");
+                    binanceBtcUsdtBidPrice = binanceBtcUsdtBidPrice.Split(' ')[1].Split(' ')[0];
+                    priceDataGridView.Rows[2].Cells[3].Value = binanceBtcUsdtBidPrice;
                 }
                 catch
                 {
-                    res6 = "Server Error";
+                    priceDataGridView.Rows[2].Cells[3].Value = "Server Error";
                 }
 
                 //BTCTurk BTC Satış Fiyatı
-                var res7 = "";
+                var btcTurkBtcUsdtAskPrice = "";
                 try
                 {
-                    res7 = await btcTurk.BTCTurkGetValueAsync("BTCUSDT");
-                    res7 = res7.Split(' ')[3].Split(' ')[0];
-                    priceDataGridView.Rows[3].Cells[2].Value = res7;
+                    btcTurkBtcUsdtAskPrice = await btcTurk.BTCTurkGetValueAsync("BTCUSDT");
+                    btcTurkBtcUsdtAskPrice = btcTurkBtcUsdtAskPrice.Split(' ')[3].Split(' ')[0];
+                    priceDataGridView.Rows[3].Cells[2].Value = btcTurkBtcUsdtAskPrice;
                 }
                 catch
                 {
-                    res7 = "Server Error";
+                    priceDataGridView.Rows[3].Cells[2].Value = "Server Error";
                 }
 
                 //BTCTurk BTC Alış Fiyatı
-                var res8 = "";
+                var btcTurkBtcUsdtBidPrice = "";
                 try
                 {
-                    res8 = await btcTurk.BTCTurkGetValueAsync("BTCUSDT");
-                    res8 = res8.Split(' ')[1].Split(' ')[0];
-                    priceDataGridView.Rows[3].Cells[3].Value = res8;
+                    btcTurkBtcUsdtBidPrice = await btcTurk.BTCTurkGetValueAsync("BTCUSDT");
+                    btcTurkBtcUsdtBidPrice = btcTurkBtcUsdtBidPrice.Split(' ')[1].Split(' ')[0];
+                    priceDataGridView.Rows[3].Cells[3].Value = btcTurkBtcUsdtBidPrice;
                 }
                 catch
                 {
-                    res8 = "Server Error";
+                    priceDataGridView.Rows[3].Cells[3].Value = "Server Error";
                 }
 
-                //// Binance ve BTCTurk arasındaki Btc alış(bid) fiyatı farkı
-                //string farkbinancebtcturkbidbtc = farkBinancetoBtcTurkBidBtc.Text;
-                //if (!string.IsNullOrEmpty(farkbinancebtcturkbidbtc))
-                //{
-                //    var bid = double.Parse(binanceBtcUsdtBidPrice.Text, CultureInfo.InvariantCulture) - double.Parse(btcTurkBtcUsdtBidPrice.Text, CultureInfo.InvariantCulture);
-                //    if (bid < 0)
-                //    {
-                //        bid = Math.Abs(bid);
-                //        farkBinancetoBtcTurkBidBtc.Text = "BTCTurk'te " + bid.ToString("0.####") + " $ daha pahalı";
-                //        farkBinancetoBtcTurkBidBtc.ForeColor = Color.Black;
-                //    }
-                //    else
-                //    {
-                //        farkBinancetoBtcTurkBidBtc.Text = "Binance'de " + bid.ToString("0.####") + " $ daha pahalı";
-                //        farkBinancetoBtcTurkBidBtc.ForeColor = Color.Black;
-                //    }
+                //Binance ve BTCTurk arasındaki USDT satış(ask) fiyatı farkı
+                double priceDifferenceUsdtAsk = 0;
+                try
+                {
+                    priceDifferenceUsdtAsk = double.Parse(binanceUsdtAskPrice, CultureInfo.InvariantCulture) - double.Parse(btcTurkUsdtAskPrice, CultureInfo.InvariantCulture);
 
-                //}
+                    if (priceDifferenceUsdtAsk < 0)
+                    {
+                        priceDifferenceUsdtAsk = Math.Abs(priceDifferenceUsdtAsk);
+                        priceDifferenceGridView.Rows[0].Cells[0].Value = "BTCTurk'te +" + priceDifferenceUsdtAsk.ToString("0.####");
+                    }
+                    else
+                    {
+                        priceDifferenceGridView.Rows[0].Cells[0].Value = "Binance'de +" + priceDifferenceUsdtAsk.ToString("0.####");
+                    }
+                }
+                catch
+                {
+                    priceDifferenceGridView.Rows[0].Cells[0].Value = "Server Error";
+                }
 
-                ////Binance ve BTCTurk arasındaki Btc satış(ask) fiyatı farkı
-                //string farkbinancebtcturkaskbtc = farkBinancetoBtcTurkAskBtc.Text;
-                //if (!string.IsNullOrEmpty(farkbinancebtcturkaskbtc))
-                //{
+                //Binance ve BTCTurk arasındaki USDT alış(bid) fiyatı farkı
+                double priceDifferenceUsdtBid = 0;
+                try
+                {
+                    priceDifferenceUsdtBid = double.Parse(binanceUsdtBidPrice, CultureInfo.InvariantCulture) - double.Parse(btcTurkUsdtBidPrice, CultureInfo.InvariantCulture);
 
-                //    var ask = double.Parse(binanceBtcUsdtAskPrice.Text, CultureInfo.InvariantCulture) - double.Parse(btcTurkBtcUsdtAskPrice.Text, CultureInfo.InvariantCulture);
+                    if (priceDifferenceUsdtBid < 0)
+                    {
+                        priceDifferenceUsdtBid = Math.Abs(priceDifferenceUsdtBid);
+                        priceDifferenceGridView.Rows[0].Cells[1].Value = "BTCTurk'te +" + priceDifferenceUsdtBid.ToString("0.####");
+                    }
+                    else
+                    {
+                        priceDifferenceGridView.Rows[0].Cells[1].Value = "Binance'de +" + priceDifferenceUsdtBid.ToString("0.####");
+                    }
+                }
+                catch
+                {
+                    priceDifferenceGridView.Rows[0].Cells[1].Value = "Server Error";
+                }
 
-                //    if (ask < 0)
-                //    {
-                //        ask = Math.Abs(ask);
-                //        farkBinancetoBtcTurkAskBtc.Text = "BTCTurk'te " + ask.ToString("0.####") + " $ daha pahalı";
-                //        farkBinancetoBtcTurkAskBtc.ForeColor = Color.Black;
-                //    }
-                //    else
-                //    {
-                //        farkBinancetoBtcTurkAskBtc.Text = "Binance'de " + ask.ToString("0.####") + " $ daha pahalı";
-                //        farkBinancetoBtcTurkAskBtc.ForeColor = Color.Black;
-                //    }
+                //Binance ve BTCTurk arasındaki BTCUSDT satış(ask) fiyatı farkı
+                double priceDifferenceBtcUsdtAsk = 0;
+                try
+                {
+                    priceDifferenceBtcUsdtAsk = double.Parse(binanceBtcUsdtAskPrice, CultureInfo.InvariantCulture) - double.Parse(btcTurkBtcUsdtAskPrice, CultureInfo.InvariantCulture);
 
-                //}
+                    if (priceDifferenceBtcUsdtAsk < 0)
+                    {
+                        priceDifferenceBtcUsdtAsk = Math.Abs(priceDifferenceBtcUsdtAsk);
+                        priceDifferenceGridView.Rows[0].Cells[2].Value = "BTCTurk'te +" + priceDifferenceBtcUsdtAsk.ToString("0.####");
+                    }
+                    else
+                    {
+                        priceDifferenceGridView.Rows[0].Cells[2].Value = "Binance'de +" + priceDifferenceBtcUsdtAsk.ToString("0.####");
+                    }
+                }
+                catch
+                {
+                    priceDifferenceGridView.Rows[0].Cells[2].Value = "Server Error";
+                }
 
-                //// Binance ve BTCTurk arasındaki Usdt alış(bid) fiyatı farkı
-                //string farkbinancebtcturkbidusdt = farkBinancetoBtcTurkBidUsdt.Text;
-                //if (!string.IsNullOrEmpty(farkbinancebtcturkbidusdt))
-                //{
-                //    var bid = double.Parse(binanceUsdtBidPrice.Text, CultureInfo.InvariantCulture) - double.Parse(btcTurkUsdtBidPrice.Text, CultureInfo.InvariantCulture);
-                //    if (bid < 0)
-                //    {
-                //        bid = Math.Abs(bid);
-                //        farkBinancetoBtcTurkBidUsdt.Text = "BTCTurk'te " + bid.ToString("0.####") + " TL daha pahalı";
-                //        farkBinancetoBtcTurkBidUsdt.ForeColor = Color.Black;
-                //    }
-                //    else
-                //    {
-                //        farkBinancetoBtcTurkBidUsdt.Text = "Binance'de " + bid.ToString("0.####") + " TL daha pahalı";
-                //        farkBinancetoBtcTurkBidUsdt.ForeColor = Color.Black;
-                //    }
+                //Binance ve BTCTurk arasındaki BTCUSDT alış(bid) fiyatı farkı
+                double priceDifferenceBtcUsdtBid = 0;
+                try
+                {
+                    priceDifferenceBtcUsdtBid = double.Parse(binanceBtcUsdtBidPrice, CultureInfo.InvariantCulture) - double.Parse(btcTurkBtcUsdtBidPrice, CultureInfo.InvariantCulture);
 
-                //}
-
-                //// Binance ve BTCTurk arasındaki Usdt satış(ask) fiyatı farkı
-                //string farkbinancebtcturkaskusdt = farkBinancetoBtcTurkAskUsdt.Text;
-                //if (!string.IsNullOrEmpty(farkbinancebtcturkaskusdt))
-                //{
-                //    var bid = double.Parse(binanceUsdtAskPrice.Text, CultureInfo.InvariantCulture) - double.Parse(btcTurkUsdtAskPrice.Text, CultureInfo.InvariantCulture);
-                //    if (bid < 0)
-                //    {
-                //        bid = Math.Abs(bid);
-                //        farkBinancetoBtcTurkAskUsdt.Text = "BTCTurk'te " + bid.ToString("0.####") + " TL daha pahalı";
-                //        farkBinancetoBtcTurkAskUsdt.ForeColor = Color.Black;
-                //    }
-                //    else
-                //    {
-                //        farkBinancetoBtcTurkAskUsdt.Text = "Binance'de " + bid.ToString("0.####") + " TL daha pahalı";
-                //        farkBinancetoBtcTurkAskUsdt.ForeColor = Color.Black;
-                //    }
-
-                //}
+                    if (priceDifferenceBtcUsdtBid < 0)
+                    {
+                        priceDifferenceBtcUsdtBid = Math.Abs(priceDifferenceBtcUsdtBid);
+                        priceDifferenceGridView.Rows[0].Cells[3].Value = "BTCTurk'te +" + priceDifferenceBtcUsdtBid.ToString("0.####");
+                    }
+                    else
+                    {
+                        priceDifferenceGridView.Rows[0].Cells[3].Value = "Binance'de +" + priceDifferenceBtcUsdtBid.ToString("0.####");
+                    }
+                }
+                catch
+                {
+                    priceDifferenceGridView.Rows[0].Cells[3].Value = "Server Error";
+                }
 
                 ////Binance satip BTCTurk de alma Usdt
                 //string sellusdtonbinance = sellUsdtOnBinance.Text;
@@ -376,20 +378,9 @@ namespace btcturkapp
 
                 //}
 
-                
-
-                
-
-               
-
-
-
-
             };
 
             timer.Start();
-
-            
 
         }
 
