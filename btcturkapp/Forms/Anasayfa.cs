@@ -28,9 +28,9 @@ namespace btcturkapp
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            int h = Screen.PrimaryScreen.WorkingArea.Height - 40;
-            int w = Screen.PrimaryScreen.WorkingArea.Width;
-            this.ClientSize = new Size(w, h);
+            //int h = Screen.PrimaryScreen.WorkingArea.Height - 40;
+            //int w = Screen.PrimaryScreen.WorkingArea.Width;
+            //this.ClientSize = new Size(w, h);
 
             btcTurkFunction btcTurk = new btcTurkFunction();
             binanceFunctions binance = new binanceFunctions();
@@ -38,7 +38,7 @@ namespace btcturkapp
             priceDataGridView.Rows.Add();
             priceDataGridView.Rows.Add();
             priceDataGridView.Rows.Add();
- 
+
             priceDataGridView.Rows[0].Cells[0].Value = "Binance";
             priceDataGridView.Rows[0].Cells[1].Value = "USDTTRY";
             priceDataGridView.Rows[1].Cells[0].Value = "BTCTurk";
@@ -48,10 +48,29 @@ namespace btcturkapp
             priceDataGridView.Rows[3].Cells[0].Value = "BTCTurk";
             priceDataGridView.Rows[3].Cells[1].Value = "BTCUSDT";
 
-           var timer = new Timer { Interval = 500 };
+            abritajGridView.Rows.Add();
+            abritajGridView.Rows.Add();
+            abritajGridView.Rows.Add();
+
+            abritajGridView.Rows[0].Cells[0].Value = "USDTTRY";
+            abritajGridView.Rows[0].Cells[1].Value = "Binance -> BTCTurk";
+            abritajGridView.Rows[0].Cells[2].Value = 100000;
+            abritajGridView.Rows[1].Cells[0].Value = "USDTTRY";
+            abritajGridView.Rows[1].Cells[1].Value = "BTCTurk -> Binance";
+            abritajGridView.Rows[1].Cells[2].Value = 100000;
+            abritajGridView.Rows[2].Cells[0].Value = "BTCUSDT";
+            abritajGridView.Rows[2].Cells[1].Value = "Binance -> BTCTurk";
+            abritajGridView.Rows[2].Cells[2].Value = 10;
+            abritajGridView.Rows[3].Cells[0].Value = "BTCUSDT";
+            abritajGridView.Rows[3].Cells[1].Value = "BTCTurk -> Binance";
+            abritajGridView.Rows[3].Cells[2].Value = 10;
+
+
+            var timer = new Timer { Interval = 500 };
             timer.Tick += async (o, args) =>
             {
-
+                //
+                //
                 //Binance Usdt Satış Fiyatı             
                 var binanceUsdtAskPrice = "";
                 try
@@ -64,7 +83,7 @@ namespace btcturkapp
                 {
                     priceDataGridView.Rows[0].Cells[2].Value = "Server Error";
                 }                
-               
+                //               
                 //Binance Usdt Alış Fiyatı
                 var binanceUsdtBidPrice = "";
                 try
@@ -77,7 +96,7 @@ namespace btcturkapp
                 {
                     priceDataGridView.Rows[0].Cells[3].Value = "Server Error";
                 }
-
+                //
                 //BTCTurk Usdt Satış Fiyatı
                 var btcTurkUsdtAskPrice = "";
                 try
@@ -90,7 +109,8 @@ namespace btcturkapp
                 {
                     priceDataGridView.Rows[1].Cells[2].Value = "Server Error";
                 }
-
+                //
+                //
                 //BTCTurk Usdt Alış Fiyatı
                 var btcTurkUsdtBidPrice = "";
                 try
@@ -103,6 +123,8 @@ namespace btcturkapp
                 {
                     priceDataGridView.Rows[1].Cells[3].Value = "Server Error";
                 }
+                //
+                //
                 //Binance BTC Satış Fiyatı
                 var binanceBtcUsdtAskPrice = "";
                 try
@@ -115,7 +137,8 @@ namespace btcturkapp
                 {
                     priceDataGridView.Rows[2].Cells[2].Value = "Server Error";
                 }
-
+                //
+                //
                 //Binance BTC Alış Fiyatı
                 var binanceBtcUsdtBidPrice = "";
                 try
@@ -128,7 +151,8 @@ namespace btcturkapp
                 {
                     priceDataGridView.Rows[2].Cells[3].Value = "Server Error";
                 }
-
+                //
+                //
                 //BTCTurk BTC Satış Fiyatı
                 var btcTurkBtcUsdtAskPrice = "";
                 try
@@ -141,7 +165,8 @@ namespace btcturkapp
                 {
                     priceDataGridView.Rows[3].Cells[2].Value = "Server Error";
                 }
-
+                //
+                //
                 //BTCTurk BTC Alış Fiyatı
                 var btcTurkBtcUsdtBidPrice = "";
                 try
@@ -154,7 +179,8 @@ namespace btcturkapp
                 {
                     priceDataGridView.Rows[3].Cells[3].Value = "Server Error";
                 }
-
+                //
+                //
                 //Binance ve BTCTurk arasındaki USDT satış(ask) fiyatı farkı
                 double priceDifferenceUsdtAsk = 0;
                 try
@@ -175,7 +201,8 @@ namespace btcturkapp
                 {
                     priceDifferenceGridView.Rows[0].Cells[0].Value = "Server Error";
                 }
-
+                //
+                //
                 //Binance ve BTCTurk arasındaki USDT alış(bid) fiyatı farkı
                 double priceDifferenceUsdtBid = 0;
                 try
@@ -196,7 +223,8 @@ namespace btcturkapp
                 {
                     priceDifferenceGridView.Rows[0].Cells[1].Value = "Server Error";
                 }
-
+                //
+                //
                 //Binance ve BTCTurk arasındaki BTCUSDT satış(ask) fiyatı farkı
                 double priceDifferenceBtcUsdtAsk = 0;
                 try
@@ -217,7 +245,8 @@ namespace btcturkapp
                 {
                     priceDifferenceGridView.Rows[0].Cells[2].Value = "Server Error";
                 }
-
+                //
+                //
                 //Binance ve BTCTurk arasındaki BTCUSDT alış(bid) fiyatı farkı
                 double priceDifferenceBtcUsdtBid = 0;
                 try
@@ -238,150 +267,61 @@ namespace btcturkapp
                 {
                     priceDifferenceGridView.Rows[0].Cells[3].Value = "Server Error";
                 }
+                //
+                //
+                //BİNANCE SATİP BTCTURK DE ALMA USDT
+                var usdtMiktarBinance = abritajGridView.Rows[0].Cells[2].Value;
 
-                ////Binance satip BTCTurk de alma Usdt
-                //string sellusdtonbinance = sellUsdtOnBinance.Text;
-                //if (!string.IsNullOrEmpty(sellusdtonbinance))
-                //{
-                //    //binance ask btc bid
+                var kazancSellUsdtBinance = (double.Parse(binanceUsdtAskPrice, CultureInfo.InvariantCulture) * double.Parse(usdtMiktarBinance.ToString())) - ((double.Parse(usdtMiktarBinance.ToString()) * double.Parse("0.0002", CultureInfo.InvariantCulture)) * double.Parse(binanceUsdtAskPrice, CultureInfo.InvariantCulture));
+                abritajGridView.Rows[0].Cells[3].Value = kazancSellUsdtBinance.ToString("0.####");
 
-                //    if (binanceUsdtTextBox.Text == "")
-                //    {
-                //        binanceUsdtTextBox.Text = "0";
-                //    }
+                var maliyetBuyUsdtBtcTurk = (double.Parse(btcTurkUsdtBidPrice, CultureInfo.InvariantCulture) * double.Parse(usdtMiktarBinance.ToString())) + ((double.Parse(usdtMiktarBinance.ToString()) * double.Parse("0.0001", CultureInfo.InvariantCulture)) * double.Parse(btcTurkUsdtAskPrice, CultureInfo.InvariantCulture));
+                abritajGridView.Rows[0].Cells[4].Value = maliyetBuyUsdtBtcTurk.ToString("0.####");
 
-                //    var res = (double.Parse(binanceUsdtAskPrice.Text, CultureInfo.InvariantCulture) * double.Parse(binanceUsdtTextBox.Text, CultureInfo.InvariantCulture)) - ((double.Parse(binanceUsdtTextBox.Text, CultureInfo.InvariantCulture) * double.Parse("0.0001", CultureInfo.InvariantCulture)) * double.Parse(binanceUsdtAskPrice.Text, CultureInfo.InvariantCulture)) ;
+                var karZararBinanceToBtcTurkUsdt = double.Parse((string)abritajGridView.Rows[0].Cells[3].Value) - double.Parse((string)abritajGridView.Rows[0].Cells[4].Value) - (double.Parse(btcTurkUsdtAskPrice, CultureInfo.InvariantCulture) / 4);
+                abritajGridView.Rows[0].Cells[5].Value = karZararBinanceToBtcTurkUsdt.ToString("0.####") + " TL";
+                //
+                //
+                //BTCTURK SATİP BİNANCE DE ALMA USDT
+                var usdtMiktarBtcTurk = abritajGridView.Rows[1].Cells[2].Value;
 
-                //    sellUsdtOnBinance.Text = res.ToString("0.####");
+                var kazancSellUsdtBtcTurk = (double.Parse(btcTurkUsdtAskPrice, CultureInfo.InvariantCulture) * double.Parse(usdtMiktarBtcTurk.ToString())) - ((double.Parse(usdtMiktarBtcTurk.ToString()) * double.Parse("0.0001", CultureInfo.InvariantCulture)) * double.Parse(btcTurkUsdtAskPrice, CultureInfo.InvariantCulture));
+                abritajGridView.Rows[1].Cells[3].Value = kazancSellUsdtBtcTurk.ToString("0.####");
 
-                //}
+                var maliyetBuyUsdtBinance = (double.Parse(binanceUsdtBidPrice, CultureInfo.InvariantCulture) * double.Parse(usdtMiktarBtcTurk.ToString())) + ((double.Parse(usdtMiktarBtcTurk.ToString()) * double.Parse("0.0002", CultureInfo.InvariantCulture)) * double.Parse(binanceUsdtAskPrice, CultureInfo.InvariantCulture));
+                abritajGridView.Rows[1].Cells[4].Value = maliyetBuyUsdtBinance.ToString("0.####");
 
-                //string buyusdtonbtcturk = buyUsdtOnBtcTurk.Text;
-                //if (!string.IsNullOrEmpty(buyusdtonbtcturk))
-                //{
-                //    //binance bid btc ask
+                var karZararBtcTurkToBinanceUsdt = double.Parse((string)abritajGridView.Rows[1].Cells[3].Value) - double.Parse((string)abritajGridView.Rows[1].Cells[4].Value) - (double.Parse(binanceUsdtAskPrice, CultureInfo.InvariantCulture));
+                abritajGridView.Rows[1].Cells[5].Value = karZararBtcTurkToBinanceUsdt.ToString("0.####") + " TL";               
+                //
+                //
+                //BINANCE SATİP BTCTURK DE ALMA BTC
+                var btcMiktarBinance = abritajGridView.Rows[2].Cells[2].Value;
 
-                //    if (binanceUsdtTextBox.Text == "")
-                //    {
-                //        binanceUsdtTextBox.Text = "0";
-                //    }
+                var kazancSellBtcBinance = (double.Parse(btcTurkBtcUsdtAskPrice, CultureInfo.InvariantCulture) * double.Parse(btcMiktarBinance.ToString())) - ((double.Parse(btcMiktarBinance.ToString()) * double.Parse("0.001", CultureInfo.InvariantCulture)) * double.Parse(btcTurkBtcUsdtAskPrice, CultureInfo.InvariantCulture));
+                abritajGridView.Rows[2].Cells[3].Value = kazancSellBtcBinance.ToString("0.####");
 
-                //    var res = (double.Parse(btcTurkUsdtBidPrice.Text, CultureInfo.InvariantCulture) * double.Parse(binanceUsdtTextBox.Text, CultureInfo.InvariantCulture)) + ((double.Parse(binanceUsdtTextBox.Text, CultureInfo.InvariantCulture) * double.Parse("0.0001", CultureInfo.InvariantCulture)) * double.Parse(btcTurkUsdtAskPrice.Text, CultureInfo.InvariantCulture));
+                var maliyetBuyBtcBtcTurk = (double.Parse(binanceBtcUsdtBidPrice, CultureInfo.InvariantCulture) * double.Parse(btcMiktarBinance.ToString())) - ((double.Parse(btcMiktarBinance.ToString()) * double.Parse("0.0001", CultureInfo.InvariantCulture)) * double.Parse(binanceBtcUsdtAskPrice, CultureInfo.InvariantCulture));
+                abritajGridView.Rows[2].Cells[4].Value = maliyetBuyBtcBtcTurk.ToString("0.####");
 
-                //    buyUsdtOnBtcTurk.Text = res.ToString("0.####");
+                var karZararBinanceToBtcTurkBtc = double.Parse((string)abritajGridView.Rows[2].Cells[3].Value) - double.Parse((string)abritajGridView.Rows[2].Cells[4].Value);
+                abritajGridView.Rows[2].Cells[5].Value = karZararBinanceToBtcTurkBtc.ToString("0.####") + " TL";
+                //
+                //
+                //BTCTURK SATIP BINANCE DE ALMA BTC
+                var btcMiktarBtcTurk = abritajGridView.Rows[3].Cells[2].Value;   
+                
+                var kazancSellBtcBtcTurk = (double.Parse(btcTurkBtcUsdtAskPrice, CultureInfo.InvariantCulture) * double.Parse(btcMiktarBtcTurk.ToString())) - ((double.Parse(btcMiktarBtcTurk.ToString()) * double.Parse("0.0001", CultureInfo.InvariantCulture)) * double.Parse(btcTurkBtcUsdtAskPrice, CultureInfo.InvariantCulture));
+                abritajGridView.Rows[3].Cells[3].Value = kazancSellBtcBtcTurk.ToString("0.####");
 
-                //}
+                var maliyetBuyBtcBinance = (double.Parse(binanceBtcUsdtBidPrice, CultureInfo.InvariantCulture) * double.Parse(btcMiktarBtcTurk.ToString())) - ((double.Parse(btcMiktarBtcTurk.ToString()) * double.Parse("0.001", CultureInfo.InvariantCulture)) * double.Parse(binanceBtcUsdtAskPrice, CultureInfo.InvariantCulture));
+                abritajGridView.Rows[3].Cells[4].Value = maliyetBuyBtcBinance.ToString("0.####");
 
-                //string karzarardurumu = karZararDurumu.Text;
-                //if (!string.IsNullOrEmpty(karzarardurumu))
-                //{
-
-                //    var res = double.Parse(sellUsdtOnBinance.Text) - double.Parse(buyUsdtOnBtcTurk.Text) - (double.Parse(btcTurkUsdtAskPrice.Text, CultureInfo.InvariantCulture) / 4);
-                //    karZararDurumu.Text = res.ToString("0.####") + " TL";
-
-                //}
-
-                ////BTCTurk satip Binance de alma Usdt
-
-                //string sellusdtonbtcturk = sellUsdtOnBtcTurk.Text;
-                //if (!string.IsNullOrEmpty(sellusdtonbtcturk))
-                //{
-                //    //binance ask btc bid
-
-                //    if (btcTurkUsdtTextBox.Text == "")
-                //    {
-                //        btcTurkUsdtTextBox.Text = "0";
-                //    }
-
-                //    var res = (double.Parse(btcTurkUsdtAskPrice.Text, CultureInfo.InvariantCulture) * double.Parse(btcTurkUsdtTextBox.Text, CultureInfo.InvariantCulture)) -((double.Parse(btcTurkUsdtTextBox.Text, CultureInfo.InvariantCulture) * double.Parse("0.0001", CultureInfo.InvariantCulture)) * double.Parse(btcTurkUsdtAskPrice.Text, CultureInfo.InvariantCulture));
-
-                //    //- 
-                //    sellUsdtOnBtcTurk.Text = res.ToString("0.####");
-
-
-                //}
-
-                //string buyusdtonbinance = buyUsdtOnBinance.Text;
-                //if (!string.IsNullOrEmpty(buyusdtonbinance))
-                //{
-                //    //binance bid btc ask
-
-                //    if (btcTurkUsdtTextBox.Text == "")
-                //    {
-                //        btcTurkUsdtTextBox.Text = "0";
-                //    }
-
-                //    var res = (double.Parse(btcTurkUsdtTextBox.Text, CultureInfo.InvariantCulture) * double.Parse(binanceUsdtBidPrice.Text, CultureInfo.InvariantCulture)) + ((double.Parse(btcTurkUsdtTextBox.Text, CultureInfo.InvariantCulture) * double.Parse("0.0001", CultureInfo.InvariantCulture)) * double.Parse(binanceUsdtAskPrice.Text, CultureInfo.InvariantCulture));
-
-                //    buyUsdtOnBinance.Text = res.ToString("0.####");
-
-
-                //}
-
-                //string karzarardurumu2 = karZararDurumu2.Text;
-                //if (!string.IsNullOrEmpty(karzarardurumu2))
-                //{
-
-                //    var res = double.Parse(sellUsdtOnBtcTurk.Text) - double.Parse(buyUsdtOnBinance.Text) - double.Parse(binanceUsdtAskPrice.Text, CultureInfo.InvariantCulture);
-
-                //    karZararDurumu2.Text = res.ToString("0.####") + " TL";
-
-                //    // (double.Parse(btcTurkBtcUsdtPrice.Text.Split(' ')[3].Split(' ')[0]) * double.Parse(btcTextBox.Text)) - (double.Parse(binanceBtcUsdtPrice.Text.Split(' ')[1].Split(' ')[0]) * double.Parse(btcTextBox.Text));
-
-                //}
-
-                //BTCTurk satip Binance de alma Btc
-                //string sellbtconbtcturk = sellBtcOnBtcTurk.Text;
-                //if (!string.IsNullOrEmpty(sellbtconbtcturk))
-                //{
-                //    //binance ask btc bid
-
-                //    if (btcTurkBtcTextBox.Text == "")
-                //    {
-                //        btcTurkBtcTextBox.Text = "0";
-                //    }
-
-                //    var res = (double.Parse(btcTurkBtcUsdtAskPrice.Text, CultureInfo.InvariantCulture) * double.Parse(btcTurkBtcTextBox.Text, CultureInfo.InvariantCulture)) - (double.Parse(btcTurkBtcUsdtAskPrice.Text, CultureInfo.InvariantCulture) * 0.0005);
-
-                //    //- 
-                //    sellBtcOnBtcTurk.Text = res.ToString("0.####");
-
-
-                //}
-
-                //string buybtconbinance = buyBtcOnBinance.Text;
-                //if (!string.IsNullOrEmpty(buyusdtonbinance))
-                //{
-                //    //binance bid btc ask
-
-                //    if (btcTurkBtcTextBox.Text == "")
-                //    {
-                //        btcTurkBtcTextBox.Text = "0";
-                //    }
-
-                //    var res = (double.Parse(btcTurkBtcTextBox.Text, CultureInfo.InvariantCulture) * (double.Parse(binanceBtcUsdtBidPrice.Text, CultureInfo.InvariantCulture))) - (double.Parse(binanceUsdtBidPrice.Text, CultureInfo.InvariantCulture) * 0.0005);
-
-                //    buyUsdtOnBinance.Text = res.ToString("0.####");
-
-
-                //}
-
-                //string karzarardurumu2 = karZararDurumu2.Text;
-                //if (!string.IsNullOrEmpty(karzarardurumu2))
-                //{
-
-                //    var res = double.Parse(sellUsdtOnBtcTurk.Text) - double.Parse(buyUsdtOnBinance.Text) - double.Parse(binanceUsdtAskPrice.Text, CultureInfo.InvariantCulture);
-
-                //    karZararDurumu2.Text = res.ToString("0.####") + " TL";
-
-                //    // (double.Parse(btcTurkBtcUsdtPrice.Text.Split(' ')[3].Split(' ')[0]) * double.Parse(btcTextBox.Text)) - (double.Parse(binanceBtcUsdtPrice.Text.Split(' ')[1].Split(' ')[0]) * double.Parse(btcTextBox.Text));
-
-                //}
+                var karZararBtcTurkToBinanceBtc = double.Parse((string)abritajGridView.Rows[3].Cells[3].Value) - double.Parse((string)abritajGridView.Rows[3].Cells[4].Value) - (double.Parse(binanceBtcUsdtAskPrice, CultureInfo.InvariantCulture) * 0.0005);
+                abritajGridView.Rows[3].Cells[5].Value = karZararBtcTurkToBinanceBtc.ToString("0.####") + " TL";
 
             };
-
             timer.Start();
-
         }
 
         private void btcTurkUsdtTextBox_KeyPress(object sender, KeyPressEventArgs e)
