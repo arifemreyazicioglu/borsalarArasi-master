@@ -25,19 +25,27 @@ namespace btcturkapp.BTCTurkFunction
             var privateKey = configuration["privateKey"];
             var resourceUrl = configuration["resourceUrl"];
             var apiClientV1 = new ApiClientV1(publicKey, privateKey, resourceUrl);
-            var tickerList = await apiClientV1.GetTicker(curr);
-            if (tickerList.Success)
+            try
             {
-                foreach (var ticker in tickerList.Data)
+                var tickerList = await apiClientV1.GetTicker(curr);
+                if (tickerList.Success)
                 {
-                    responseString = ticker.ToString();
+                    foreach (var ticker in tickerList.Data)
+                    {
+                        responseString = ticker.ToString();
+                    }
                 }
+                else
+                {
+                    Console.WriteLine(tickerList.ToString());
+                }
+                return responseString;
             }
-            else
+            catch
             {
-                 Console.WriteLine(tickerList.ToString());
+                return "Server Error";
             }
-            return responseString;
+            
         }
 
        

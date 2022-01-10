@@ -13,9 +13,11 @@ namespace Binance.HelpersBinance
         public  static TickerBinance ToReturnModel<T>(this HttpResponseMessage response) where T : class
         {
             TickerBinance returnModel;
-           
+
+            
             var result = response.Content.ReadAsStringAsync().Result;
-              
+            
+                       
             try
             {
                 returnModel = JsonConvert.DeserializeObject<TickerBinance>(result);

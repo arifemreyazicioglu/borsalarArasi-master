@@ -23,9 +23,16 @@ namespace btcturkapp.BinanceFunctions
             var resourceUrl = configuration["resourceUrl"];
 
             var binanceV1 = new BinanceV1(publicKey, privateKey, resourceUrl);
-            var tickerList = await binanceV1.GetTicker(curr);
-
-            return tickerList.ToString();
+            try
+            {
+                var tickerList = await binanceV1.GetTicker(curr);
+                return tickerList.ToString();
+            }
+            catch
+            {
+                return "Server Error";
+            }           
+            
         }
     }
 }
