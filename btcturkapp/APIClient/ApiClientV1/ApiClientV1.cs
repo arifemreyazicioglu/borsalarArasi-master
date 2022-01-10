@@ -66,9 +66,9 @@ namespace APIClient.ApiClientV1
         /// Get the authenticated account's balances
         /// </summary>
         /// <returns>A list of type UserBalance for each currency. Null if account balance cannot be retreived </returns>
-        public async Task<ReturnModel<IList<UserBalance>>> GetBalances()
+        public async Task<ReturnModel<IList<UserBalance>>> GetBalances(string symbol)
         {
-            const string requestUrl = "api/v1/users/balances";
+             string requestUrl = "api/v1/users/balances?asset=" + symbol;
 
             var response = await SendRequest(HttpVerbs.Get, requestUrl, requiresAuthentication: true);
 

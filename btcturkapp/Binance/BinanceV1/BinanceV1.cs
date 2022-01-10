@@ -41,17 +41,17 @@ namespace Binance.BinanceV1
 
         //    var response = await SendRequest(HttpVerbsBinance.Delete, requestUrl, requiresAuthentication: true);
 
-        //    var returnModel =  response.ToReturnModel<string>();
+        //    var returnModel = response.ToReturnModel<string>();
 
         //    return returnModel.Success;
         //}
 
 
-        ///// <summary>
-        ///// Creates given Order. Requires authentication.
-        ///// </summary>
-        ///// <param name="orderInput">Order to be created</param>
-        ///// <returns>An object of OrderOutPut for the created order information</returns>
+        /// <summary>
+        /// Creates given Order. Requires authentication.
+        /// </summary>
+        /// <param name="orderInput">Order to be created</param>
+        /// <returns>An object of OrderOutPut for the created order information</returns>
         //public async Task<ReturnModelBinance<OrderOutputBinance>> CreateOrder(OrderInputBinance orderInput)
         //{
         //    const string requestUrl = "api/v1/order";
@@ -63,10 +63,10 @@ namespace Binance.BinanceV1
         //    return returnModel;
         //}
 
-        ///// <summary>
-        ///// Get the authenticated account's balances
-        ///// </summary>
-        ///// <returns>A list of type UserBalance for each currency. Null if account balance cannot be retreived </returns>
+        /// <summary>
+        /// Get the authenticated account's balances
+        /// </summary>
+        /// <returns>A list of type UserBalance for each currency. Null if account balance cannot be retreived </returns>
         //public async Task<ReturnModelBinance<IList<UserBalanceBinance>>> GetBalances()
         //{
         //    const string requestUrl = "api/v1/users/balances";
@@ -78,12 +78,12 @@ namespace Binance.BinanceV1
         //    return returnModel;
         //}
 
-        ///// <summary>
-        ///// Gets the daily open, high, low, close, average etc. data in the market 
-        ///// </summary>
-        ///// <param name="pairSymbol">pair symbol</param>
-        ///// <param name="last">The number of days to request</param>
-        ///// <returns>The OHLC data for the last given number of days</returns>
+        /// <summary>
+        /// Gets the daily open, high, low, close, average etc. data in the market 
+        /// </summary>
+        /// <param name="pairSymbol">pair symbol</param>
+        /// <param name="last">The number of days to request</param>
+        /// <returns>The OHLC data for the last given number of days</returns>
         //public async Task<ReturnModelBinance<IList<OHLCBinance>>> GetDailyOhlc(string pairSymbol, int last)
         //{
         //    var requestUrl = $"api/v2/ohlc?pairSymbol={pairSymbol}&last={last}";
@@ -111,9 +111,9 @@ namespace Binance.BinanceV1
         //    }
         //    var requestUrl = $"api/v1/users/transactions/trade?{typeBuilder}{symbolBuilder}startDate={startDate}&endDate={endDate}";
 
-        //    var response = await SendRequest(HttpVerbsBinance.Get, requestUrl,requiresAuthentication: true);
+        //    var response = await SendRequest(HttpVerbsBinance.Get, requestUrl, requiresAuthentication: true);
 
-        //    var returnModel =  response.ToReturnModel<IList<UserTradeBinance>>();
+        //    var returnModel = response.ToReturnModel<IList<UserTradeBinance>>();
 
         //    return returnModel;
         //}
@@ -135,7 +135,7 @@ namespace Binance.BinanceV1
 
         //    var requestUrl = $"api/v1/users/transactions/fiat?{typeBuilder}{symbolBuilder}startDate={startDate}&endDate={endDate}";
 
-        //    var response = await SendRequest(HttpVerbsBinance.Get, requestUrl,requiresAuthentication: true);
+        //    var response = await SendRequest(HttpVerbsBinance.Get, requestUrl, requiresAuthentication: true);
 
         //    var returnModel = response.ToReturnModel<IList<UserTransactionBinance>>();
 
@@ -159,18 +159,18 @@ namespace Binance.BinanceV1
 
         //    var requestUrl = $"api/v1/users/transactions/crypto?{typeBuilder}{symbolBuilder}startDate={startDate}&endDate={endDate}";
 
-        //    var response = await SendRequest(HttpVerbsBinance.Get, requestUrl,requiresAuthentication: true);
+        //    var response = await SendRequest(HttpVerbsBinance.Get, requestUrl, requiresAuthentication: true);
 
         //    var returnModel = response.ToReturnModel<IList<UserTransactionBinance>>();
 
         //    return returnModel;
         //}
-        ///// <summary>
-        ///// Get the last trades in the market by pairsymbol.
-        ///// </summary>
-        ///// <param name="pairSymbol">a pair symbol ex. BTCTRY</param>
-        ///// <param name="numberOfTrades">The number of trades that will be requested.</param>
-        ///// <returns>The requested number of last trades in the market.</returns>
+        /// <summary>
+        /// Get the last trades in the market by pairsymbol.
+        /// </summary>
+        /// <param name="pairSymbol">a pair symbol ex. BTCTRY</param>
+        /// <param name="numberOfTrades">The number of trades that will be requested.</param>
+        /// <returns>The requested number of last trades in the market.</returns>
         //public async Task<ReturnModelBinance<IList<TradesBinance>>> GetLastTrades(string pairSymbol, int numberOfTrades)
         //{
         //    var requestUrl = $"api/v1/trades?pairSymbol={pairSymbol}&last={numberOfTrades}";
@@ -182,10 +182,10 @@ namespace Binance.BinanceV1
         //    return returnModel;
         //}
 
-        ///// <summary>
-        ///// Get all open orders of the user
-        ///// </summary>
-        ///// <returns>Users open orders listed. Null if there was an error</returns>
+        /// <summary>
+        /// Get all open orders of the user
+        /// </summary>
+        /// <returns>Users open orders listed. Null if there was an error</returns>
         //public async Task<ReturnModelBinance<OpenOrderOutputBinance>> GetOpenOrders(string pairSymbol = null)
         //{
         //    var requestUrl = $"api/v1/openOrders?pairSymbol={pairSymbol}";
@@ -197,12 +197,12 @@ namespace Binance.BinanceV1
         //    return returnModel;
         //}
 
-        ///// <summary>
-        ///// Gets orderbook by pair
-        ///// </summary>
-        ///// <param name="pairSymbol">pair symbol</param>
-        ///// <param name="limit">number of returned orders for buy/sell</param>
-        ///// <returns>OrderBook</returns>
+        /// <summary>
+        /// Gets orderbook by pair
+        /// </summary>
+        /// <param name="pairSymbol">pair symbol</param>
+        /// <param name="limit">number of returned orders for buy/sell</param>
+        /// <returns>OrderBook</returns>
         //public async Task<ReturnModelBinance<OrderBookBinance>> GetOrderBook(string pairSymbol, int limit = 30)
         //{
         //    var requestUrl = $"api/v2/orderBook?pairSymbol={pairSymbol}&limit={limit}";
@@ -214,10 +214,10 @@ namespace Binance.BinanceV1
         //    return returnModel;
         //}
 
-        ///// <summary>
-        ///// Gets all pairs ticker values 
-        ///// </summary>
-        ///// <returns>List of ticker values</returns>
+        /// <summary>
+        /// Gets all pairs ticker values 
+        /// </summary>
+        /// <returns>List of ticker values</returns>
         //public async Task<ReturnModelBinance<IList<TickerBinance>>> GetTicker()
         //{
         //    var requestUrl = "api/v2/ticker";
@@ -232,7 +232,7 @@ namespace Binance.BinanceV1
         /// <summary>
         /// Gets ticker by pair
         /// </summary>
-        /// <param name="pairSymbol">pair symbol</param>
+        /// <param name = "pairSymbol" > pair symbol</param>
         /// <returns>Ticker values</returns>
         public async Task<TickerBinance> GetTicker(string pairSymbol)
         {
@@ -277,34 +277,34 @@ namespace Binance.BinanceV1
             return stamp;
         }
 
-        ///// <summary>
-        ///// Handles the response received from the application. You can change this method to have custom error handling in your app.
-        ///// </summary>
-        ///// <returns>Returns false if there were no errors. True if request failed.</returns>
-        //private static bool RequestSucceeded(HttpResponseMessage response)
-        //{
-        //    var result = true;
-        //    if (!response.IsSuccessStatusCode)
-        //    {
-        //        Debug.WriteLine("Received error. Status code: " + response.StatusCode + ". Error message: " +
-        //                        response.ReasonPhrase);
-        //        result = false;
-        //    }
-        //    else
-        //    {
-        //        var json = response.Content.ReadAsStringAsync().Result;
-        //        var obj = JsonConvert.DeserializeObject<dynamic>(json);
-        //        if (obj is JObject && obj["error"] != null)
-        //        {
-        //            Debug.WriteLine("Received error. Status code: " + (obj["error"]["code"].ToString() as string) +
-        //                            ". Error message: " + (obj["error"]["message"].ToString() as string));
-        //            result = false;
-        //        }
-        //    }
+        /// <summary>
+        /// Handles the response received from the application. You can change this method to have custom error handling in your app.
+        /// </summary>
+        /// <returns>Returns false if there were no errors. True if request failed.</returns>
+        private static bool RequestSucceeded(HttpResponseMessage response)
+        {
+            var result = true;
+            if (!response.IsSuccessStatusCode)
+            {
+                Debug.WriteLine("Received error. Status code: " + response.StatusCode + ". Error message: " +
+                                response.ReasonPhrase);
+                result = false;
+            }
+            else
+            {
+                var json = response.Content.ReadAsStringAsync().Result;
+                var obj = JsonConvert.DeserializeObject<dynamic>(json);
+                if (obj is JObject && obj["error"] != null)
+                {
+                    Debug.WriteLine("Received error. Status code: " + (obj["error"]["code"].ToString() as string) +
+                                    ". Error message: " + (obj["error"]["message"].ToString() as string));
+                    result = false;
+                }
+            }
 
-        //    return result;
-        //}
-        
+            return result;
+        }
+
         private async Task<HttpResponseMessage> SendRequest(HttpVerbsBinance action, string url, object inputModel = null, bool requiresAuthentication = false)
         {
             

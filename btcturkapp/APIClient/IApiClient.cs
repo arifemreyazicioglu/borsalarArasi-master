@@ -18,7 +18,7 @@ namespace APIClient
 
         Task<ReturnModel<IList<Ticker>>> GetTicker();
 
-        Task<ReturnModel<IList<UserBalance>>> GetBalances();
+        Task<ReturnModel<IList<UserBalance>>> GetBalances(string symbol);
 
         Task<ReturnModel<OpenOrderOutput>> GetOpenOrders(string pairSymbol = null);
 

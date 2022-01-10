@@ -205,8 +205,8 @@
     <Compile Include="Binance\ModelsBinance\UserBalanceBinance.cs" />
     <Compile Include="Binance\ModelsBinance\UserTradeBinance.cs" />
     <Compile Include="Binance\ModelsBinance\UserTransactionBinance.cs" />
-    <Compile Include="Function\BinanceFunctions.cs" />
-    <Compile Include="Function\BtcTurkFunctions.cs" />
+    <Compile Include="Function\BinanceApiFunctions.cs" />
+    <Compile Include="Function\BtcTurkApiFunctions.cs" />
     <Compile Include="Forms\Anasayfa.cs">
       <SubType>Form</SubType>
     </Compile>
