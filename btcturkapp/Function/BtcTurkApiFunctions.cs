@@ -57,24 +57,31 @@ namespace btcturkapp.BTCTurkFunction
             var resourceUrl = configuration["resourceUrl"];
             var apiClientV1 = new ApiClientV1(publicKey, privateKey, resourceUrl);
 
-            var balances = await apiClientV1.GetBalances(symbol);
-
-            if (balances != null && balances.Success)
+            try
             {
-                foreach (var balance in balances.Data)
+                var balances = await apiClientV1.GetBalances();
+
+                if (balances.Data != null && balances.Success)
                 {
-                    if(balance.Asset.Contains(symbol))
+                    foreach (var balance in balances.Data)
                     {
-                        Console.WriteLine(balance.ToString());
-                        responseString = balance.ToString();
+                        if (balance.Asset.Contains(symbol))
+                        {
+                            responseString = balance.Balance.ToString("0.####");
+                            //Console.WriteLine(responseString);
+                        }
+
                     }
-                    
                 }
+                return responseString;
+            }
+            catch
+            {
+                return "Server Error";
             }
 
-            return responseString;
-
         }
-      
+
+
     }
 }

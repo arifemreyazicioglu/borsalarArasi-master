@@ -15,6 +15,7 @@ using btcturkapp.BinanceFunctions;
 using System.IO;
 using Binance;
 using System.Text.RegularExpressions;
+using btcturkapp.Forms;
 
 namespace btcturkapp
 {
@@ -23,8 +24,7 @@ namespace btcturkapp
     {
         public Anasayfa()
         {
-            InitializeComponent();
-            
+            InitializeComponent();          
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -50,6 +50,7 @@ namespace btcturkapp
             priceDataGridView.Rows[3].Cells[0].Value = "BTCTurk";
             priceDataGridView.Rows[3].Cells[1].Value = "BTCUSDT";
 
+
             abritajGridView.Rows.Add();
             abritajGridView.Rows.Add();
             abritajGridView.Rows.Add();
@@ -66,6 +67,7 @@ namespace btcturkapp
             abritajGridView.Rows[3].Cells[0].Value = "BTCUSDT";
             abritajGridView.Rows[3].Cells[1].Value = "BTCTurk -> Binance";
             abritajGridView.Rows[3].Cells[2].Value = 10;
+
 
             var timer = new Timer { Interval = 1000 };
             timer.Tick += async (o, args) =>
@@ -421,10 +423,7 @@ namespace btcturkapp
                 {
                     abritajGridView.Rows[3].Cells[5].Value = "Server Error";
                 }
-
-                label1.Text = await btcTurk.BTCTurkGetAccountBalance("USDT");
-
-
+                
             };
             timer.Start();
         }
@@ -447,5 +446,12 @@ namespace btcturkapp
             }
         }
 
+        private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+            Form1 form1 = new Form1();
+            form1.Show();
+            this.Hide();
+        }
     }
 }

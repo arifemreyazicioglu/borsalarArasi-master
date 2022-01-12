@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.priceDataGridView = new System.Windows.Forms.DataGridView();
-            this.exchangeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.askPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bidPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDifferenceGridView = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,7 +57,10 @@
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.exchangeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.askPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bidPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.priceDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceDifferenceGridView)).BeginInit();
             this.groupBox5.SuspendLayout();
@@ -85,37 +84,8 @@
             this.priceDataGridView.Location = new System.Drawing.Point(14, 5);
             this.priceDataGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.priceDataGridView.Name = "priceDataGridView";
-            this.priceDataGridView.RowHeadersWidth = 62;
             this.priceDataGridView.Size = new System.Drawing.Size(782, 227);
             this.priceDataGridView.TabIndex = 11;
-            // 
-            // exchangeName
-            // 
-            this.exchangeName.HeaderText = "Borsa";
-            this.exchangeName.MinimumWidth = 8;
-            this.exchangeName.Name = "exchangeName";
-            this.exchangeName.Width = 120;
-            // 
-            // coinName
-            // 
-            this.coinName.HeaderText = "Coin";
-            this.coinName.MinimumWidth = 8;
-            this.coinName.Name = "coinName";
-            this.coinName.Width = 120;
-            // 
-            // askPrice
-            // 
-            this.askPrice.HeaderText = "Satış (Ask)";
-            this.askPrice.MinimumWidth = 8;
-            this.askPrice.Name = "askPrice";
-            this.askPrice.Width = 120;
-            // 
-            // bidPrice
-            // 
-            this.bidPrice.HeaderText = "Alış (Bid)";
-            this.bidPrice.MinimumWidth = 8;
-            this.bidPrice.Name = "bidPrice";
-            this.bidPrice.Width = 120;
             // 
             // priceDifferenceGridView
             // 
@@ -129,14 +99,12 @@
             this.priceDifferenceGridView.Location = new System.Drawing.Point(12, 254);
             this.priceDifferenceGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.priceDifferenceGridView.Name = "priceDifferenceGridView";
-            this.priceDifferenceGridView.RowHeadersWidth = 62;
             this.priceDifferenceGridView.Size = new System.Drawing.Size(786, 203);
             this.priceDifferenceGridView.TabIndex = 12;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "USDT Satış Farkı";
-            this.Column1.MinimumWidth = 8;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.Width = 120;
@@ -144,7 +112,6 @@
             // Column2
             // 
             this.Column2.HeaderText = "USDT Alış Farkı";
-            this.Column2.MinimumWidth = 8;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             this.Column2.Width = 120;
@@ -152,7 +119,6 @@
             // Column3
             // 
             this.Column3.HeaderText = "BTC Satış Farkı";
-            this.Column3.MinimumWidth = 8;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             this.Column3.Width = 120;
@@ -160,7 +126,6 @@
             // Column4
             // 
             this.Column4.HeaderText = "BTC Alış Farkı";
-            this.Column4.MinimumWidth = 8;
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             this.Column4.Width = 120;
@@ -177,7 +142,7 @@
             this.groupBox5.Controls.Add(this.label14);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox5.ForeColor = System.Drawing.Color.Black;
-            this.groupBox5.Location = new System.Drawing.Point(13, 3);
+            this.groupBox5.Location = new System.Drawing.Point(9, 2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(784, 409);
             this.groupBox5.TabIndex = 5;
@@ -190,7 +155,7 @@
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label26.Location = new System.Drawing.Point(6, 117);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(491, 22);
+            this.label26.Size = new System.Drawing.Size(347, 15);
             this.label26.TabIndex = 5;
             this.label26.Text = "BTCTurk\'te Tether alma ve satma komisyonu : 0.0001";
             // 
@@ -200,7 +165,7 @@
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label25.Location = new System.Drawing.Point(6, 63);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(487, 22);
+            this.label25.Size = new System.Drawing.Size(349, 15);
             this.label25.TabIndex = 4;
             this.label25.Text = "Binance\'de Tether alma ve satma komisyonu : 0.0002";
             // 
@@ -211,7 +176,7 @@
             this.label18.ForeColor = System.Drawing.Color.Black;
             this.label18.Location = new System.Drawing.Point(6, 338);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(599, 22);
+            this.label18.Size = new System.Drawing.Size(424, 15);
             this.label18.TabIndex = 3;
             this.label18.Text = "BTCTurk\'ten Binance\'e Tether gönderme komisyonu : 0.25 Tether";
             // 
@@ -222,7 +187,7 @@
             this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(6, 286);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(576, 22);
+            this.label17.Size = new System.Drawing.Size(408, 15);
             this.label17.TabIndex = 2;
             this.label17.Text = "Binance\'den BTCTurk\'e Tether gönderme komisyonu : 1 Tether";
             // 
@@ -233,7 +198,7 @@
             this.label16.ForeColor = System.Drawing.Color.Black;
             this.label16.Location = new System.Drawing.Point(6, 229);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(512, 22);
+            this.label16.Size = new System.Drawing.Size(364, 15);
             this.label16.TabIndex = 1;
             this.label16.Text = "BTC\'den Binance\'e BTC gönderme komisyonu : Ücretsiz";
             // 
@@ -244,7 +209,7 @@
             this.label14.ForeColor = System.Drawing.Color.Black;
             this.label14.Location = new System.Drawing.Point(6, 172);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(588, 22);
+            this.label14.Size = new System.Drawing.Size(414, 15);
             this.label14.TabIndex = 0;
             this.label14.Text = "Binance\'den BTCTurk\'e BTC gönderme komisyonu : 0.0005 BTC";
             // 
@@ -261,7 +226,6 @@
             this.abritajGridView.Location = new System.Drawing.Point(4, 5);
             this.abritajGridView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.abritajGridView.Name = "abritajGridView";
-            this.abritajGridView.RowHeadersWidth = 62;
             this.abritajGridView.Size = new System.Drawing.Size(994, 452);
             this.abritajGridView.TabIndex = 13;
             this.abritajGridView.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.abritajGridView_EditingControlShowing);
@@ -269,14 +233,11 @@
             // Column5
             // 
             this.Column5.HeaderText = "Coin";
-            this.Column5.MinimumWidth = 8;
             this.Column5.Name = "Column5";
-            this.Column5.Width = 150;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Yön";
-            this.Column6.MinimumWidth = 8;
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             this.Column6.Width = 120;
@@ -284,33 +245,25 @@
             // Column7
             // 
             this.Column7.HeaderText = "Miktar";
-            this.Column7.MinimumWidth = 8;
             this.Column7.Name = "Column7";
-            this.Column7.Width = 150;
             // 
             // Column8
             // 
             this.Column8.HeaderText = "Kazanılan Para";
-            this.Column8.MinimumWidth = 8;
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
-            this.Column8.Width = 150;
             // 
             // Column9
             // 
             this.Column9.HeaderText = "Ödenecek Para";
-            this.Column9.MinimumWidth = 8;
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
-            this.Column9.Width = 150;
             // 
             // Column10
             // 
             this.Column10.HeaderText = "Kar - Zarar";
-            this.Column10.MinimumWidth = 8;
             this.Column10.Name = "Column10";
             this.Column10.ReadOnly = true;
-            this.Column10.Width = 150;
             // 
             // tableLayoutPanel1
             // 
@@ -364,7 +317,6 @@
             this.Column13});
             this.sellBuyBuySellDifferenceGridView.Location = new System.Drawing.Point(8, 3);
             this.sellBuyBuySellDifferenceGridView.Name = "sellBuyBuySellDifferenceGridView";
-            this.sellBuyBuySellDifferenceGridView.RowHeadersWidth = 62;
             this.sellBuyBuySellDifferenceGridView.RowTemplate.Height = 28;
             this.sellBuyBuySellDifferenceGridView.Size = new System.Drawing.Size(899, 193);
             this.sellBuyBuySellDifferenceGridView.TabIndex = 17;
@@ -372,7 +324,6 @@
             // A
             // 
             this.A.HeaderText = "USDT Binance Alış - BTCTurk Satış Fark";
-            this.A.MinimumWidth = 8;
             this.A.Name = "A";
             this.A.ReadOnly = true;
             this.A.Width = 140;
@@ -380,7 +331,6 @@
             // Column11
             // 
             this.Column11.HeaderText = "USDT Binance Satış - BTCTurk Alış Fark";
-            this.Column11.MinimumWidth = 8;
             this.Column11.Name = "Column11";
             this.Column11.ReadOnly = true;
             this.Column11.Width = 140;
@@ -388,7 +338,6 @@
             // Column12
             // 
             this.Column12.HeaderText = "BTC Binance Alış - BTCTurk Satış Fark";
-            this.Column12.MinimumWidth = 8;
             this.Column12.Name = "Column12";
             this.Column12.ReadOnly = true;
             this.Column12.Width = 140;
@@ -396,7 +345,6 @@
             // Column13
             // 
             this.Column13.HeaderText = "BTC Binance Satış - BTCTurk Alış Fark";
-            this.Column13.MinimumWidth = 8;
             this.Column13.Name = "Column13";
             this.Column13.ReadOnly = true;
             this.Column13.Width = 140;
@@ -413,15 +361,29 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(915, 230);
             this.tableLayoutPanel4.TabIndex = 18;
             // 
-            // label1
+            // exchangeName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(143, 808);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 26);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "label1";
+            this.exchangeName.HeaderText = "Borsa";
+            this.exchangeName.Name = "exchangeName";
+            this.exchangeName.Width = 120;
+            // 
+            // coinName
+            // 
+            this.coinName.HeaderText = "Coin";
+            this.coinName.Name = "coinName";
+            this.coinName.Width = 120;
+            // 
+            // askPrice
+            // 
+            this.askPrice.HeaderText = "Satış (Ask)";
+            this.askPrice.Name = "askPrice";
+            this.askPrice.Width = 120;
+            // 
+            // bidPrice
+            // 
+            this.bidPrice.HeaderText = "Alış (Bid)";
+            this.bidPrice.Name = "bidPrice";
+            this.bidPrice.Width = 120;
             // 
             // Anasayfa
             // 
@@ -429,7 +391,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1851, 1017);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.tableLayoutPanel4);
             this.Controls.Add(this.tableLayoutPanel3);
             this.Controls.Add(this.tableLayoutPanel2);
@@ -449,7 +410,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.sellBuyBuySellDifferenceGridView)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -487,6 +447,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn coinName;
         private System.Windows.Forms.DataGridViewTextBoxColumn askPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn bidPrice;
-        private System.Windows.Forms.Label label1;
     }
 }

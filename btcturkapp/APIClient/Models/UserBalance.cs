@@ -9,7 +9,7 @@
         public string Free { get; set; }
         public override string ToString()
         {
-            return /*"Asset: {Asset}, AssetName: {AssetName}, $"Balance:*/ Balance.ToString("0.####") /*, Locked: {Locked}, Free: {Free}"*/;
+            return /*$"Asset: {Asset}, AssetName: {AssetName}, Balance:*/ Balance.ToString() /*Locked: {Locked}, Free: {Free}"*/;
         }
     }
 }

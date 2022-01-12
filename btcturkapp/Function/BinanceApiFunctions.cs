@@ -13,8 +13,7 @@ namespace btcturkapp.BinanceFunctions
 {
 
     public class binanceFunctions
-    {
-       
+    {     
         public async Task<string> BinanceGetValueAsync(string curr)
         {
             var configuration = new ConfigurationBuilder().AddJsonFile("apikeys.json").Build();
@@ -34,27 +33,28 @@ namespace btcturkapp.BinanceFunctions
             }           
             
         }
+        public async Task<string> BinanceGetBalanceAsync(string symbol)
+        {
+            var configuration = new ConfigurationBuilder().AddJsonFile("apikeys.json").Build();
+            var publicKey = configuration["publicKey"];
+            var privateKey = configuration["privateKey"];
+            var resourceUrl = configuration["resourceUrl"];
 
-        //public async Task<string> BinanceGetAccountBalance(string symbol)
-        //{
+            var binanceV1 = new BinanceV1(publicKey, privateKey, resourceUrl);
+            try
+            {
+                var tickerList = await binanceV1.GetBalances();
 
-        //    var configuration = new ConfigurationBuilder().AddJsonFile("apikeys.json").Build();
-        //    var publicKey = configuration["publicKey"];
-        //    var privateKey = configuration["privateKey"];
-        //    var resourceUrl = configuration["resourceUrl"];
-        //    var binanceV1 = new BinanceV1(publicKey, privateKey, resourceUrl);
+                UserBalanceBinance Currency1 = (from coin in tickerList.Balances where coin.Asset == symbol select coin).FirstOrDefault();
+                
+                Console.WriteLine(Currency1.Free);
+                return Currency1.Free.ToString();
+            }
+            catch
+            {
+                return "Server Error";
+            }
 
-        //    try
-        //    {
-        //        var tickerList = await binanceV1.GetBalances();
-        //        Console.WriteLine(tickerList);
-        //        return tickerList.ToString();
-        //    }
-        //    catch
-        //    {
-        //        return "Server Error";
-        //    }
-
-        //}
+        }
     }
 }

@@ -10,12 +10,13 @@ namespace Binance.HelpersBinance
 {
     public static class JsonHelperBinance
     {
-        public static TickerBinance ToReturnModel<T>(this HttpResponseMessage response) where T : class
+        public static TickerBinance ToReturnModelTickerBinance<T>(this HttpResponseMessage response) where T : class
         {
             TickerBinance returnModel;
-           
+
+            
             var result = response.Content.ReadAsStringAsync().Result;
-                                 
+              
             try
             {
                 returnModel = JsonConvert.DeserializeObject<TickerBinance>(result);
@@ -28,6 +29,25 @@ namespace Binance.HelpersBinance
             }
             return returnModel;
         }
+        public static AccountInformation ToReturnModelBalanceBinance<T>(this HttpResponseMessage response) where T : class
+        {
+            AccountInformation returnModel;
+
+            var result = response.Content.ReadAsStringAsync().Result;
+
+            try
+            {
+                returnModel = JsonConvert.DeserializeObject<AccountInformation>(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                var message = "Cannot deserialize response to ReturnModel: \n" + result;
+                throw new Exception(message);
+            }
+            return returnModel;
+        }
+        
 
         public static HttpContent ToHttpContent(this object o)
         {
