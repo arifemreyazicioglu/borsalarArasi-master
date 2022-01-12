@@ -16,6 +16,7 @@ using System.IO;
 using Binance;
 using System.Text.RegularExpressions;
 using btcturkapp.Forms;
+using APIClient.Models;
 
 namespace btcturkapp
 {
@@ -445,13 +446,91 @@ namespace btcturkapp
                     e.Handled = true;
             }
         }
-
-        private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
             Form1 form1 = new Form1();
             form1.Show();
             this.Hide();
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            btcTurkFunction btcTurk = new btcTurkFunction();
+            var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            var publicKey = configuration["publicKey"];
+            var privateKey = configuration["privateKey"];
+            var resourceUrl = configuration["resourceUrl"];
+            var apiClientV1 = new ApiClientV1(publicKey, privateKey, resourceUrl);
+
+            var methodType = OrderMethod.Limit;
+            var orderType = OrderType.Buy;
+
+            var limitSellOrder = new OrderInput
+            {
+                Quantity = 136.90m,
+                Price = 13.872m,
+                OrderMethod = methodType,
+                OrderType = orderType,
+                PairSymbol = "USDT_TRY",
+            };
+
+            ////Create New Order
+            var orderOutput = await apiClientV1.CreateOrder(limitSellOrder);
+
+            string message = "";
+            string title = "İşlem Durumu";
+
+            if (!orderOutput.Success)
+            {
+                message = $"Code:{orderOutput.Code} , Message: {orderOutput.Message}";               
+            }
+            else
+            {
+                message = orderOutput.Data.ToString();
+                listBox1.Items.Add(message);
+                textBox1.Text = orderOutput.Data.Id.ToString();
+            }
+
+
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.OK)
+            {
+                this.Show();
+            }
+        }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+
+            var publicKey = configuration["publicKey"];
+            var privateKey = configuration["privateKey"];
+            var resourceUrl = configuration["resourceUrl"];
+            var apiClientV1 = new ApiClientV1(publicKey, privateKey, resourceUrl);
+
+            var orderId = textBox1.Text;
+            var cancelOrder = await apiClientV1.CancelOrder(long.Parse(orderId));
+
+            string message = "";
+            string title = "İşlem Durumu";
+
+            if (!cancelOrder)
+            {
+                message = "Could not cancel order";               
+            }
+            else
+            {
+                message = $"Successfully canceled order {orderId}";
+                listBox1.Items.Clear();
+                textBox1.Clear();
+            }
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.OK)
+            {
+                this.Show();
+            }
         }
     }
 }

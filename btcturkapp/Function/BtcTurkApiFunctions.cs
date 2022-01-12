@@ -12,11 +12,13 @@ using System.Drawing;
 using System.Windows.Forms;
 using btcturkapp.BTCTurkFunction;
 using System.Globalization;
+using APIClient.Models;
 
 namespace btcturkapp.BTCTurkFunction
 {
     public class btcTurkFunction
     {
+
         public async Task<string> BTCTurkGetValueAsync(string curr)
         {
             var responseString = string.Empty;
@@ -81,7 +83,6 @@ namespace btcturkapp.BTCTurkFunction
             }
 
         }
-
 
     }
 }

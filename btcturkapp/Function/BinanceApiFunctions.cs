@@ -46,8 +46,7 @@ namespace btcturkapp.BinanceFunctions
                 var tickerList = await binanceV1.GetBalances();
 
                 UserBalanceBinance Currency1 = (from coin in tickerList.Balances where coin.Asset == symbol select coin).FirstOrDefault();
-                
-                Console.WriteLine(Currency1.Free);
+
                 return Currency1.Free.ToString();
             }
             catch

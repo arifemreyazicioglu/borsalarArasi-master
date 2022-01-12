@@ -12,7 +12,7 @@ namespace Binance.ModelsBinance
         public string NewOrderClientId { get; set; }
         public OrderMethod OrderMethod { get; set; }
         public OrderType OrderType { get; set; }
-        public string PairSymbol { get; set; }
+        public string Symbol { get; set; }
     }
 
     public enum OrderType

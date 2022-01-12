@@ -14,6 +14,7 @@ using Binance.ModelsBinance;
 using Binance.HelpersBinance;
 using System.Linq;
 
+
 namespace Binance.BinanceV1
 {
     public class BinanceV1 : IBinanceClient
@@ -52,16 +53,26 @@ namespace Binance.BinanceV1
         ///// </summary>
         ///// <param name="orderInput">Order to be created</param>
         ///// <returns>An object of OrderOutPut for the created order information</returns>
-        //public async Task<ReturnModelBinance<OrderOutputBinance>> CreateOrder(OrderInputBinance orderInput)
-        //{
-        //    const string requestUrl = "api/v1/order";
+        public async Task<OrderOutputBinance> CreateOrder(OrderInputBinance orderInput)
+        {
+             string requestUrl = "api/v3/order";
 
-        //    var response = await SendRequest(HttpVerbsBinance.Post, requestUrl, orderInput, requiresAuthentication: true);
+            string query = $"symbol={orderInput.Symbol}&side={orderInput.OrderType}&type={orderInput.OrderMethod}&quantity={orderInput.Quantity}&price={orderInput.Price}";
 
-        //    var returnModel = response.ToReturnModel<OrderOutputBinance>();
+            query = $"{query}&timestamp={GetStamp()}";
 
-        //    return returnModel;
-        //}
+            var signature = getSignature(_privateKey, query);
+            query += "&signature=" + signature;
+
+            requestUrl += "?" + query;
+
+            var response = await SendRequest(HttpVerbsBinance.Post, requestUrl, orderInput, requiresAuthentication: true);
+            Console.WriteLine(response);
+
+            var returnModel = response.ToReturnModelCreateOrder<OrderOutputBinance>();
+
+            return returnModel;
+        }
 
         /// <summary>
         /// Get the authenticated account's balances
@@ -69,7 +80,7 @@ namespace Binance.BinanceV1
         /// <returns>A list of type UserBalance for each currency. Null if account balance cannot be retreived </returns>
         public  async Task<AccountInformation> GetBalances()
         {
-            string requestUrl = $"{_resourceUrl}api/v3/account";
+            string requestUrl = $"api/v3/account";
 
             string query = $"";
             query = $"{query}&timestamp={GetStamp()}";

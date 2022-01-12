@@ -221,29 +221,29 @@ namespace TradingBot
         /// <param name="quantity">Amount to be traded</param>
         /// <param name="price">Price to be bought at.</param>
 
-        //public static Order PlaceOrder(string symbol, OrderSides side, OrderTypes type, TimesInForce timeInForce, double quantity, double price)
-        //{
-        //	string apiRequestUrl = "";
+        public static Order PlaceOrder(string symbol, OrderSides side, OrderTypes type, TimesInForce timeInForce, double quantity, double price)
+        {
+            string apiRequestUrl = "";
 
-        //	if (Globals.testCase == true)
-        //		apiRequestUrl = $"{baseUrl}v3/order/test";
-        //	else
-        //		apiRequestUrl = $"{baseUrl}v3/order";
+            if (Globals.testCase == true)
+                apiRequestUrl = $"{baseUrl}v3/order/test";
+            else
+                apiRequestUrl = $"{baseUrl}v3/order";
 
 
-        //	string query = $"symbol={symbol}&side={side}&type={type}&timeInForce={timeInForce}&quantity={quantity}&price={price}";
+            string query = $"symbol={symbol}&side={side}&type={type}&timeInForce={timeInForce}&quantity={quantity}&price={price}";
 
-        //	query = $"{query}&timestamp={Helper.getTimeStamp()}";
+            query = $"{query}&timestamp={Helper.getTimeStamp()}";
 
-        //	var signature = Helper.getSignature(Globals.SecretKey, query);
-        //	query += "&signature=" + signature;
+            var signature = Helper.getSignature(Globals.SecretKey, query);
+            query += "&signature=" + signature;
 
-        //	apiRequestUrl += "?" + query;
-        //	var response = Helper.webRequest(apiRequestUrl, "POST", Globals.ApiKey);
+            apiRequestUrl += "?" + query;
+            var response = Helper.webRequest(apiRequestUrl, "POST", Globals.ApiKey);
 
-        //	var parsedResponse = JsonConvert.DeserializeObject<Order>(response);
-        //	return parsedResponse;
-        //}
+            var parsedResponse = JsonConvert.DeserializeObject<Order>(response);
+            return parsedResponse;
+        }
 
         /// <summary>
         /// Places a market order. (Order at the current market price, needs no price or timeInForce params).
@@ -253,27 +253,25 @@ namespace TradingBot
         /// <param name="side">Order Side, BUY or SELL.</param>
         /// <param name="quantity">Amount to be traded.</param>
 
-        //public static Order PlaceMarketOrder(string symbol, OrderSides side, double quantity)
-        //{
-        //	string apiRequestUrl = ""; 
+        public static Order PlaceMarketOrder(string symbol, OrderSides side, double quantity)
+        {
 
-        //	if (Globals.testCase == true)
-        //		apiRequestUrl = $"{baseUrl}v3/order/test";
-        //	else
-        //		apiRequestUrl = $"{baseUrl}v3/order";
+            string apiRequestUrl = "";
+           
+            apiRequestUrl = $"{baseUrl}v3/order";
 
-        //	string query = $"symbol={symbol}&side={side}&type={OrderTypes.MARKET}&quantity={quantity}";
-        //	query = $"{query}&timestamp={Helper.getTimeStamp()}";
+            string query = $"symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=0.001&price=44000";
+            query = $"{query}&timestamp={Helper.getTimeStamp()}";
 
-        //	var signature = Helper.getSignature(Globals.SecretKey, query);
-        //	query += "&signature=" + signature;
+            var signature = Helper.getSignature(Globals.SecretKey, query);
+            query += "&signature=" + signature;
 
-        //	apiRequestUrl += "?" + query;
-        //	var response = Helper.webRequest(apiRequestUrl, "POST", Globals.ApiKey);
+            apiRequestUrl += "?" + query;
+            var response = Helper.webRequest(apiRequestUrl, "POST", Globals.ApiKey);
 
-        //	var parsedResponse = JsonConvert.DeserializeObject<Order>(response);
-        //	return parsedResponse;
-        //}
+            var parsedResponse = JsonConvert.DeserializeObject<Order>(response);
+            return parsedResponse;
+        }
 
 
         /***********
