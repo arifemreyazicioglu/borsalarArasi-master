@@ -5,6 +5,7 @@ using System.Linq;
 using System.Timers; 
 using System.ComponentModel;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace TradingBot
 {
@@ -223,57 +224,59 @@ namespace TradingBot
 
         //public static Order PlaceOrder(string symbol, OrderSides side, OrderTypes type, TimesInForce timeInForce, double quantity, double price)
         //{
-        //	string apiRequestUrl = "";
+        //    string apiRequestUrl = "";
 
-        //	if (Globals.testCase == true)
-        //		apiRequestUrl = $"{baseUrl}v3/order/test";
-        //	else
-        //		apiRequestUrl = $"{baseUrl}v3/order";
+        //    if (Globals.testCase == true)
+        //        apiRequestUrl = $"{baseUrl}v3/order/test";
+        //    else
+        //        apiRequestUrl = $"{baseUrl}v3/order";
 
 
-        //	string query = $"symbol={symbol}&side={side}&type={type}&timeInForce={timeInForce}&quantity={quantity}&price={price}";
+        //    string query = $"symbol={symbol}&side={side}&type={type}&timeInForce={timeInForce}&quantity={quantity}&price={price}";
 
-        //	query = $"{query}&timestamp={Helper.getTimeStamp()}";
+        //    query = $"{query}&timestamp={Helper.getTimeStamp()}";
 
-        //	var signature = Helper.getSignature(Globals.SecretKey, query);
-        //	query += "&signature=" + signature;
+        //    var signature = Helper.getSignature(Globals.SecretKey, query);
+        //    query += "&signature=" + signature;
 
-        //	apiRequestUrl += "?" + query;
-        //	var response = Helper.webRequest(apiRequestUrl, "POST", Globals.ApiKey);
+        //    apiRequestUrl += "?" + query;
+        //    var response = Helper.webRequest(apiRequestUrl, "POST", Globals.ApiKey);
 
-        //	var parsedResponse = JsonConvert.DeserializeObject<Order>(response);
-        //	return parsedResponse;
+        //    var parsedResponse = JsonConvert.DeserializeObject<Order>(response);
+        //    return parsedResponse;
         //}
 
-        /// <summary>
-        /// Places a market order. (Order at the current market price, needs no price or timeInForce params).
-        /// </summary>
-        /// <returns>The order object</returns>
-        /// <param name="symbol">Symbol of currencies to be traded, eg BCCETH.</param>
-        /// <param name="side">Order Side, BUY or SELL.</param>
-        /// <param name="quantity">Amount to be traded.</param>
+        ///// <summary>
+        ///// Places a market order. (Order at the current market price, needs no price or timeInForce params).
+        ///// </summary>
+        ///// <returns>The order object</returns>
+        ///// <param name="symbol">Symbol of currencies to be traded, eg BCCETH.</param>
+        ///// <param name="side">Order Side, BUY or SELL.</param>
+        ///// <param name="quantity">Amount to be traded.</param>
 
-        //public static Order PlaceMarketOrder(string symbol, OrderSides side, double quantity)
-        //{
-        //	string apiRequestUrl = ""; 
+        public static Order PlaceMarketOrder(string symbol, OrderSides side, double quantity)
+        {
+            var configuration = new ConfigurationBuilder().AddJsonFile("apikeys.json").Build();
+            var publicKey = configuration["publicKey"];
+            var privateKey = configuration["privateKey"];
+            var resourceUrl = configuration["resourceUrl"];
 
-        //	if (Globals.testCase == true)
-        //		apiRequestUrl = $"{baseUrl}v3/order/test";
-        //	else
-        //		apiRequestUrl = $"{baseUrl}v3/order";
+            string apiRequestUrl = "";
+           
+            apiRequestUrl = $"{resourceUrl}api/v3/order";
 
-        //	string query = $"symbol={symbol}&side={side}&type={OrderTypes.MARKET}&quantity={quantity}";
-        //	query = $"{query}&timestamp={Helper.getTimeStamp()}";
+            string query = $"symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=0.001&price=45000";
+            query = $"{query}&timestamp={Helper.getTimeStamp()}";
 
-        //	var signature = Helper.getSignature(Globals.SecretKey, query);
-        //	query += "&signature=" + signature;
+            var signature = Helper.getSignature(privateKey, query);
+            query += "&signature=" + signature;
 
-        //	apiRequestUrl += "?" + query;
-        //	var response = Helper.webRequest(apiRequestUrl, "POST", Globals.ApiKey);
+            apiRequestUrl += "?" + query;
+            var response = Helper.webRequest(apiRequestUrl, "POST", publicKey);
 
-        //	var parsedResponse = JsonConvert.DeserializeObject<Order>(response);
-        //	return parsedResponse;
-        //}
+            var parsedResponse = JsonConvert.DeserializeObject<Order>(response);
+            return parsedResponse;
+        }
 
 
         /***********

@@ -12,15 +12,17 @@ using System.Drawing;
 using System.Windows.Forms;
 using btcturkapp.BTCTurkFunction;
 using System.Globalization;
+using APIClient.Models;
 
 namespace btcturkapp.BTCTurkFunction
 {
     public class btcTurkFunction
     {
+
         public async Task<string> BTCTurkGetValueAsync(string curr)
         {
             var responseString = string.Empty;
-            var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            var configuration = new ConfigurationBuilder().AddJsonFile("btcTurkApiKeys.json").Build();
             var publicKey = configuration["publicKey"];
             var privateKey = configuration["privateKey"];
             var resourceUrl = configuration["resourceUrl"];
@@ -51,7 +53,7 @@ namespace btcturkapp.BTCTurkFunction
         public async Task<string> BTCTurkGetAccountBalance(string symbol)
         {
             var responseString = string.Empty;
-            var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            var configuration = new ConfigurationBuilder().AddJsonFile("btcTurkApiKeys.json").Build();
             var publicKey = configuration["publicKey"];
             var privateKey = configuration["privateKey"];
             var resourceUrl = configuration["resourceUrl"];
@@ -81,7 +83,6 @@ namespace btcturkapp.BTCTurkFunction
             }
 
         }
-
 
     }
 }

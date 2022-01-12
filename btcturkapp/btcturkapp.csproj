@@ -189,21 +189,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\Algorithm.cs" />
-    <Compile Include="Api\API.cs" />
-    <Compile Include="Api\Globals.cs" />
-    <Compile Include="Api\Helper.cs" />
-    <Compile Include="Api\Models.cs" />
+    <Compile Include="Binance\Api\Algorithm.cs" />
+    <Compile Include="Binance\Api\API.cs" />
+    <Compile Include="Binance\Api\Globals.cs" />
+    <Compile Include="Binance\Api\Helper.cs" />
+    <Compile Include="Binance\Api\Models.cs" />
     <Compile Include="Binance\BinanceV1\BinanceV1.cs" />
     <Compile Include="Binance\HelpersBinance\HttpVerbsBinance.cs" />
     <Compile Include="Binance\HelpersBinance\JsonHelperBinance.cs" />
     <Compile Include="Binance\HelpersBinance\TimeHelperBinance.cs" />
     <Compile Include="Binance\IBinanceClient.cs" />
+    <Compile Include="Binance\ModelsBinance\CancelOrderBinance.cs" />
+    <Compile Include="Binance\ModelsBinance\CreateOrderBinance.cs" />
     <Compile Include="Binance\ModelsBinance\OHLCBinance.cs" />
     <Compile Include="Binance\ModelsBinance\OpenOrderOutputBinance.cs" />
     <Compile Include="Binance\ModelsBinance\OrderBookBinance.cs" />
-    <Compile Include="Binance\ModelsBinance\OrderInputBinance.cs" />
-    <Compile Include="Binance\ModelsBinance\OrderOutPutBinance.cs" />
     <Compile Include="Binance\ModelsBinance\ReturnModelBinance.cs" />
     <Compile Include="Binance\ModelsBinance\TickerBinance.cs" />
     <Compile Include="Binance\ModelsBinance\TradesBinance.cs" />
@@ -285,6 +285,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

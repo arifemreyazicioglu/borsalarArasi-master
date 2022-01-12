@@ -98,6 +98,11 @@ namespace TradingBot.Models
 		public double StopPrice { get; set; }
 		public double IcebergQty { get; set; }
 		public long Time { get; set; }
+
+		public override string ToString()
+		{
+			return $"Id: {OrderId}, Price: {Price}, Quantity: {OrigQty}";
+		}
 	}
 
 

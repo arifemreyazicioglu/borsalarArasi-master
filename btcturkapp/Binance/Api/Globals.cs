@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 
 
 namespace TradingBot
@@ -7,7 +8,7 @@ namespace TradingBot
 	{
 
 		public static string[] keys = System.IO.File.ReadAllLines(@"/Users/arife/Desktop/masaüstü/kripto/abritajBinance/abritajBinance/bin/Debug/net5.0-windows/apikeys.txt");
-
+		
 		//Api Key
 		public static string ApiKey { get; set; } = "WYGMa28CkeNnltbwYm9ukA6YV9m4hH85jevS93rSctXJSRpXx5vRgOtFFheeOc0r";
 

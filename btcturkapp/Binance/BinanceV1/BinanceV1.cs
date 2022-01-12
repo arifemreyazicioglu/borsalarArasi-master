@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Binance.ModelsBinance;
 using Binance.HelpersBinance;
 using System.Linq;
+using btcturkapp.Binance.ModelsBinance;
 
 namespace Binance.BinanceV1
 {
@@ -52,16 +53,45 @@ namespace Binance.BinanceV1
         ///// </summary>
         ///// <param name="orderInput">Order to be created</param>
         ///// <returns>An object of OrderOutPut for the created order information</returns>
-        //public async Task<ReturnModelBinance<OrderOutputBinance>> CreateOrder(OrderInputBinance orderInput)
-        //{
-        //    const string requestUrl = "api/v1/order";
+        ///
 
-        //    var response = await SendRequest(HttpVerbsBinance.Post, requestUrl, orderInput, requiresAuthentication: true);
+        public CreateOrderBinance CreateOrder()
+        {
+            string requestUrl = $"{_resourceUrl}api/v3/order";
 
-        //    var returnModel = response.ToReturnModel<OrderOutputBinance>();
+            string query = $"symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=0.001&price=45000";
 
-        //    return returnModel;
-        //}
+            query = $"{query}&timestamp={GetStamp()}";
+
+            var signature = getSignature(_privateKey, query);
+            query += "&signature=" + signature;
+
+            requestUrl += "?" + query;
+
+            var response = WebRequest(requestUrl, "POST", _publicKey);
+
+            var returnModel = JsonConvert.DeserializeObject<CreateOrderBinance>(response);
+
+            return returnModel;
+        }
+
+        public  CancelOrderBinance CancelOrderBinance(long id)
+        {
+            string requestUrl = $"{_resourceUrl}api/v3/order";
+
+            string query = $"symbol=BTCUSDT&timestamp={GetStamp()}&orderId={id}";
+
+            var signature = getSignature(_privateKey, query);
+            query += "&signature=" + signature;
+
+            requestUrl += "?" + query;
+
+            var response =  WebRequest(requestUrl, "DELETE", _publicKey);
+
+            var returnModel = JsonConvert.DeserializeObject<CancelOrderBinance>(response);
+
+            return returnModel;
+        }
 
         /// <summary>
         /// Get the authenticated account's balances
@@ -69,7 +99,7 @@ namespace Binance.BinanceV1
         /// <returns>A list of type UserBalance for each currency. Null if account balance cannot be retreived </returns>
         public  async Task<AccountInformation> GetBalances()
         {
-            string requestUrl = $"{_resourceUrl}api/v3/account";
+            string requestUrl = $"api/v3/account";
 
             string query = $"";
             query = $"{query}&timestamp={GetStamp()}";
@@ -314,52 +344,52 @@ namespace Binance.BinanceV1
         //    return result;
         //}
 
-        //private async Task<string> WebRequest(string requestUrl, string method, string ApiKey)
-        //{
-        //    try
-        //    {
-        //        var request = (HttpWebRequest)System.Net.WebRequest.Create(requestUrl);
-        //        request.Method = method;
-        //        request.Timeout = 1000;  //very long response time from Singapore. Change in Boston accordingly.
-        //        if (ApiKey != null)
-        //        {
-        //            request.Headers.Add("X-MBX-APIKEY", ApiKey);
-        //        }
+        private string WebRequest(string requestUrl, string method, string ApiKey)
+        {
+            try
+            {
+                var request = (HttpWebRequest)System.Net.WebRequest.Create(requestUrl);
+                request.Method = method;
+                request.Timeout = 1000;  //very long response time from Singapore. Change in Boston accordingly.
+                if (ApiKey != null)
+                {
+                    request.Headers.Add("X-MBX-APIKEY", ApiKey);
+                }
 
-        //        var webResponse = (HttpWebResponse)request.GetResponse();
-        //        if (webResponse.StatusCode != HttpStatusCode.OK)
-        //        {
-        //            throw new Exception($"Did not return OK 200. Returned: {webResponse.StatusCode}");
-        //        }
+                var webResponse = (HttpWebResponse)request.GetResponse();
+                if (webResponse.StatusCode != HttpStatusCode.OK)
+                {
+                    throw new Exception($"Did not return OK 200. Returned: {webResponse.StatusCode}");
+                }
 
-        //        var encoding = ASCIIEncoding.ASCII;
-        //        string responseText = null;
+                var encoding = ASCIIEncoding.ASCII;
+                string responseText = null;
 
-        //        using (var reader = new System.IO.StreamReader(webResponse.GetResponseStream(), encoding))
-        //        {
-        //            responseText = reader.ReadToEnd();
-        //        }
+                using (var reader = new System.IO.StreamReader(webResponse.GetResponseStream(), encoding))
+                {
+                    responseText = reader.ReadToEnd();
+                }
 
-        //        return responseText;
-        //    }
-        //    catch (WebException webEx)
-        //    {
-        //        if (webEx.Response != null)
-        //        {
-        //            Encoding encoding = ASCIIEncoding.ASCII;
-        //            using (var reader = new System.IO.StreamReader(webEx.Response.GetResponseStream(), encoding))
-        //            {
-        //                string responseText = reader.ReadToEnd();
-        //                throw new Exception(responseText);
-        //            }
-        //        }
-        //        throw;
-        //    }
-        //    catch
-        //    {
-        //        return "Error";
-        //    }
-        //}
+                return responseText;
+            }
+            catch (WebException webEx)
+            {
+                if (webEx.Response != null)
+                {
+                    Encoding encoding = ASCIIEncoding.ASCII;
+                    using (var reader = new System.IO.StreamReader(webEx.Response.GetResponseStream(), encoding))
+                    {
+                        string responseText = reader.ReadToEnd();
+                        throw new Exception(responseText);
+                    }
+                }
+                throw;
+            }
+            catch
+            {
+                return "Error";
+            }
+        }
 
         private async Task<HttpResponseMessage> SendRequest(HttpVerbsBinance action, string url, object inputModel = null, bool requiresAuthentication = false)
         {

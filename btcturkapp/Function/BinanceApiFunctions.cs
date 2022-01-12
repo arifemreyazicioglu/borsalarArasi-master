@@ -16,7 +16,7 @@ namespace btcturkapp.BinanceFunctions
     {     
         public async Task<string> BinanceGetValueAsync(string curr)
         {
-            var configuration = new ConfigurationBuilder().AddJsonFile("apikeys.json").Build();
+            var configuration = new ConfigurationBuilder().AddJsonFile("binanceApiKeys.json").Build();
             var publicKey = configuration["publicKey"];
             var privateKey = configuration["privateKey"];
             var resourceUrl = configuration["resourceUrl"];
@@ -35,7 +35,7 @@ namespace btcturkapp.BinanceFunctions
         }
         public async Task<string> BinanceGetBalanceAsync(string symbol)
         {
-            var configuration = new ConfigurationBuilder().AddJsonFile("apikeys.json").Build();
+            var configuration = new ConfigurationBuilder().AddJsonFile("binanceApiKeys.json").Build();
             var publicKey = configuration["publicKey"];
             var privateKey = configuration["privateKey"];
             var resourceUrl = configuration["resourceUrl"];
@@ -46,15 +46,42 @@ namespace btcturkapp.BinanceFunctions
                 var tickerList = await binanceV1.GetBalances();
 
                 UserBalanceBinance Currency1 = (from coin in tickerList.Balances where coin.Asset == symbol select coin).FirstOrDefault();
-                
-                Console.WriteLine(Currency1.Free);
-                return Currency1.Free.ToString();
+
+                return Currency1.Free.ToString("0.#########");
             }
             catch
             {
                 return "Server Error";
             }
 
+        }
+        public  string BinanceCreateOrder()
+        {
+            var configuration = new ConfigurationBuilder().AddJsonFile("binanceApiKeys.json").Build();
+            var publicKey = configuration["publicKey"];
+            var privateKey = configuration["privateKey"];
+            var resourceUrl = configuration["resourceUrl"];
+
+            var binanceV1 = new BinanceV1(publicKey, privateKey, resourceUrl);
+                      
+            var order =  binanceV1.CreateOrder();
+            return order.ToString();
+            
+            
+        }
+        public string BinanceCancelOrder(long id)
+        {
+            var configuration = new ConfigurationBuilder().AddJsonFile("binanceApiKeys.json").Build();
+            var publicKey = configuration["publicKey"];
+            var privateKey = configuration["privateKey"];
+            var resourceUrl = configuration["resourceUrl"];
+
+            var binanceV1 = new BinanceV1(publicKey, privateKey, resourceUrl);
+           
+            var order =  binanceV1.CancelOrderBinance(id);
+            return order.ToString();
+            
+           
         }
     }
 }
