@@ -46,25 +46,26 @@ namespace Binance.HelpersBinance
             }
             return returnModel;
         }
-        public static Order ToReturnModelCreateOrder<T>(this HttpResponseMessage response) where T : class
-        {
-            Order returnModel;
+        //public static OrderOutputBinance ToReturnModelCreateOrder<T>(this HttpResponseMessage response) where T : class
+        //{
+        //    OrderOutputBinance returnModel;
 
-            var result = response.Content.ReadAsStringAsync().Result;
+        //    var result = response.Content.ReadAsStringAsync().Result;
 
-            try
-            {
-                returnModel = JsonConvert.DeserializeObject<Order>(result);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                var message = "Cannot deserialize response to ReturnModel: \n" + result;
-                throw new Exception(message);
-            }
-            return returnModel;
-        }
+        //    try
+        //    {
+        //        returnModel = JsonConvert.DeserializeObject<OrderOutputBinance>(result);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e);
+        //        var message = "Cannot deserialize response to ReturnModel: \n" + result;
+        //        throw new Exception(message);
+        //    }
+        //    return returnModel;
+        //}
         
+       
         public static HttpContent ToHttpContent(this object o)
         {
             var content = JsonConvert.SerializeObject(o);

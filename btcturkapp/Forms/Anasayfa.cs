@@ -17,7 +17,7 @@ using Binance;
 using System.Text.RegularExpressions;
 using btcturkapp.Forms;
 using APIClient.Models;
-using System.Diagnostics;
+
 
 namespace btcturkapp
 { 
@@ -28,14 +28,11 @@ namespace btcturkapp
         public Anasayfa()
         {
             
-            InitializeComponent();          
+            InitializeComponent();
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            //int h = Screen.PrimaryScreen.WorkingArea.Height - 40;
-            //int w = Screen.PrimaryScreen.WorkingArea.Width;
-            //this.ClientSize = new Size(w, h);
 
             btcTurkFunction btcTurk = new btcTurkFunction();
             binanceFunctions binance = new binanceFunctions();
@@ -483,7 +480,9 @@ namespace btcturkapp
             form1.Show();
             this.Hide();
         }
-        private async void usdtBinanceSellBtcTurkBuyButton_Click(object sender, EventArgs e)
+       
+
+        private async void button1_Click(object sender, EventArgs e)
         {
             btcTurkFunction btcTurk = new btcTurkFunction();
             var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
@@ -521,6 +520,7 @@ namespace btcturkapp
                 textBox1.Text = orderOutput.Data.Id.ToString();
             }
 
+
             MessageBoxButtons buttons = MessageBoxButtons.OK;
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.OK)
@@ -528,6 +528,7 @@ namespace btcturkapp
                 this.Show();
             }
         }
+
         private async void button2_Click(object sender, EventArgs e)
         {
             var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
@@ -570,6 +571,6 @@ namespace btcturkapp
             Application.Exit();
         }
 
-        
+ 
     }
 }

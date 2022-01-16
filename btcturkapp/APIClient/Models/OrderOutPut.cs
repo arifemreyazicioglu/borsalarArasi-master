@@ -28,7 +28,9 @@ namespace APIClient.Models
 
         public override string ToString()
         {
+
             return $"Id:{Id}, PairSymbol: {PairSymbol}, Type: {Type}, Price: {Price}, Quantity: {Quantity}";
+
         }
     }
 }

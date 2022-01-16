@@ -15,6 +15,7 @@ using Binance.HelpersBinance;
 using System.Linq;
 using btcturkapp.Binance.ModelsBinance;
 
+
 namespace Binance.BinanceV1
 {
     public class BinanceV1 : IBinanceClient
@@ -80,7 +81,7 @@ namespace Binance.BinanceV1
             string requestUrl = $"{_resourceUrl}api/v3/order";
 
             string query = $"symbol=BTCUSDT&timestamp={GetStamp()}&orderId={id}";
-
+      
             var signature = getSignature(_privateKey, query);
             query += "&signature=" + signature;
 

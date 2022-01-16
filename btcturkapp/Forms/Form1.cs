@@ -112,6 +112,51 @@ namespace btcturkapp.Forms
             {
                 this.Show();
             }
+            TradingBot.Models.Order marketOrder = null;
+            marketOrder = API.PlaceMarketOrder("BTCUSDT", TradingBot.Models.OrderSides.SELL, Globals.quatityPerTrade);
+
+            //binanceFunctions binance = new binanceFunctions();
+            //var configuration = new ConfigurationBuilder().AddJsonFile("apikeys.json").Build();
+            //var publicKey = configuration["publicKey"];
+            //var privateKey = configuration["privateKey"];
+            //var resourceUrl = configuration["resourceUrl"];
+            //var binanceV1 = new BinanceV1(publicKey, privateKey, resourceUrl);
+
+            //var methodType = OrderMethod.Limit;
+            //var orderType = OrderType.Sell;
+
+            //var limitSellOrder = new OrderInputBinance
+            //{
+            //    Quantity = 0.0001m,
+            //    Price = 43000m,
+            //    OrderMethod = methodType,
+            //    OrderType = orderType,
+            //    Symbol = "BTCUSDT",
+            //};
+
+            //////Create New Order
+            //var orderOutput = await binanceV1.CreateOrder(limitSellOrder);
+
+            //string message = "";
+            //string title = "İşlem Durumu";
+
+            //if (!orderOutput.Success)
+            //{
+            //    message = $"Code:{orderOutput.Code} , Message: {orderOutput.Message}";
+            //}
+            //else
+            //{
+            //    message = orderOutput.Data.ToString();
+
+            //}
+
+
+            //MessageBoxButtons buttons = MessageBoxButtons.OK;
+            //DialogResult result = MessageBox.Show(message, title, buttons);
+            //if (result == DialogResult.OK)
+            //{
+            //    this.Show();
+            //}
         }
     }
 }

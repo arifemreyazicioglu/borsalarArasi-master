@@ -245,6 +245,29 @@ namespace TradingBot
         //    var parsedResponse = JsonConvert.DeserializeObject<Order>(response);
         //    return parsedResponse;
         //}
+        public static Order PlaceOrder(string symbol, OrderSides side, OrderTypes type, TimesInForce timeInForce, double quantity, double price)
+        {
+            string apiRequestUrl = "";
+
+            if (Globals.testCase == true)
+                apiRequestUrl = $"{baseUrl}v3/order/test";
+            else
+                apiRequestUrl = $"{baseUrl}v3/order";
+
+
+            string query = $"symbol={symbol}&side={side}&type={type}&timeInForce={timeInForce}&quantity={quantity}&price={price}";
+
+            query = $"{query}&timestamp={Helper.getTimeStamp()}";
+
+            var signature = Helper.getSignature(Globals.SecretKey, query);
+            query += "&signature=" + signature;
+
+            apiRequestUrl += "?" + query;
+            var response = Helper.webRequest(apiRequestUrl, "POST", Globals.ApiKey);
+
+            var parsedResponse = JsonConvert.DeserializeObject<Order>(response);
+            return parsedResponse;
+        }
 
         ///// <summary>
         ///// Places a market order. (Order at the current market price, needs no price or timeInForce params).

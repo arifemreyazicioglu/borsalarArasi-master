@@ -76,6 +76,9 @@ namespace btcturkapp.Forms
             this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(81, 45);
+            this.button1.Location = new System.Drawing.Point(776, 307);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(122, 69);
             this.button1.TabIndex = 3;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -105,6 +108,7 @@ namespace btcturkapp.Forms
             this.ClientSize = new System.Drawing.Size(1069, 476);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(1604, 732);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -127,5 +131,6 @@ namespace btcturkapp.Forms
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button2;
+
     }
 }
