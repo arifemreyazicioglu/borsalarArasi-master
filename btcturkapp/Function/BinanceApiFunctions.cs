@@ -56,7 +56,7 @@ namespace btcturkapp.BinanceFunctions
             }
 
         }
-        public  string BinanceCreateOrder()
+        public async Task<string> BinanceCreateOrder(string symbol, string side, decimal quantity, decimal price)
         {
             var configuration = new ConfigurationBuilder().AddJsonFile("binanceApiKeys.json").Build();
             var publicKey = configuration["publicKey"];
@@ -65,12 +65,12 @@ namespace btcturkapp.BinanceFunctions
 
             var binanceV1 = new BinanceV1(publicKey, privateKey, resourceUrl);
                       
-            var order =  binanceV1.CreateOrder();
+            var order =  await binanceV1.CreateOrderBinance(symbol,side,quantity,price);
             return order.ToString();
             
             
         }
-        public string BinanceCancelOrder(long id)
+        public async Task<string> BinanceCancelOrder(long id, string symbol)
         {
             var configuration = new ConfigurationBuilder().AddJsonFile("binanceApiKeys.json").Build();
             var publicKey = configuration["publicKey"];
@@ -79,10 +79,9 @@ namespace btcturkapp.BinanceFunctions
 
             var binanceV1 = new BinanceV1(publicKey, privateKey, resourceUrl);
            
-            var order =  binanceV1.CancelOrderBinance(id);
+            var order = await binanceV1.CancelOrderBinance(id,symbol);
             return order.ToString();
-            
-           
+                     
         }
     }
 }

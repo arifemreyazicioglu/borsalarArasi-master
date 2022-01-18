@@ -56,38 +56,35 @@ namespace Binance.BinanceV1
         ///// <returns>An object of OrderOutPut for the created order information</returns>
         ///
 
-        public CreateOrderBinance CreateOrder()
+        public async Task<CreateOrderBinance> CreateOrderBinance(string symbol, string side, decimal quantity, decimal price)
         {
             string requestUrl = $"{_resourceUrl}api/v3/order";
 
-            string query = $"symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=0.001&price=45000";
+            string query = $"symbol={symbol}&side={side}&type=LIMIT&timeInForce=GTC&quantity={quantity}&price={price}&timestamp={GetStamp()}";
 
-            query = $"{query}&timestamp={GetStamp()}";
-
-            var signature = getSignature(_privateKey, query);
+            var signature =  getSignature(_privateKey, query);
             query += "&signature=" + signature;
 
             requestUrl += "?" + query;
-
-            var response = WebRequest(requestUrl, "POST", _publicKey);
+            var response = await WebRequest(requestUrl, "POST", _publicKey);
 
             var returnModel = JsonConvert.DeserializeObject<CreateOrderBinance>(response);
 
             return returnModel;
         }
 
-        public  CancelOrderBinance CancelOrderBinance(long id)
+        public async Task<CancelOrderBinance> CancelOrderBinance(long id,string symbol)
         {
             string requestUrl = $"{_resourceUrl}api/v3/order";
 
-            string query = $"symbol=BTCUSDT&timestamp={GetStamp()}&orderId={id}";
+            string query = $"symbol={symbol}&timestamp={GetStamp()}&orderId={id}";
       
             var signature = getSignature(_privateKey, query);
             query += "&signature=" + signature;
 
             requestUrl += "?" + query;
 
-            var response =  WebRequest(requestUrl, "DELETE", _publicKey);
+            var response = await  WebRequest(requestUrl, "DELETE", _publicKey);
 
             var returnModel = JsonConvert.DeserializeObject<CancelOrderBinance>(response);
 
@@ -102,21 +99,19 @@ namespace Binance.BinanceV1
         {
             string requestUrl = $"api/v3/account";
 
-            string query = $"";
-            query = $"{query}&timestamp={GetStamp()}";
+            string query = "";
+            query = $"{query}timestamp={GetStamp()}";
 
             var signature = getSignature(_privateKey, query);
             query += "&signature=" + signature;
 
             requestUrl += "?" + query;
-
             var response = await SendRequest(HttpVerbsBinance.Get, requestUrl,requiresAuthentication : true);
 
             var returnModel = response.ToReturnModelBalanceBinance<AccountInformation>();
 
             return returnModel;
-
-           
+       
         }
 
         ///// <summary>
@@ -345,11 +340,11 @@ namespace Binance.BinanceV1
         //    return result;
         //}
 
-        private string WebRequest(string requestUrl, string method, string ApiKey)
+        private async Task<string> WebRequest(string requestUrl, string method, string ApiKey)
         {
             try
             {
-                var request = (HttpWebRequest)System.Net.WebRequest.Create(requestUrl);
+                var request =  (HttpWebRequest)System.Net.WebRequest.Create(requestUrl);
                 request.Method = method;
                 request.Timeout = 1000;  //very long response time from Singapore. Change in Boston accordingly.
                 if (ApiKey != null)
@@ -357,7 +352,7 @@ namespace Binance.BinanceV1
                     request.Headers.Add("X-MBX-APIKEY", ApiKey);
                 }
 
-                var webResponse = (HttpWebResponse)request.GetResponse();
+                var webResponse =  (HttpWebResponse)( await request.GetResponseAsync());
                 if (webResponse.StatusCode != HttpStatusCode.OK)
                 {
                     throw new Exception($"Did not return OK 200. Returned: {webResponse.StatusCode}");
@@ -368,9 +363,10 @@ namespace Binance.BinanceV1
 
                 using (var reader = new System.IO.StreamReader(webResponse.GetResponseStream(), encoding))
                 {
+                    
                     responseText = reader.ReadToEnd();
                 }
-
+                
                 return responseText;
             }
             catch (WebException webEx)
@@ -392,19 +388,19 @@ namespace Binance.BinanceV1
             }
         }
 
-        private async Task<HttpResponseMessage> SendRequest(HttpVerbsBinance action, string url, object inputModel = null, bool requiresAuthentication = false)
+        private async Task<HttpResponseMessage> SendRequest(HttpVerbsBinance action, string url, object inputModel = null, bool requiresAuthentication = true)
         {
 
             HttpResponseMessage response = null;
 
-            using (var client = new HttpClient { BaseAddress = new Uri(_resourceUrl), Timeout = TimeSpan.FromSeconds(30) })
+            using (var client = new HttpClient { BaseAddress = new Uri(_resourceUrl), Timeout = TimeSpan.FromSeconds(1000) })
             {
                 if (requiresAuthentication)
                 {
                     client.DefaultRequestHeaders.Add("X-MBX-APIKEY", _publicKey);
                     //var stamp = GetStamp();
                     //client.DefaultRequestHeaders.Add("X-Stamp", stamp.ToString(CultureInfo.InvariantCulture));
-                    //var signature = GetSignature(stamp);
+                    //var signature = getSignature(_privateKey,url);
                     //client.DefaultRequestHeaders.Add("X-Signature", signature);
                 }
 

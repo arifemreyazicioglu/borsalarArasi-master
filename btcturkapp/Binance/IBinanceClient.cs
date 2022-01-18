@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Binance.ModelsBinance;
+using btcturkapp.Binance.ModelsBinance;
 
 namespace Binance
 {
@@ -15,6 +16,7 @@ namespace Binance
         //Task<bool> CancelOrder(long id);
 
         Task<TickerBinance> GetTicker(string pairSymbol);
+        Task<CreateOrderBinance> CreateOrderBinance(string symbol, string side, decimal quantity, decimal price);
 
         //Task<ReturnModelBinance<IList<TickerBinance>>> GetTicker();
 

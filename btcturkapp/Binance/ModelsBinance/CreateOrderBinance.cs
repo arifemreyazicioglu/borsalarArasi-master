@@ -8,23 +8,23 @@ namespace btcturkapp.Binance.ModelsBinance
 {
     public class CreateOrderBinance
     {
-			public string Symbol { get; set; }
-			public long OrderId { get; set; }
+			public string symbol { get; set; }
+			public long orderId { get; set; }
 			public string ClientOrderid { get; set; }
-			public double Price { get; set; }
-			public double OrigQty { get; set; }
+			public double price { get; set; }
+			public double origQty { get; set; }
 			public string ExecutedQty { get; set; }
 			public OrderStatuses Status { get; set; }
 			public TimesInForce TimeInForce { get; set; }
 			public OrderTypes Type { get; set; }
-			public OrderSides Side { get; set; }
+			public OrderSides side { get; set; }
 			public double StopPrice { get; set; }
 			public double IcebergQty { get; set; }
 			public long Time { get; set; }
 
 			public override string ToString()
 			{
-				return $"Id: {OrderId}, Symbol: {Symbol}, Side: {Side}, Price: {Price}, Quantity: {OrigQty}";
+				return $"Id: {orderId}, Symbol: {symbol}, Side: {side}, Price: {price}, Quantity: {origQty}";
 			}
 		
 	}

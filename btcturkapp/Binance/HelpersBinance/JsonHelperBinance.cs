@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using Binance.ModelsBinance;
+using btcturkapp.Binance.ModelsBinance;
 using Newtonsoft.Json;
 
 namespace Binance.HelpersBinance
@@ -13,17 +14,16 @@ namespace Binance.HelpersBinance
         public static TickerBinance ToReturnModelTickerBinance<T>(this HttpResponseMessage response) where T : class
         {
             TickerBinance returnModel;
-            
-            var result = response.Content.ReadAsStringAsync().Result;
-              
+
             try
             {
+                var result = response.Content.ReadAsStringAsync().Result;
                 returnModel = JsonConvert.DeserializeObject<TickerBinance>(result);
             }
             catch (Exception e)
             {               
                 Console.WriteLine(e);
-                var message = "Cannot deserialize response to ReturnModel: \n" + result;
+                var message = "Cannot deserialize response to ReturnModel: \n";
                 throw new Exception(message);
             }
             return returnModel;
@@ -46,34 +46,48 @@ namespace Binance.HelpersBinance
             }
             return returnModel;
         }
-        //public static OrderOutputBinance ToReturnModelCreateOrder<T>(this HttpResponseMessage response) where T : class
-        //{
-        //    OrderOutputBinance returnModel;
+        public static CreateOrderBinance ToReturnModelCreateOrderBinance<T>(this HttpResponseMessage response) where T : class
+        {
+            CreateOrderBinance returnModel;
 
-        //    var result = response.Content.ReadAsStringAsync().Result;
+            var result = response.Content.ReadAsStringAsync().Result;
 
-        //    try
-        //    {
-        //        returnModel = JsonConvert.DeserializeObject<OrderOutputBinance>(result);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine(e);
-        //        var message = "Cannot deserialize response to ReturnModel: \n" + result;
-        //        throw new Exception(message);
-        //    }
-        //    return returnModel;
-        //}
-        
-       
+            try
+            {
+                returnModel = JsonConvert.DeserializeObject<CreateOrderBinance>(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                var message = "Cannot deserialize response to ReturnModel: \n" + result;
+                throw new Exception(message);
+            }
+            return returnModel;
+        }
+        public static CancelOrderBinance ToReturnModelCancelOrderBinance<T>(this HttpResponseMessage response) where T : class
+        {
+            CancelOrderBinance returnModel;
+
+            var result = response.Content.ReadAsStringAsync().Result;
+
+            try
+            {
+                returnModel = JsonConvert.DeserializeObject<CancelOrderBinance>(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                var message = "Cannot deserialize response to ReturnModel: \n" + result;
+                throw new Exception(message);
+            }
+            return returnModel;
+        }
         public static HttpContent ToHttpContent(this object o)
         {
             var content = JsonConvert.SerializeObject(o);
-
-            var buffer = Encoding.UTF8.GetBytes(content);
+            var buffer = ASCIIEncoding.ASCII.GetBytes(content);
             var byteContent = new ByteArrayContent(buffer);
-            byteContent.Headers.ContentType = new MediaTypeHeaderValue("apikeys/json");
-
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("binanceApiKeys/json");
             return byteContent;
         }
     }

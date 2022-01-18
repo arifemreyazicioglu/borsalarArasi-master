@@ -210,12 +210,6 @@
     <Compile Include="Binance\ModelsBinance\UserBalanceBinance.cs" />
     <Compile Include="Binance\ModelsBinance\UserTradeBinance.cs" />
     <Compile Include="Binance\ModelsBinance\UserTransactionBinance.cs" />
-    <Compile Include="Forms\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Function\BinanceApiFunctions.cs" />
     <Compile Include="Function\BtcTurkApiFunctions.cs" />
     <Compile Include="Forms\Anasayfa.cs">
@@ -240,13 +234,11 @@
     <Compile Include="APIClient\Models\UserBalance.cs" />
     <Compile Include="APIClient\Models\UserTrade.cs" />
     <Compile Include="APIClient\Models\UserTransaction.cs" />
+    <Compile Include="Function\OrderFunctions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Anasayfa.resx">
       <DependentUpon>Anasayfa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
