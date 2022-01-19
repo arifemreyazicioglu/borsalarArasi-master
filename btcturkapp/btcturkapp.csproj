@@ -189,11 +189,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Binance\Api\Algorithm.cs" />
-    <Compile Include="Binance\Api\API.cs" />
-    <Compile Include="Binance\Api\Globals.cs" />
-    <Compile Include="Binance\Api\Helper.cs" />
-    <Compile Include="Binance\Api\Models.cs" />
     <Compile Include="Binance\BinanceV1\BinanceV1.cs" />
     <Compile Include="Binance\HelpersBinance\HttpVerbsBinance.cs" />
     <Compile Include="Binance\HelpersBinance\JsonHelperBinance.cs" />

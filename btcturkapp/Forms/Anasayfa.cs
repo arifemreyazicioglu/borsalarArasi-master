@@ -37,6 +37,7 @@ namespace btcturkapp
             btcTurkFunction btcTurk = new btcTurkFunction();
             binanceFunctions binance = new binanceFunctions();
 
+
             priceDataGridView.ColumnCount = 4;
             abritajGridView.ColumnCount = 6;
             priceDifferenceGridView.ColumnCount = 4;
@@ -82,6 +83,7 @@ namespace btcturkapp
             abritajGridView.Rows[0].Cells[0].Value = "USDTTRY";
             abritajGridView.Rows[0].Cells[1].Value = "Binance -> BTCTurk";
             abritajGridView.Rows[0].Cells[2].Value = 100000.0;
+
             abritajGridView.Rows[1].Cells[0].Value = "USDTTRY";
             abritajGridView.Rows[1].Cells[1].Value = "BTCTurk -> Binance";
             abritajGridView.Rows[1].Cells[2].Value = 100000.0;
@@ -95,14 +97,10 @@ namespace btcturkapp
             abritajGridView.Rows[3].Cells[2].Value = 10.0;
 
 
-            var timer = new Timer { Interval = 2000 };
+            var timer = new Timer { Interval = 1500 };
             timer.Tick += async (o, args) =>
             {
 
-                if (botMarjTextBox.Text == "")
-                {
-                    startBotButton.Enabled = false;
-                }
                 if (btcTurkIdTextBox.Text == "")
                 {
                     btcTurkEmirIptalButton.Enabled = false;
@@ -114,12 +112,25 @@ namespace btcturkapp
                 //
                 //
                 //Binance ve BTCTurk Asset Miktarları
-                binanceUsdtMiktarıLabel.Text = "Binance Usdt Miktarı : \n" + await binance.BinanceGetBalanceAsync("USDT") + " $";
-                btcTurkUsdtMiktarıLabel.Text = "BTCTurk Usdt Miktarı : \n" + await btcTurk.BTCTurkGetAccountBalance("USDT") + " $";
-                binanceBtcMiktarıLabel.Text = "Binance BTC Miktarı : \n" + await binance.BinanceGetBalanceAsync("BTC") + " ₿"; 
-                btcTurkBtcMiktarıLabel.Text = "BTCTurk BTC Miktarı : \n" + await btcTurk.BTCTurkGetAccountBalance("BTC") + " ₿";
-                binanceTryMiktarıLabel.Text = "Binance Try Miktarı : \n" + await binance.BinanceGetBalanceAsync("TRY") + " ₺";
-                btcTurkTryMiktarıLabel.Text = "Binance Try Miktarı : \n" + await btcTurk.BTCTurkGetAccountBalance("TRY") + " ₺";
+                try
+                {
+                    binanceUsdtMiktarıLabel.Text = "Binance Usdt Miktarı : \n" + await binance.BinanceGetBalanceAsync("USDT") + " $";
+                    btcTurkUsdtMiktarıLabel.Text = "BTCTurk Usdt Miktarı : \n" + await btcTurk.BTCTurkGetAccountBalance("USDT") + " $";
+                    binanceBtcMiktarıLabel.Text = "Binance BTC Miktarı : \n" + await binance.BinanceGetBalanceAsync("BTC") + " ₿";
+                    btcTurkBtcMiktarıLabel.Text = "BTCTurk BTC Miktarı : \n" + await btcTurk.BTCTurkGetAccountBalance("BTC") + " ₿";
+                    binanceTryMiktarıLabel.Text = "Binance Try Miktarı : \n" + await binance.BinanceGetBalanceAsync("TRY") + " ₺";
+                    btcTurkTryMiktarıLabel.Text = "Binance Try Miktarı : \n" + await btcTurk.BTCTurkGetAccountBalance("TRY") + " ₺";
+                }
+                catch
+                {
+                    binanceUsdtMiktarıLabel.Text = "Server Error";
+                    btcTurkUsdtMiktarıLabel.Text = "Server Error";
+                    binanceBtcMiktarıLabel.Text = "Server Error";
+                    btcTurkBtcMiktarıLabel.Text = "Server Error";
+                    binanceTryMiktarıLabel.Text = "Server Error";
+                    btcTurkTryMiktarıLabel.Text = "Server Error";
+                }
+                
                 //
                 //
                 //Binance Usdt Satış Fiyatı
@@ -471,31 +482,26 @@ namespace btcturkapp
                 {
                     abritajGridView.Rows[3].Cells[5].Value = "Server Error";
                 }
-
-                if (botMarjTextBox.Text != "")
-                {
-                    startBotButton.Enabled = true;
-                }
-                else
-                {
-                    startBotButton.Enabled = false;
-                }
-
             };
-            timer.Start();
-           
+            timer.Start();          
         }
         private async void usdtBinanceSellBtcTurkBuyButton_Click(object sender, EventArgs e)
         {
+            string quantity = abritajGridView.Rows[0].Cells[2].Value.ToString();
+            string btcTurkPrice = priceDataGridView.Rows[1].Cells[3].Value.ToString().Split(' ')[0];
+            string binancePrice = priceDataGridView.Rows[0].Cells[2].Value.ToString().Split(' ')[0];
             symbolForCancelBinance = "USDTTRY";
             OrderFunctions func = new OrderFunctions();
-            await func.binanceAskBtcTurkSellUsdtOrder(listBox1, btcTurkIdTextBox, binanceIdTextBox, btcTurkEmirIptalButton, binanceEmirIptalButton);
+            await func.binanceAskBtcTurkSellUsdtOrder(quantity,btcTurkPrice,binancePrice,listBox1, btcTurkIdTextBox, binanceIdTextBox, btcTurkEmirIptalButton, binanceEmirIptalButton);
         }
         private async void usdtBtcTurkSellBinanceBuyButton_Click(object sender, EventArgs e)
         {
+            string quantity = abritajGridView.Rows[1].Cells[2].Value.ToString();
+            string btcTurkPrice = priceDataGridView.Rows[1].Cells[2].Value.ToString().Split(' ')[0];
+            string binancePrice = priceDataGridView.Rows[0].Cells[3].Value.ToString().Split(' ')[0];
             symbolForCancelBinance = "USDTTRY";
             OrderFunctions func = new OrderFunctions();
-            await func.btcTurkSellBinanceBuyUsdtOrder(listBox1, btcTurkIdTextBox, binanceIdTextBox, btcTurkEmirIptalButton, binanceEmirIptalButton);                   
+            await func.btcTurkSellBinanceBuyUsdtOrder(quantity, btcTurkPrice, binancePrice, listBox1, btcTurkIdTextBox, binanceIdTextBox, btcTurkEmirIptalButton, binanceEmirIptalButton);                   
         }
         private async void btcBinanceSellBtcTurkBuyButton_Click(object sender, EventArgs e)
         {
@@ -522,74 +528,94 @@ namespace btcturkapp
         private void startBotButton_Click(object sender, EventArgs e)
         {
             startBotButton.Enabled = false;
-            double marj = 0.0;
-            var secim = 0;
-            if (comboBox1.SelectedItem.ToString() == "USDT Binance Sat - BTCTurk Al")
+            if (botMarjTextBox.Text == "" || comboBox1.SelectedIndex == -1)
             {
-                marj = double.Parse(sellBuyBuySellDifferenceGridView.Rows[0].Cells[1].Value.ToString().Split(' ')[0]);
-                marj = marj * 1000;
-                secim = 1;
-            }
-            else if(comboBox1.SelectedItem.ToString() == "USDT BTCTurk Sat - Binance Al")
-            {
-                marj = double.Parse(sellBuyBuySellDifferenceGridView.Rows[0].Cells[0].Value.ToString().Split(' ')[0]);
-                marj = marj * 1000;
-                secim = 2;
-            }
-            else if(comboBox1.SelectedItem.ToString() == "BTC Binance Sat - BTCTurk Al")
-            {
-                marj = double.Parse(sellBuyBuySellDifferenceGridView.Rows[0].Cells[3].Value.ToString().Split(' ')[0]);
-                secim = 3;
-            }
-            else if(comboBox1.SelectedItem.ToString() == "BTC BTCTurk Sat - Binance Al")
-            {
-                marj = double.Parse(sellBuyBuySellDifferenceGridView.Rows[0].Cells[2].Value.ToString().Split(' ')[0]);
-                secim = 4;
+                string message = "İşlem yönünü veya marj aralığını eksik doldurdunuz!";
+                string title = "UYARI";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result = MessageBox.Show(message, title, buttons);
+                startBotButton.Enabled = true;
             }
             else
             {
-                marj = 0.0;
-                secim = 0;
-            }
-
-            var timer1 = new Timer { Interval = 10000 };
-            timer1.Tick += async (o, args) =>
-            {
-                if(botMarjTextBox.Text!="")
+                double marj = 0.0;
+                var secim = 0;
+                if (comboBox1.SelectedItem.ToString() == "USDT Binance Sat - BTCTurk Al")
                 {
-                    if (secim == 1 && marj >= double.Parse(botMarjTextBox.Text))
-                    {
-                        symbolForCancelBinance = "USDTTRY";
-                        OrderFunctions func = new OrderFunctions();
-                        await func.binanceAskBtcTurkSellUsdtOrder(listBox1, btcTurkIdTextBox, binanceIdTextBox, btcTurkEmirIptalButton, binanceEmirIptalButton);
-                    }
-                    if (secim == 2 && marj >= double.Parse(botMarjTextBox.Text))
-                    {
-                        symbolForCancelBinance = "USDTTRY";
-                        OrderFunctions func = new OrderFunctions();
-                        await func.btcTurkSellBinanceBuyUsdtOrder(listBox1, btcTurkIdTextBox, binanceIdTextBox, btcTurkEmirIptalButton, binanceEmirIptalButton);
-                    }
-                    if (secim == 3 && marj >= double.Parse(botMarjTextBox.Text))
-                    {
-                        symbolForCancelBinance = "BTCUSDT";
-                        OrderFunctions func = new OrderFunctions();
-                        await func.binanceAskBtcTurkSellBtcOrder(listBox1, btcTurkIdTextBox, binanceIdTextBox, btcTurkEmirIptalButton, binanceEmirIptalButton);
-                    }
-                    if (secim == 4 && marj >= double.Parse(botMarjTextBox.Text))
-                    {
-                        symbolForCancelBinance = "BTCUSDT";
-                        OrderFunctions func = new OrderFunctions();
-                        await func.btcTurkSellBinanceBuyBtcOrder(listBox1, btcTurkIdTextBox, binanceIdTextBox, btcTurkEmirIptalButton, binanceEmirIptalButton);
-                    }
+                    marj = double.Parse(sellBuyBuySellDifferenceGridView.Rows[0].Cells[1].Value.ToString().Split(' ')[0]);
+                    marj = marj * 1000;
+                    secim = 1;
+                }
+                else if (comboBox1.SelectedItem.ToString() == "USDT BTCTurk Sat - Binance Al")
+                {
+                    marj = double.Parse(sellBuyBuySellDifferenceGridView.Rows[0].Cells[0].Value.ToString().Split(' ')[0]);
+                    marj = marj * 1000;
+                    secim = 2;
+                }
+                else if (comboBox1.SelectedItem.ToString() == "BTC Binance Sat - BTCTurk Al")
+                {
+                    marj = double.Parse(sellBuyBuySellDifferenceGridView.Rows[0].Cells[3].Value.ToString().Split(' ')[0]);
+                    secim = 3;
+                }
+                else if (comboBox1.SelectedItem.ToString() == "BTC BTCTurk Sat - Binance Al")
+                {
+                    marj = double.Parse(sellBuyBuySellDifferenceGridView.Rows[0].Cells[2].Value.ToString().Split(' ')[0]);
+                    secim = 4;
                 }
                 else
                 {
-                    timer1.Stop();
+                    marj = 0.0;
+                    secim = 0;
                 }
-               
-            };
-            timer1.Start();
 
+                var timer1 = new Timer { Interval = 10000 };
+                timer1.Tick += async (o, args) =>
+                {
+                    if (botMarjTextBox.Text != "" && comboBox1.SelectedIndex != -1)
+                    {
+                        if (secim == 1 && marj >= double.Parse(botMarjTextBox.Text))
+                        {
+                            string quantity = abritajGridView.Rows[0].Cells[2].Value.ToString();
+                            string btcTurkPrice = priceDataGridView.Rows[1].Cells[3].Value.ToString().Split(' ')[0];
+                            string binancePrice = priceDataGridView.Rows[0].Cells[2].Value.ToString().Split(' ')[0];
+                            symbolForCancelBinance = "USDTTRY";
+                            OrderFunctions func = new OrderFunctions();
+                            await func.binanceAskBtcTurkSellUsdtOrder(quantity, btcTurkPrice, binancePrice, listBox1, btcTurkIdTextBox, binanceIdTextBox, btcTurkEmirIptalButton, binanceEmirIptalButton);
+                        }
+                        else if (secim == 2 && marj >= double.Parse(botMarjTextBox.Text))
+                        {
+                            string quantity = abritajGridView.Rows[1].Cells[2].Value.ToString();
+                            string btcTurkPrice = priceDataGridView.Rows[1].Cells[2].Value.ToString().Split(' ')[0];
+                            string binancePrice = priceDataGridView.Rows[0].Cells[3].Value.ToString().Split(' ')[0];
+                            symbolForCancelBinance = "USDTTRY";
+                            OrderFunctions func = new OrderFunctions();
+                            await func.btcTurkSellBinanceBuyUsdtOrder(quantity, btcTurkPrice, binancePrice, listBox1, btcTurkIdTextBox, binanceIdTextBox, btcTurkEmirIptalButton, binanceEmirIptalButton);
+                        }
+                        else if (secim == 3 && marj >= double.Parse(botMarjTextBox.Text))
+                        {
+                            symbolForCancelBinance = "BTCUSDT";
+                            OrderFunctions func = new OrderFunctions();
+                            await func.binanceAskBtcTurkSellBtcOrder(listBox1, btcTurkIdTextBox, binanceIdTextBox, btcTurkEmirIptalButton, binanceEmirIptalButton);
+                        }
+                        else if (secim == 4 && marj >= double.Parse(botMarjTextBox.Text))
+                        {
+                            symbolForCancelBinance = "BTCUSDT";
+                            OrderFunctions func = new OrderFunctions();
+                            await func.btcTurkSellBinanceBuyBtcOrder(listBox1, btcTurkIdTextBox, binanceIdTextBox, btcTurkEmirIptalButton, binanceEmirIptalButton);
+                        }                     
+                    }
+                    else
+                    {
+                        string message = "İşlem yönünü veya marj aralığı eksik! Bot durduruldu!";
+                        string title = "UYARI";
+                        MessageBoxButtons buttons = MessageBoxButtons.OK;
+                        DialogResult result = MessageBox.Show(message, title, buttons);
+                        startBotButton.Enabled = true;
+                        timer1.Stop();
+                    }
+                };
+                timer1.Start();
+            }            
         }
         private void abritajGridView_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
         {

@@ -30,29 +30,29 @@ namespace btcturkapp
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle576 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle577 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle578 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle579 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle580 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle581 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle582 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle583 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle584 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle585 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle592 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle593 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle586 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle587 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle588 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle589 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle590 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle591 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle594 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle595 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle596 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle597 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle598 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             this.priceDataGridView = new System.Windows.Forms.DataGridView();
             this.exchangeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.coinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -111,8 +111,8 @@ namespace btcturkapp
             // 
             // priceDataGridView
             // 
-            dataGridViewCellStyle576.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.priceDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle576;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.priceDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.priceDataGridView.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.priceDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.priceDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -129,9 +129,9 @@ namespace btcturkapp
             // 
             // exchangeName
             // 
-            dataGridViewCellStyle577.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle577.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.exchangeName.DefaultCellStyle = dataGridViewCellStyle577;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.exchangeName.DefaultCellStyle = dataGridViewCellStyle2;
             this.exchangeName.HeaderText = "    Borsa";
             this.exchangeName.MinimumWidth = 8;
             this.exchangeName.Name = "exchangeName";
@@ -139,9 +139,9 @@ namespace btcturkapp
             // 
             // coinName
             // 
-            dataGridViewCellStyle578.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle578.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.coinName.DefaultCellStyle = dataGridViewCellStyle578;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.coinName.DefaultCellStyle = dataGridViewCellStyle3;
             this.coinName.HeaderText = "    Coin";
             this.coinName.MinimumWidth = 8;
             this.coinName.Name = "coinName";
@@ -149,9 +149,9 @@ namespace btcturkapp
             // 
             // askPrice
             // 
-            dataGridViewCellStyle579.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle579.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.askPrice.DefaultCellStyle = dataGridViewCellStyle579;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.askPrice.DefaultCellStyle = dataGridViewCellStyle4;
             this.askPrice.HeaderText = "    Satış (Ask)";
             this.askPrice.MinimumWidth = 8;
             this.askPrice.Name = "askPrice";
@@ -159,9 +159,9 @@ namespace btcturkapp
             // 
             // bidPrice
             // 
-            dataGridViewCellStyle580.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle580.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.bidPrice.DefaultCellStyle = dataGridViewCellStyle580;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.bidPrice.DefaultCellStyle = dataGridViewCellStyle5;
             this.bidPrice.HeaderText = "    Alış (Bid)";
             this.bidPrice.MinimumWidth = 8;
             this.bidPrice.Name = "bidPrice";
@@ -169,8 +169,8 @@ namespace btcturkapp
             // 
             // priceDifferenceGridView
             // 
-            dataGridViewCellStyle581.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.priceDifferenceGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle581;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.priceDifferenceGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.priceDifferenceGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.priceDifferenceGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -186,8 +186,8 @@ namespace btcturkapp
             // 
             // Column1
             // 
-            dataGridViewCellStyle582.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle582;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle7;
             this.Column1.HeaderText = "USDT Satış Farkı";
             this.Column1.MinimumWidth = 8;
             this.Column1.Name = "Column1";
@@ -196,8 +196,8 @@ namespace btcturkapp
             // 
             // Column2
             // 
-            dataGridViewCellStyle583.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle583;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle8;
             this.Column2.HeaderText = "USDT Alış Farkı";
             this.Column2.MinimumWidth = 8;
             this.Column2.Name = "Column2";
@@ -206,8 +206,8 @@ namespace btcturkapp
             // 
             // Column3
             // 
-            dataGridViewCellStyle584.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle584;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle9;
             this.Column3.HeaderText = "BTC Satış Farkı";
             this.Column3.MinimumWidth = 8;
             this.Column3.Name = "Column3";
@@ -216,8 +216,8 @@ namespace btcturkapp
             // 
             // Column4
             // 
-            dataGridViewCellStyle585.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle585;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle10;
             this.Column4.HeaderText = "BTC Alış Farkı";
             this.Column4.MinimumWidth = 8;
             this.Column4.Name = "Column4";
@@ -234,25 +234,25 @@ namespace btcturkapp
             this.Column8,
             this.Column9,
             this.Column10});
-            dataGridViewCellStyle592.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle592.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle592.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle592.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle592.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle592.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle592.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.abritajGridView.DefaultCellStyle = dataGridViewCellStyle592;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.abritajGridView.DefaultCellStyle = dataGridViewCellStyle17;
             this.abritajGridView.Location = new System.Drawing.Point(0, 0);
             this.abritajGridView.Margin = new System.Windows.Forms.Padding(0);
             this.abritajGridView.Name = "abritajGridView";
-            dataGridViewCellStyle593.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle593.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle593.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle593.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle593.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle593.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle593.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.abritajGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle593;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.abritajGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.abritajGridView.RowHeadersWidth = 62;
             this.abritajGridView.Size = new System.Drawing.Size(715, 142);
             this.abritajGridView.TabIndex = 13;
@@ -261,9 +261,9 @@ namespace btcturkapp
             // 
             // Column5
             // 
-            dataGridViewCellStyle586.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle586.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Column5.DefaultCellStyle = dataGridViewCellStyle586;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle11;
             this.Column5.HeaderText = "Coin";
             this.Column5.MinimumWidth = 8;
             this.Column5.Name = "Column5";
@@ -271,9 +271,9 @@ namespace btcturkapp
             // 
             // Column6
             // 
-            dataGridViewCellStyle587.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle587.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle587;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle12;
             this.Column6.HeaderText = "Yön";
             this.Column6.MinimumWidth = 8;
             this.Column6.Name = "Column6";
@@ -282,9 +282,9 @@ namespace btcturkapp
             // 
             // Column7
             // 
-            dataGridViewCellStyle588.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle588.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle588;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle13;
             this.Column7.HeaderText = "Miktar";
             this.Column7.MinimumWidth = 8;
             this.Column7.Name = "Column7";
@@ -292,9 +292,9 @@ namespace btcturkapp
             // 
             // Column8
             // 
-            dataGridViewCellStyle589.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle589.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Column8.DefaultCellStyle = dataGridViewCellStyle589;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle14;
             this.Column8.HeaderText = "Kazanılan Para";
             this.Column8.MinimumWidth = 8;
             this.Column8.Name = "Column8";
@@ -303,9 +303,9 @@ namespace btcturkapp
             // 
             // Column9
             // 
-            dataGridViewCellStyle590.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle590.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Column9.DefaultCellStyle = dataGridViewCellStyle590;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Column9.DefaultCellStyle = dataGridViewCellStyle15;
             this.Column9.HeaderText = "Ödenecek Para";
             this.Column9.MinimumWidth = 8;
             this.Column9.Name = "Column9";
@@ -314,9 +314,9 @@ namespace btcturkapp
             // 
             // Column10
             // 
-            dataGridViewCellStyle591.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle591.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Column10.DefaultCellStyle = dataGridViewCellStyle591;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Column10.DefaultCellStyle = dataGridViewCellStyle16;
             this.Column10.HeaderText = "Kar - Zarar";
             this.Column10.MinimumWidth = 8;
             this.Column10.Name = "Column10";
@@ -325,8 +325,8 @@ namespace btcturkapp
             // 
             // sellBuyBuySellDifferenceGridView
             // 
-            dataGridViewCellStyle594.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.sellBuyBuySellDifferenceGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle594;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.sellBuyBuySellDifferenceGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
             this.sellBuyBuySellDifferenceGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.sellBuyBuySellDifferenceGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.A,
@@ -343,9 +343,9 @@ namespace btcturkapp
             // 
             // A
             // 
-            dataGridViewCellStyle595.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle595.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.A.DefaultCellStyle = dataGridViewCellStyle595;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.A.DefaultCellStyle = dataGridViewCellStyle20;
             this.A.HeaderText = "USDT BTCTurk Satış - Binance Alış  Fark";
             this.A.MinimumWidth = 8;
             this.A.Name = "A";
@@ -355,9 +355,9 @@ namespace btcturkapp
             // 
             // Column11
             // 
-            dataGridViewCellStyle596.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle596.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Column11.DefaultCellStyle = dataGridViewCellStyle596;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Column11.DefaultCellStyle = dataGridViewCellStyle21;
             this.Column11.HeaderText = "USDT Binance Satış - BTCTurk Alış Fark";
             this.Column11.MinimumWidth = 8;
             this.Column11.Name = "Column11";
@@ -366,9 +366,9 @@ namespace btcturkapp
             // 
             // Column12
             // 
-            dataGridViewCellStyle597.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle597.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Column12.DefaultCellStyle = dataGridViewCellStyle597;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Column12.DefaultCellStyle = dataGridViewCellStyle22;
             this.Column12.HeaderText = "BTC BTCTurk Satış - Binance Alış Fark";
             this.Column12.MinimumWidth = 8;
             this.Column12.Name = "Column12";
@@ -377,9 +377,9 @@ namespace btcturkapp
             // 
             // Column13
             // 
-            dataGridViewCellStyle598.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle598.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Column13.DefaultCellStyle = dataGridViewCellStyle598;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Column13.DefaultCellStyle = dataGridViewCellStyle23;
             this.Column13.HeaderText = "BTC Binance Satış - BTCTurk Alış Fark";
             this.Column13.MinimumWidth = 8;
             this.Column13.Name = "Column13";
@@ -404,16 +404,14 @@ namespace btcturkapp
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
             this.listBox1.Location = new System.Drawing.Point(0, 144);
             this.listBox1.Margin = new System.Windows.Forms.Padding(0);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(715, 124);
+            this.listBox1.Size = new System.Drawing.Size(715, 121);
             this.listBox1.TabIndex = 21;
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel3.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -627,7 +625,7 @@ namespace btcturkapp
             // 
             this.binanceIdTextBox.Location = new System.Drawing.Point(1209, 360);
             this.binanceIdTextBox.Name = "binanceIdTextBox";
-            this.binanceIdTextBox.Size = new System.Drawing.Size(198, 26);
+            this.binanceIdTextBox.Size = new System.Drawing.Size(198, 20);
             this.binanceIdTextBox.TabIndex = 30;
             this.binanceIdTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.binanceIdTextBox_KeyPress);
             // 

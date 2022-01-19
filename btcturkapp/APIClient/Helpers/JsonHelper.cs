@@ -24,6 +24,7 @@ namespace APIClient.Helpers
 
                 return returnModel;
             }
+            
 
             var result = response.Content.ReadAsStringAsync().Result;
               
