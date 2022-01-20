@@ -11,6 +11,36 @@ namespace Binance.HelpersBinance
 {
     public static class JsonHelperBinance
     {
+        public static ReturnModelBinance<T> ToReturnModelBinance<T>(this HttpResponseMessage response) where T : class
+        {
+            ReturnModelBinance<T> returnModel;
+            if (!response.IsSuccessStatusCode)
+            {
+                returnModel = new ReturnModelBinance<T>
+                {
+                    Code = ((int)response.StatusCode).ToString(),
+                    Msg = response.StatusCode.ToString()
+                };
+
+                return returnModel;
+            }
+
+
+            var result = response.Content.ReadAsStringAsync().Result;
+
+            try
+            {
+                returnModel = JsonConvert.DeserializeObject<ReturnModelBinance<T>>(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                var message = "Cannot deserialize response to ReturnModel: \n" + result;
+                throw new Exception(message);
+            }
+
+            return returnModel;
+        }
         public static TickerBinance ToReturnModelTickerBinance<T>(this HttpResponseMessage response) where T : class
         {
             TickerBinance returnModel;
@@ -28,24 +58,24 @@ namespace Binance.HelpersBinance
             }
             return returnModel;
         }
-        public static AccountInformation ToReturnModelBalanceBinance<T>(this HttpResponseMessage response) where T : class
-        {
-            AccountInformation returnModel;
+        //public static AccountInformation ToReturnModelBalanceBinance<T>(this HttpResponseMessage response) where T : class
+        //{
+        //    AccountInformation returnModel;
 
-            var result = response.Content.ReadAsStringAsync().Result;
+        //    var result = response.Content.ReadAsStringAsync().Result;
 
-            try
-            {
-                returnModel = JsonConvert.DeserializeObject<AccountInformation>(result);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                var message = "Cannot deserialize response to ReturnModel: \n" + result;
-                throw new Exception(message);
-            }
-            return returnModel;
-        }
+        //    try
+        //    {
+        //        returnModel = JsonConvert.DeserializeObject<AccountInformation>(result);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e);
+        //        var message = "Cannot deserialize response to ReturnModel: \n" + result;
+        //        throw new Exception(message);
+        //    }
+        //    return returnModel;
+        //}
         public static CreateOrderBinance ToReturnModelCreateOrderBinance<T>(this HttpResponseMessage response) where T : class
         {
             CreateOrderBinance returnModel;

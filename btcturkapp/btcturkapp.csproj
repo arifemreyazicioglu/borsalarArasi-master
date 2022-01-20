@@ -118,6 +118,9 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.1, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.5.0.1\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Nancy, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nancy.2.0.0\lib\net452\Nancy.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -189,22 +192,60 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Binance\BinanceV1\BinanceV1.cs" />
-    <Compile Include="Binance\HelpersBinance\HttpVerbsBinance.cs" />
-    <Compile Include="Binance\HelpersBinance\JsonHelperBinance.cs" />
-    <Compile Include="Binance\HelpersBinance\TimeHelperBinance.cs" />
-    <Compile Include="Binance\IBinanceClient.cs" />
-    <Compile Include="Binance\ModelsBinance\CancelOrderBinance.cs" />
-    <Compile Include="Binance\ModelsBinance\CreateOrderBinance.cs" />
-    <Compile Include="Binance\ModelsBinance\OHLCBinance.cs" />
-    <Compile Include="Binance\ModelsBinance\OpenOrderOutputBinance.cs" />
-    <Compile Include="Binance\ModelsBinance\OrderBookBinance.cs" />
-    <Compile Include="Binance\ModelsBinance\ReturnModelBinance.cs" />
-    <Compile Include="Binance\ModelsBinance\TickerBinance.cs" />
-    <Compile Include="Binance\ModelsBinance\TradesBinance.cs" />
-    <Compile Include="Binance\ModelsBinance\UserBalanceBinance.cs" />
-    <Compile Include="Binance\ModelsBinance\UserTradeBinance.cs" />
-    <Compile Include="Binance\ModelsBinance\UserTransactionBinance.cs" />
+    <Compile Include="BinanceTR\Business\Abstract\IBinanceTrService.cs" />
+    <Compile Include="BinanceTR\Business\Concrete\BinanceTrManager.cs" />
+    <Compile Include="BinanceTR\Core\Converters\StringToDecimalConvertor.cs" />
+    <Compile Include="BinanceTR\Core\Converters\StringToDoubleConvertor.cs" />
+    <Compile Include="BinanceTR\Core\Converters\StringToIntConvertor.cs" />
+    <Compile Include="BinanceTR\Core\Converters\StringToLongConvertor.cs" />
+    <Compile Include="BinanceTR\Core\Models\IBinanceTrModel.cs" />
+    <Compile Include="BinanceTR\Core\Results\Abstract\IDataResult.cs" />
+    <Compile Include="BinanceTR\Core\Results\Abstract\IResult.cs" />
+    <Compile Include="BinanceTR\Core\Results\Concrete\DataResult.cs" />
+    <Compile Include="BinanceTR\Core\Results\Concrete\ErrorDataResult.cs" />
+    <Compile Include="BinanceTR\Core\Results\Concrete\ErrorResult.cs" />
+    <Compile Include="BinanceTR\Core\Results\Concrete\Result.cs" />
+    <Compile Include="BinanceTR\Core\Results\Concrete\SuccessDataResult.cs" />
+    <Compile Include="BinanceTR\Core\Results\Concrete\SuccessResult.cs" />
+    <Compile Include="BinanceTR\Core\Utilities\BinanceTrHelper.cs" />
+    <Compile Include="BinanceTR\Core\Utilities\Extensions.cs" />
+    <Compile Include="BinanceTR\Models\Account\AccountInformationModel.cs" />
+    <Compile Include="BinanceTR\Models\Account\AssetInformationModel.cs" />
+    <Compile Include="BinanceTR\Models\BinanceTrOptions.cs" />
+    <Compile Include="BinanceTR\Models\Common\AggregateTradesModel.cs" />
+    <Compile Include="BinanceTR\Models\Common\ErrorModel.cs" />
+    <Compile Include="BinanceTR\Models\Common\KLinesModel.cs" />
+    <Compile Include="BinanceTR\Models\Common\OrderBookModel.cs" />
+    <Compile Include="BinanceTR\Models\Common\RecentTradesModel.cs" />
+    <Compile Include="BinanceTR\Models\Common\SymbolModel.cs" />
+    <Compile Include="BinanceTR\Models\Common\TimeModel.cs" />
+    <Compile Include="BinanceTR\Models\Enums\AllOrdersEnum.cs" />
+    <Compile Include="BinanceTR\Models\Enums\KLineIntervalEnum.cs" />
+    <Compile Include="BinanceTR\Models\Enums\OrderSideEnum.cs" />
+    <Compile Include="BinanceTR\Models\Enums\OrderStatusEnum.cs" />
+    <Compile Include="BinanceTR\Models\Enums\OrderTypeEnum.cs" />
+    <Compile Include="BinanceTR\Models\Order\AllOrdersModel.cs" />
+    <Compile Include="BinanceTR\Models\Order\CancelOrderModel.cs" />
+    <Compile Include="BinanceTR\Models\Order\LimitOrderModel.cs" />
+    <Compile Include="BinanceTR\Models\Order\OcoOrderModel.cs" />
+    <Compile Include="BinanceTR\Models\Order\OrderDetailModel.cs" />
+    <Compile Include="BinanceTR\Models\Order\PostOrderModel.cs" />
+    <Compile Include="BinanceGlobal\BinanceV1\BinanceV1.cs" />
+    <Compile Include="BinanceGlobal\HelpersBinance\HttpVerbsBinance.cs" />
+    <Compile Include="BinanceGlobal\HelpersBinance\JsonHelperBinance.cs" />
+    <Compile Include="BinanceGlobal\HelpersBinance\TimeHelperBinance.cs" />
+    <Compile Include="BinanceGlobal\IBinanceClient.cs" />
+    <Compile Include="BinanceGlobal\ModelsBinance\CancelOrderBinance.cs" />
+    <Compile Include="BinanceGlobal\ModelsBinance\CreateOrderBinance.cs" />
+    <Compile Include="BinanceGlobal\ModelsBinance\OHLCBinance.cs" />
+    <Compile Include="BinanceGlobal\ModelsBinance\OpenOrderOutputBinance.cs" />
+    <Compile Include="BinanceGlobal\ModelsBinance\OrderBookBinance.cs" />
+    <Compile Include="BinanceGlobal\ModelsBinance\ReturnModelBinance.cs" />
+    <Compile Include="BinanceGlobal\ModelsBinance\TickerBinance.cs" />
+    <Compile Include="BinanceGlobal\ModelsBinance\TradesBinance.cs" />
+    <Compile Include="BinanceGlobal\ModelsBinance\UserBalanceBinance.cs" />
+    <Compile Include="BinanceGlobal\ModelsBinance\UserTradeBinance.cs" />
+    <Compile Include="BinanceGlobal\ModelsBinance\UserTransactionBinance.cs" />
     <Compile Include="Function\BinanceApiFunctions.cs" />
     <Compile Include="Function\BtcTurkApiFunctions.cs" />
     <Compile Include="Forms\Anasayfa.cs">
@@ -246,7 +287,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="APIClient\APIClient.csproj" />
-    <None Include="Binance\Binance.csproj" />
+    <None Include="BinanceGlobal\Binance.csproj" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -273,6 +314,5 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

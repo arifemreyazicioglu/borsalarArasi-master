@@ -22,13 +22,15 @@ namespace Binance.BinanceV1
     {
         private readonly string _publicKey;
         private readonly string _privateKey;
-        private readonly string _resourceUrl;
+        private readonly string _resourceUrlBinance;
+        private readonly string _resourceUrlBinanceTr;
 
-        public BinanceV1(string publicKey, string privateKey, string resourceUrl)
+        public BinanceV1(string publicKey, string privateKey, string resourceUrlBinance, string resourceUrlBinanceTr)
         {
             _publicKey = publicKey;
             _privateKey = privateKey;
-            _resourceUrl = resourceUrl;
+            _resourceUrlBinance = resourceUrlBinance;
+            _resourceUrlBinanceTr = resourceUrlBinanceTr;
             var culture = CultureInfo.CreateSpecificCulture("en-US");
             Thread.CurrentThread.CurrentCulture = culture;
         }
@@ -58,9 +60,9 @@ namespace Binance.BinanceV1
 
         public async Task<CreateOrderBinance> CreateOrderBinance(string symbol, string side, decimal quantity, decimal price)
         {
-            string requestUrl = $"{_resourceUrl}api/v3/order";
+            string requestUrl = $"{_resourceUrlBinanceTr}api/v1/orders";
 
-            string query = $"symbol={symbol}&side={side}&type=LIMIT&timeInForce=GTC&quantity={quantity}&price={price}&timestamp={GetStamp()}";
+            string query = $"symbol={symbol}&side={side}&type=LIMIT&timeInForce=GTC&quantity=8&price=14&timestamp={GetStamp()}";
 
             var signature =  getSignature(_privateKey, query);
             query += "&signature=" + signature;
@@ -75,7 +77,7 @@ namespace Binance.BinanceV1
 
         public async Task<CancelOrderBinance> CancelOrderBinance(long id,string symbol)
         {
-            string requestUrl = $"{_resourceUrl}api/v3/order";
+            string requestUrl = $"{_resourceUrlBinanceTr}api/v3/order";
 
             string query = $"symbol={symbol}&timestamp={GetStamp()}&orderId={id}";
       
@@ -95,23 +97,23 @@ namespace Binance.BinanceV1
         /// Get the authenticated account's balances
         /// </summary>
         /// <returns>A list of type UserBalance for each currency. Null if account balance cannot be retreived </returns>
-        public  async Task<AccountInformation> GetBalances()
+        public async Task<ReturnModelBinance<IList<UserBalanceBinance>>> GetBalances(string symbol)
         {
-            string requestUrl = $"api/v3/account";
+            string requestUrl = $"/open/v1/account/spot";
 
             string query = "";
-            query = $"{query}timestamp={GetStamp()}";
+            query = $"timestamp={GetStamp()}";
 
             var signature = getSignature(_privateKey, query);
             query += "&signature=" + signature;
 
             requestUrl += "?" + query;
-            var response = await SendRequest(HttpVerbsBinance.Get, requestUrl,requiresAuthentication : true);
+            var response = await SendRequest(HttpVerbsBinance.Get, requestUrl,_resourceUrlBinanceTr, requiresAuthentication : true);
 
-            var returnModel = response.ToReturnModelBalanceBinance<AccountInformation>();
+            var returnModel = response.ToReturnModelBinance<IList<UserBalanceBinance>>();
 
             return returnModel;
-       
+
         }
 
         ///// <summary>
@@ -274,7 +276,7 @@ namespace Binance.BinanceV1
         {
             var requestUrl = $"api/v3/ticker/24hr?symbol={pairSymbol}";
 
-            var response = await SendRequest(HttpVerbsBinance.Get, requestUrl);
+            var response = await SendRequest(HttpVerbsBinance.Get, requestUrl,_resourceUrlBinance);
 
             var returnModel = response.ToReturnModelTickerBinance<TickerBinance>();
 
@@ -388,19 +390,19 @@ namespace Binance.BinanceV1
             }
         }
 
-        private async Task<HttpResponseMessage> SendRequest(HttpVerbsBinance action, string url, object inputModel = null, bool requiresAuthentication = true)
+        private async Task<HttpResponseMessage> SendRequest(HttpVerbsBinance action, string url,string resourceUrl, object inputModel = null, bool requiresAuthentication = true)
         {
 
             HttpResponseMessage response = null;
 
-            using (var client = new HttpClient { BaseAddress = new Uri(_resourceUrl), Timeout = TimeSpan.FromSeconds(1000) })
+            using (var client = new HttpClient { BaseAddress = new Uri(resourceUrl), Timeout = TimeSpan.FromSeconds(1000) })
             {
                 if (requiresAuthentication)
                 {
                     client.DefaultRequestHeaders.Add("X-MBX-APIKEY", _publicKey);
                     //var stamp = GetStamp();
                     //client.DefaultRequestHeaders.Add("X-Stamp", stamp.ToString(CultureInfo.InvariantCulture));
-                    //var signature = getSignature(_privateKey,url);
+                    //var signature = getSignature(_privateKey, url);
                     //client.DefaultRequestHeaders.Add("X-Signature", signature);
                 }
 
@@ -441,7 +443,6 @@ namespace Binance.BinanceV1
                     Console.WriteLine($"Token is unauthorized to do this action: [{action.ToString().ToUpper()}] /{url}. Please check your bearer token in request header.");
                 }
 
-                //Console.WriteLine(response);
                 return response;
             }
         }
