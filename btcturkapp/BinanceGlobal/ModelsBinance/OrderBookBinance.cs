@@ -9,8 +9,8 @@ namespace Binance.ModelsBinance
 {
     public class OrderBookBinance
     {
-        [JsonProperty("timeStamp")]
-        public decimal TimeStamp { get; set; }
+        [JsonProperty("lastUpdateId")]
+        public decimal LastUpdateId { get; set; }
 
         [JsonProperty("bids")]
         public IList<IList<decimal>> Bids { get; set; }

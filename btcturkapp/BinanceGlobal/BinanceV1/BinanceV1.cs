@@ -241,16 +241,17 @@ namespace Binance.BinanceV1
         ///// <param name="pairSymbol">pair symbol</param>
         ///// <param name="limit">number of returned orders for buy/sell</param>
         ///// <returns>OrderBook</returns>
-        //public async Task<ReturnModelBinance<OrderBookBinance>> GetOrderBook(string pairSymbol, int limit = 30)
-        //{
-        //    var requestUrl = $"api/v2/orderBook?pairSymbol={pairSymbol}&limit={limit}";
+        public async Task<OrderBookBinance> GetOrderBook(string pairSymbol, int limit)
+        {
+            var requestUrl = $"api/v3/depth?symbol={pairSymbol}&limit={limit}";
 
-        //    var response = await SendRequest(HttpVerbsBinance.Get, requestUrl);
+            var response = await SendRequest(HttpVerbsBinance.Get, requestUrl, _resourceUrlBinance);
 
-        //    var returnModel = response.ToReturnModel<OrderBookBinance>();
+            var returnModel = response.ToReturnModelOrderBookBinance<OrderBookBinance>();
 
-        //    return returnModel;
-        //}
+            return returnModel;
+
+        }
 
         ///// <summary>
         ///// Gets all pairs ticker values 

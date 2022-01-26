@@ -352,6 +352,7 @@ namespace APIClient.ApiClientV1
                 if (response.StatusCode == HttpStatusCode.Unauthorized)
                 {
                     Console.WriteLine($"Token is unauthorized to do this action: [{action.ToString().ToUpper()}] /{url}. Please check your bearer token in request header.");
+                
                 }
 
                 return response;

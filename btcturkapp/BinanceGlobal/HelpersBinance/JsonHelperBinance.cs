@@ -58,6 +58,23 @@ namespace Binance.HelpersBinance
             }
             return returnModel;
         }
+        public static OrderBookBinance ToReturnModelOrderBookBinance<T>(this HttpResponseMessage response) where T : class
+        {
+            OrderBookBinance returnModel;
+
+            try
+            {
+                var result = response.Content.ReadAsStringAsync().Result;
+                returnModel = JsonConvert.DeserializeObject<OrderBookBinance>(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                var message = "Cannot deserialize response to ReturnModel: \n";
+                throw new Exception(message);
+            }
+            return returnModel;
+        }
         //public static AccountInformation ToReturnModelBalanceBinance<T>(this HttpResponseMessage response) where T : class
         //{
         //    AccountInformation returnModel;

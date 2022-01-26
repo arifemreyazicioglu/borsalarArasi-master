@@ -247,6 +247,7 @@
     <Compile Include="BinanceGlobal\ModelsBinance\UserTradeBinance.cs" />
     <Compile Include="BinanceGlobal\ModelsBinance\UserTransactionBinance.cs" />
     <Compile Include="Function\BinanceApiFunctions.cs" />
+    <Compile Include="Function\BotFunctions.cs" />
     <Compile Include="Function\BtcTurkApiFunctions.cs" />
     <Compile Include="Forms\Anasayfa.cs">
       <SubType>Form</SubType>
@@ -254,22 +255,23 @@
     <Compile Include="Forms\Anasayfa.Designer.cs">
       <DependentUpon>Anasayfa.cs</DependentUpon>
     </Compile>
-    <Compile Include="APIClient\ApiClientV1\ApiClientV1.cs" />
-    <Compile Include="APIClient\Helpers\HttpVerbs.cs" />
-    <Compile Include="APIClient\Helpers\JsonHelper.cs" />
-    <Compile Include="APIClient\Helpers\TimeHelper.cs" />
-    <Compile Include="APIClient\IApiClient.cs" />
-    <Compile Include="APIClient\Models\OHLC.cs" />
-    <Compile Include="APIClient\Models\OpenOrderOutput.cs" />
-    <Compile Include="APIClient\Models\OrderBook.cs" />
-    <Compile Include="APIClient\Models\OrderInput.cs" />
-    <Compile Include="APIClient\Models\OrderOutPut.cs" />
-    <Compile Include="APIClient\Models\ReturnModel.cs" />
-    <Compile Include="APIClient\Models\Ticker.cs" />
-    <Compile Include="APIClient\Models\Trades.cs" />
-    <Compile Include="APIClient\Models\UserBalance.cs" />
-    <Compile Include="APIClient\Models\UserTrade.cs" />
-    <Compile Include="APIClient\Models\UserTransaction.cs" />
+    <Compile Include="BTCTurk\ApiClientV1\ApiClientV1.cs" />
+    <Compile Include="BTCTurk\Helpers\HttpVerbs.cs" />
+    <Compile Include="BTCTurk\Helpers\JsonHelper.cs" />
+    <Compile Include="BTCTurk\Helpers\TimeHelper.cs" />
+    <Compile Include="BTCTurk\IApiClient.cs" />
+    <Compile Include="BTCTurk\Models\OHLC.cs" />
+    <Compile Include="BTCTurk\Models\OpenOrderOutput.cs" />
+    <Compile Include="BTCTurk\Models\OrderBook.cs" />
+    <Compile Include="BTCTurk\Models\OrderInput.cs" />
+    <Compile Include="BTCTurk\Models\OrderOutPut.cs" />
+    <Compile Include="BTCTurk\Models\ReturnModel.cs" />
+    <Compile Include="BTCTurk\Models\Ticker.cs" />
+    <Compile Include="BTCTurk\Models\Trades.cs" />
+    <Compile Include="BTCTurk\Models\UserBalance.cs" />
+    <Compile Include="BTCTurk\Models\UserTrade.cs" />
+    <Compile Include="BTCTurk\Models\UserTransaction.cs" />
+    <Compile Include="Function\FormLoadFunctions.cs" />
     <Compile Include="Function\OrderFunctions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -286,7 +288,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="APIClient\APIClient.csproj" />
+    <None Include="BTCTurk\APIClient.csproj" />
     <None Include="BinanceGlobal\Binance.csproj" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

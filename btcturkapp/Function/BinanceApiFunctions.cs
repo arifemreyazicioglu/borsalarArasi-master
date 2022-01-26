@@ -2,6 +2,7 @@
 using Binance.ModelsBinance;
 using BinanceTR.Business.Concrete;
 using BinanceTR.Models;
+using BinanceTR.Models.Common;
 using BinanceTR.Models.Enums;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -17,7 +18,7 @@ namespace btcturkapp.BinanceFunctions
 {
 
     public class binanceFunctions
-    {     
+    {
         public async Task<string> BinanceGetValueAsync(string curr)
         {
             var configuration = new ConfigurationBuilder().AddJsonFile("binanceApiKeys.json").Build();
@@ -26,7 +27,7 @@ namespace btcturkapp.BinanceFunctions
             var resourceUrlBinance = configuration["resourceUrlBinance"];
             var resourceUrlBinanceTr = configuration["resourceUrlBinanceTr"];
 
-            var binanceV1 = new BinanceV1(publicKey, privateKey, resourceUrlBinance,resourceUrlBinanceTr);
+            var binanceV1 = new BinanceV1(publicKey, privateKey, resourceUrlBinance, resourceUrlBinanceTr);
             try
             {
                 var tickerList = await binanceV1.GetTicker(curr);
@@ -35,8 +36,23 @@ namespace btcturkapp.BinanceFunctions
             catch
             {
                 return "Server Error";
-            }           
-            
+            }
+
+        }
+        public async Task<OrderBookBinance> BinanceGetOrderBookAsync(string symbol)
+        {
+            var configuration = new ConfigurationBuilder().AddJsonFile("binanceApiKeys.json").Build();
+            var publicKey = configuration["publicKey"];
+            var privateKey = configuration["privateKey"];
+            var resourceUrlBinance = configuration["resourceUrlBinance"];
+            var resourceUrlBinanceTr = configuration["resourceUrlBinanceTr"];
+            var binanceV1 = new BinanceV1(publicKey, privateKey, resourceUrlBinance, resourceUrlBinanceTr);
+
+            var orderbook = await binanceV1.GetOrderBook(symbol,20);
+
+          
+            return orderbook;
+                    
         }
         public async Task<string> BinanceGetBalanceAsync(string symbol)
         {      
