@@ -1,5 +1,8 @@
-﻿using btcturkapp.BinanceFunctions;
+﻿using APIClient.ApiClientV1;
+using BinanceTR.Business.Concrete;
+using btcturkapp.BinanceFunctions;
 using btcturkapp.BTCTurkFunction;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -12,17 +15,33 @@ namespace btcturkapp.Function
 {
     public class FormLoadFunctions
     {
-        public void formFunctions(Label label5,Label label6,TextBox btcTurkIdTextBox,
+        public  void formFunctions(Label label5,Label label6,TextBox btcTurkIdTextBox,
             Button btcTurkEmirIptalButton,TextBox binanceIdTextBox, Button binanceEmirIptalButton,
             DataGridView assetGridView,DataGridView priceDataGridView,DataGridView priceDifferenceGridView,
-            DataGridView sellBuyBuySellDifferenceGridView,DataGridView abritajGridView)
+            DataGridView sellBuyBuySellDifferenceGridView,DataGridView abritajGridView,ListBox listbox1)
         {
             btcTurkFunction btcTurk = new btcTurkFunction();
             binanceFunctions binance = new binanceFunctions();
 
+            //var configuration = new ConfigurationBuilder().AddJsonFile("binanceApiKeys.json").Build();
+            //var publicKey = configuration["publicKey"];
+            //var privateKey = configuration["privateKey"];
+            //var resourceUrlBinance = configuration["resourceUrlBinance"];
+            //var resourceUrlBinanceTr = configuration["resourceUrlBinanceTr"];
+
+            //var binanceTr = new BinanceTrManager(publicKey, privateKey, resourceUrlBinance, resourceUrlBinanceTr);
+
+            //var ihsan = await binanceTr.GetAllOpenOrdersAsync("USDT_TRY");
+
+            //foreach (var ayse in ihsan.Data)
+            //{
+            //    listbox1.Items.Add(ayse.Price + " " + ayse.Status);
+            //}
+
             var timer = new Timer { Interval = 1500 };
             timer.Tick += async (o, args) =>
             {
+               
                 var arif = await binance.BinanceGetOrderBookAsync("USDTTRY");
                 label5.Text = arif.Bids[0][0].ToString("0.####") + "  " + arif.Bids[0][1].ToString("0.####");
 
@@ -36,28 +55,7 @@ namespace btcturkapp.Function
                 if (binanceIdTextBox.Text == "")
                 {
                     binanceEmirIptalButton.Enabled = false;
-                }
-                //
-                //
-                //Binance ve BTCTurk Asset Miktarları
-                try
-                {
-                    assetGridView.Rows[0].Cells[0].Value = await binance.BinanceGetBalanceAsync("USDT") + " $";
-                    assetGridView.Rows[0].Cells[1].Value = await btcTurk.BTCTurkGetAccountBalance("USDT") + " $";
-                    assetGridView.Rows[0].Cells[2].Value = await binance.BinanceGetBalanceAsync("BTC") + " ₿";
-                    assetGridView.Rows[0].Cells[3].Value = await btcTurk.BTCTurkGetAccountBalance("BTC") + " ₿";
-                    assetGridView.Rows[0].Cells[4].Value = await binance.BinanceGetBalanceAsync("TRY") + " ₺";
-                    assetGridView.Rows[0].Cells[5].Value = await btcTurk.BTCTurkGetAccountBalance("TRY") + " ₺";
-                }
-                catch
-                {
-                    assetGridView.Rows[0].Cells[0].Value = "Server Error";
-                    assetGridView.Rows[0].Cells[1].Value = "Server Error";
-                    assetGridView.Rows[0].Cells[2].Value = "Server Error";
-                    assetGridView.Rows[0].Cells[3].Value = "Server Error";
-                    assetGridView.Rows[0].Cells[4].Value = "Server Error";
-                    assetGridView.Rows[0].Cells[5].Value = "Server Error";
-                }
+                }               
                 //
                 //
                 //Binance Usdt Satış Fiyatı
@@ -193,7 +191,7 @@ namespace btcturkapp.Function
                     {
                         priceDataGridView.Rows[3].Cells[3].Value = "Server Error";
                     }
-                }
+                }           
                 //
                 //
                 //Binance ve BTCTurk arasındaki USDT satış(ask) fiyatı farkı
@@ -410,6 +408,58 @@ namespace btcturkapp.Function
                 {
                     abritajGridView.Rows[3].Cells[5].Value = "Server Error";
                 }
+                //
+                //
+                //Binance ve BTCTurk Asset Miktarları
+                try
+                {
+                    assetGridView.Rows[0].Cells[0].Value = await binance.BinanceGetBalanceAsync("USDT") + " $";
+                }
+                catch
+                {
+                    assetGridView.Rows[0].Cells[0].Value = "Server Error";
+                }
+                try
+                {
+                    assetGridView.Rows[0].Cells[1].Value = await btcTurk.BTCTurkGetAccountBalance("USDT") + " $";
+                }
+                catch
+                {
+                    assetGridView.Rows[0].Cells[1].Value = "Server Error";
+                }
+                try
+                {
+                    assetGridView.Rows[0].Cells[2].Value = await binance.BinanceGetBalanceAsync("BTC") + " ₿";
+                }
+                catch
+                {
+                    assetGridView.Rows[0].Cells[2].Value = "Server Error";
+                }
+                try
+                {
+                    assetGridView.Rows[0].Cells[3].Value = await btcTurk.BTCTurkGetAccountBalance("BTC") + " ₿";
+                }
+                catch
+                {
+                    assetGridView.Rows[0].Cells[3].Value = "Server Error";
+                }
+                try
+                {
+                    assetGridView.Rows[0].Cells[4].Value = await binance.BinanceGetBalanceAsync("TRY") + " ₺";
+                }
+                catch
+                {
+                    assetGridView.Rows[0].Cells[4].Value = "Server Error";
+                }
+                try
+                {
+                    assetGridView.Rows[0].Cells[5].Value = await btcTurk.BTCTurkGetAccountBalance("TRY") + " ₺";
+                }
+                catch
+                {
+                    assetGridView.Rows[0].Cells[5].Value = "Server Error";
+                }
+
             };
             timer.Start();
         }

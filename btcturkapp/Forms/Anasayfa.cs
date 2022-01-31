@@ -90,7 +90,7 @@ namespace btcturkapp
             Control.CheckForIllegalCrossThreadCalls = false;
 
             FormLoadFunctions formFunc = new FormLoadFunctions();
-            formFunc.formFunctions(label5,label6,btcTurkIdTextBox,btcTurkEmirIptalButton,binanceIdTextBox,binanceEmirIptalButton,assetGridView,priceDataGridView,priceDifferenceGridView,sellBuyBuySellDifferenceGridView,abritajGridView);
+            formFunc.formFunctions(label5,label6,btcTurkIdTextBox,btcTurkEmirIptalButton,binanceIdTextBox,binanceEmirIptalButton,assetGridView,priceDataGridView,priceDifferenceGridView,sellBuyBuySellDifferenceGridView,abritajGridView,listBox1);
            
         }
         private async void usdtBinanceSellBtcTurkBuyButton_Click(object sender, EventArgs e)
@@ -118,7 +118,7 @@ namespace btcturkapp
             string binancePrice = priceDataGridView.Rows[2].Cells[2].Value.ToString().Split(' ')[0];
             symbolForCancelBinance = "BTC_USDT";
             OrderFunctions func = new OrderFunctions();
-            await func.binanceAskBtcTurkBuyBtcOrder(decimal.Parse(quantity),btcTurkPrice, binancePrice,listBox1, btcTurkIdTextBox, binanceIdTextBox, btcTurkEmirIptalButton, binanceEmirIptalButton);           
+            await func.binanceSellBtcTurkBuyBtcOrder(decimal.Parse(quantity),btcTurkPrice, binancePrice,listBox1, btcTurkIdTextBox, binanceIdTextBox, btcTurkEmirIptalButton, binanceEmirIptalButton);           
         }
         private async void btcBtcTurkSellBinanceBuyButton_Click(object sender, EventArgs e)
         {
@@ -185,7 +185,6 @@ namespace btcturkapp
             {
                 e.Handled = true;
             }
-        }
-
+        }  
     }
 }

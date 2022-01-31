@@ -2,7 +2,7 @@
 {
     public class UserTrade
     {
-        public long Id { get; set; }
+        public long OrderId { get; set; }
         public decimal Price { get; set; }
         public string NumeratorSymbol { get; set; }
         public string DenominatorSymbol { get; set; }
@@ -14,8 +14,8 @@
 
         public override string ToString()
         {
-            return $"Id: {Id}, Price: {Price}, NumeratorSymbol: {NumeratorSymbol}, DenominatorSymbol: {DenominatorSymbol}," +
-                   $" OrderType: {OrderType}, Timestamp: {Timestamp}, Amount: {Amount}, Fee: {Fee}, Amount: {Tax}";
+            return $"Id: {OrderId}, Price: {Price}, " +
+                   $" OrderType: {OrderType}, Timestamp: {Timestamp}, Amount: {Amount}, Fee: {Fee}, Tax: {Tax}";
         }
     }
 }

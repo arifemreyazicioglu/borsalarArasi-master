@@ -459,7 +459,7 @@ namespace BinanceTR.Business.Concrete
                 {
                     { "symbol", symbol },
                     { "limit", limit.ToString() },
-                    { "type", AllOrdersEnum.Open.GetDisplayName() },
+                    { "type", AllOrdersEnum.All.GetDisplayName() },
                 };
 
                 var result = await SendRequestAsync(HttpMethod.Get, "/open/v1/orders", parameters, ct).ConfigureAwait(false);

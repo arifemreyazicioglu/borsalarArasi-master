@@ -24,7 +24,7 @@ namespace APIClient
 
         Task<ReturnModel<IList<OHLC>>> GetDailyOhlc(string pairSymbol, int last);
 
-        Task<ReturnModel<IList<UserTrade>>> GetUserTrades(string[] type, string[] symbol, long startDate, long endDate);
+        //Task<ReturnModel<IList<UserTrade>>> GetUserTrades(string symbol);
 
         Task<ReturnModel<IList<UserTransaction>>> GetUserFiatTransactions(string[] type, string[] symbol, long startDate, long endDate);
 

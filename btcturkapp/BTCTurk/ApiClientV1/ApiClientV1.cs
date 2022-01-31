@@ -96,7 +96,7 @@ namespace APIClient.ApiClientV1
             return returnModel;
         }
 
-        public async Task<ReturnModel<IList<UserTrade>>> GetUserTrades(string[] types, string[] symbols, long startDate, long endDate)
+        public async Task<ReturnModel<IList<UserTrade>>> GetUserTrades(string[] types,string[] symbols)
         {
             var typeBuilder = new StringBuilder();
             foreach (var type in types)
@@ -109,11 +109,16 @@ namespace APIClient.ApiClientV1
             foreach (var symbol in symbols)
             {
                 symbolBuilder.Append($"symbol={symbol}&");
+
             }
-            var requestUrl = $"api/v1/users/transactions/trade?{typeBuilder}{symbolBuilder}startDate={startDate}&endDate={endDate}";
+
+            var startDate = new DateTime(2022, 1, 1);
+            var endDate = new DateTime(2022, 1, 28);
+
+            var requestUrl = $"api/v1/users/transactions/trade?{typeBuilder}{symbolBuilder}startDate={startDate.ToUnixTime()}&endDate={endDate.ToUnixTime()}";
 
             var response = await SendRequest(HttpVerbs.Get, requestUrl,requiresAuthentication: true);
-
+           
             var returnModel = response.ToReturnModel<IList<UserTrade>>();
 
             return returnModel;

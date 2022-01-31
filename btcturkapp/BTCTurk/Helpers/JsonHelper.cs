@@ -13,6 +13,19 @@ namespace APIClient.Helpers
         public static ReturnModel<T> ToReturnModel<T>(this HttpResponseMessage response) where T : class
         {
             ReturnModel<T> returnModel;
+
+            if(response == null)
+            {
+                returnModel = new ReturnModel<T>
+                {
+                    Success = false,
+                    Code = ((int)response.StatusCode).ToString(),
+                    Message = "Response Null"
+                };
+
+                return returnModel;
+            }
+           
             if (!response.IsSuccessStatusCode)
             {
                 returnModel = new ReturnModel<T>
