@@ -6,9 +6,6 @@ using btcturkapp.BinanceFunctions;
 using btcturkapp.BTCTurkFunction;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,9 +15,10 @@ namespace btcturkapp.Function
     {
         btcTurkFunction btcTurk = new btcTurkFunction();
         binanceFunctions binance = new binanceFunctions();
-        
-
-        private async Task<bool> isTrueBinance(TextBox binanceIdTextBox)
+        //
+        //
+        //Binance emrinin gerçekleştiğini kontrol eden fonksiyon
+        private async Task<bool> isTrueBinance(TextBox binanceIdTextBox,string symbol)
         {
             var configuration = new ConfigurationBuilder().AddJsonFile("binanceApiKeys.json").Build();
             var publicKey = configuration["publicKey"];
@@ -30,13 +28,13 @@ namespace btcturkapp.Function
 
             var binanceTr = new BinanceTrManager(publicKey, privateKey, resourceUrlBinance, resourceUrlBinanceTr);
 
-            var ihsan = await binanceTr.GetAllOpenOrdersAsync("USDT_TRY");
+            var orders = await binanceTr.GetAllOpenOrdersAsync(symbol);
 
             if (binanceIdTextBox.Text != "")
             {
-                foreach (var trade in ihsan.Data)
+                foreach (var order in orders.Data)
                 {
-                    if(trade.OrderId == long.Parse(binanceIdTextBox.Text) && trade.Status ==2)
+                    if(order.OrderId == long.Parse(binanceIdTextBox.Text) && order.Status ==2)
                     {
                         return true;
                     }
@@ -45,6 +43,9 @@ namespace btcturkapp.Function
 
             return false;
         }
+        //
+        //
+        //BTCTurk emrinin gerçekleştiğini kontrol eden fonksiyon
         private async Task<bool> isTrueBtcTurk(TextBox btcTurkIdTextBox)
         {
             var configuration = new ConfigurationBuilder().AddJsonFile("btcTurkApiKeys.json").Build();
@@ -53,7 +54,7 @@ namespace btcturkapp.Function
             var resourceUrl = configuration["resourceUrl"];
             var apiClientV1 = new ApiClientV1(publicKey, privateKey, resourceUrl);
 
-            var allTrades = await apiClientV1.GetUserTrades(new[] { "buy", "sell" }, new[] { "try", "usdt" });
+            var allTrades = await apiClientV1.GetUserTrades(new[] { "buy", "sell" }, new[] { "try", "usdt", "btc" });
 
             if(btcTurkIdTextBox.Text != "")
             {
@@ -69,6 +70,9 @@ namespace btcturkapp.Function
             return false;
 
         }
+        //
+        //
+        //Binance te satış BTCTurk te alış yapan fonksiyon USDT
         public async Task binanceSellBtcTurkBuyUsdtOrder(decimal quantity, string btcTurkPrice, string binancePrice, ListBox listBox1, TextBox btcTurkIdTextBox, TextBox binanceIdTextBox, Button btcTurkEmirIptalButton, Button binanceEmirIptalButton)
         {
             string message = "";
@@ -105,42 +109,53 @@ namespace btcturkapp.Function
             // Wait until condition is false
             while (await isTrueBtcTurk(btcTurkIdTextBox) == false)
             {
+                if (btcTurkIdTextBox.Text == "")
+                {
+                    Console.WriteLine("BTCTurk Emri iptal edildi!");
+                    break;
+                }                    
                 Console.WriteLine("Excel is busy");
-                await Task.Delay(1000);
+                await Task.Delay(1000);                
             }
 
-            // Do work
-            Console.WriteLine("BTCTurk islemi tamamlandi!!");
-
-            binanceFunctions binance = new binanceFunctions();
-
-            var configuration1 = new ConfigurationBuilder().AddJsonFile("binanceApiKeys.json").Build();
-            var publicKey1 = configuration1["publicKey"];
-            var privateKey1 = configuration1["privateKey"];
-            var resourceUrlBinance = configuration1["resourceUrlBinance"];
-            var resourceUrlBinanceTr = configuration1["resourceUrlBinanceTr"];
-
-            var binanceTr = new BinanceTrManager(publicKey1, privateKey1, resourceUrlBinance, resourceUrlBinanceTr);
-
-            var order = await binanceTr.PostNewLimitOrderAsync("USDT_TRY", OrderSideEnum.SELL, quantity, binancePrice).ConfigureAwait(false);
-
-            if (!order.Success)
+            if(await isTrueBtcTurk(btcTurkIdTextBox) == true)
             {
-                message = message + "\n" + $"Binance: Code:{order.Code} , Message: {order.Message}";
-            }
-            else
-            {
-                listBox1.Items.Add("Binance usdt Satım işlemi : " + order.Data.ToString());
-                binanceIdTextBox.Text = order.Data.OrderId.ToString();
-            }
+                // Do work
+                Console.WriteLine("BTCTurk islemi tamamlandi!!");
 
-            if (message != "")
-            {
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult result = MessageBox.Show(message, title, buttons);
-            }
+                binanceFunctions binance = new binanceFunctions();
 
+                var configuration1 = new ConfigurationBuilder().AddJsonFile("binanceApiKeys.json").Build();
+                var publicKey1 = configuration1["publicKey"];
+                var privateKey1 = configuration1["privateKey"];
+                var resourceUrlBinance = configuration1["resourceUrlBinance"];
+                var resourceUrlBinanceTr = configuration1["resourceUrlBinanceTr"];
+
+                var binanceTr = new BinanceTrManager(publicKey1, privateKey1, resourceUrlBinance, resourceUrlBinanceTr);
+
+                var order = await binanceTr.PostNewLimitOrderAsync("USDT_TRY", OrderSideEnum.SELL, quantity, binancePrice).ConfigureAwait(false);
+
+                if (!order.Success)
+                {
+                    message = message + "\n" + $"Binance: Code:{order.Code} , Message: {order.Message}";
+                }
+                else
+                {
+                    listBox1.Items.Add("Binance usdt Satım işlemi : " + order.Data.ToString());
+                    binanceIdTextBox.Text = order.Data.OrderId.ToString();
+                }
+
+                if (message != "")
+                {
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult result = MessageBox.Show(message, title, buttons);
+                }
+            }
+            
         }
+        //
+        //
+        //BTCTurk te satış Binance de alış yapan fonksiyon USDT
         public async Task btcTurkSellBinanceBuyUsdtOrder(decimal quantity, string btcTurkPrice, string binancePrice, ListBox listBox1, TextBox btcTurkIdTextBox, TextBox binanceIdTextBox, Button btcTurkEmirIptalButton, Button binanceEmirIptalButton)
         {
 
@@ -171,51 +186,63 @@ namespace btcturkapp.Function
             }
 
             // Wait until condition is false
-            while (await isTrueBinance(binanceIdTextBox) == false)
+            while (await isTrueBinance(binanceIdTextBox, "USDT_TRY") == false)
             {
+                if(binanceIdTextBox.Text == "")
+                {
+                    Console.WriteLine("Binance Emri iptal edildi!");
+                    break;
+                }
                 Console.WriteLine("Excel is busy");
                 await Task.Delay(1000);
+
             }
 
-            // Do work
-            Console.WriteLine("Binance islemi tamamlandi!!");
-
-            btcTurkFunction btcTurk = new btcTurkFunction();
-            var configuration = new ConfigurationBuilder().AddJsonFile("btcTurkApiKeys.json").Build();
-            var publicKey = configuration["publicKey"];
-            var privateKey = configuration["privateKey"];
-            var resourceUrl = configuration["resourceUrl"];
-            var apiClientV1 = new ApiClientV1(publicKey, privateKey, resourceUrl);
-
-            var limitSellOrder = new OrderInput
+            if (await isTrueBinance(binanceIdTextBox, "USDT_TRY") == true)
             {
-                Quantity = quantity,
-                Price = decimal.Parse(btcTurkPrice),
-                OrderMethod = OrderMethod.Limit,
-                OrderType = OrderType.Sell,
-                PairSymbol = "USDT_TRY",
-            };
-            ////Create New Order
-            var orderOutput = await apiClientV1.CreateOrder(limitSellOrder);
+                // Do work
+                Console.WriteLine("Binance islemi tamamlandi!!");
 
-            if (!orderOutput.Success)
-            {
-                message = $"BTCTurk: Code:{orderOutput.Code} , Message: {orderOutput.Message}";
+                btcTurkFunction btcTurk = new btcTurkFunction();
+                var configuration = new ConfigurationBuilder().AddJsonFile("btcTurkApiKeys.json").Build();
+                var publicKey = configuration["publicKey"];
+                var privateKey = configuration["privateKey"];
+                var resourceUrl = configuration["resourceUrl"];
+                var apiClientV1 = new ApiClientV1(publicKey, privateKey, resourceUrl);
+
+                var limitSellOrder = new OrderInput
+                {
+                    Quantity = quantity,
+                    Price = decimal.Parse(btcTurkPrice),
+                    OrderMethod = OrderMethod.Limit,
+                    OrderType = OrderType.Sell,
+                    PairSymbol = "USDT_TRY",
+                };
+                ////Create New Order
+                var orderOutput = await apiClientV1.CreateOrder(limitSellOrder);
+
+                if (!orderOutput.Success)
+                {
+                    message = $"BTCTurk: Code:{orderOutput.Code} , Message: {orderOutput.Message}";
+                }
+                else
+                {
+                    listBox1.Items.Add("BTCTurk usdt satım işlemi : " + orderOutput.Data.ToString());
+                    btcTurkIdTextBox.Text = orderOutput.Data.Id.ToString();
+                    btcTurkEmirIptalButton.Enabled = true;
+                }
+
+                if (message != "")
+                {
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult result = MessageBox.Show(message, title, buttons);
+                }
             }
-            else
-            {
-                listBox1.Items.Add("BTCTurk usdt satım işlemi : " + orderOutput.Data.ToString());
-                btcTurkIdTextBox.Text = orderOutput.Data.Id.ToString();
-                btcTurkEmirIptalButton.Enabled = true;
-            }
-      
-            if (message != "")
-            {
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult result = MessageBox.Show(message, title, buttons);
-            }
-
+                        
         }
+        //
+        //
+        //Binance te satış BTCTurk te alış yapan fonksiyon BTC
         public async Task binanceSellBtcTurkBuyBtcOrder(decimal quantity, string btcTurkPrice, string binancePrice, ListBox listBox1, TextBox btcTurkIdTextBox, TextBox binanceIdTextBox, Button btcTurkEmirIptalButton, Button binanceEmirIptalButton)
         {
             string message = "";
@@ -253,43 +280,54 @@ namespace btcturkapp.Function
             // Wait until condition is false
             while (await isTrueBtcTurk(btcTurkIdTextBox) == false)
             {
+                if (btcTurkIdTextBox.Text == "")
+                {
+                    Console.WriteLine("BTCTurk Emri iptal edildi!");
+                    break;
+                }
                 Console.WriteLine("Excel is busy");
-                await Task.Delay(500);
+                await Task.Delay(1000);
             }
 
-            // Do work
-            Console.WriteLine("BTCTurk islemi tamamlandi!!");
-
-            binanceFunctions binance = new binanceFunctions();
-
-            var configuration1 = new ConfigurationBuilder().AddJsonFile("binanceApiKeys.json").Build();
-            var publicKey1 = configuration1["publicKey"];
-            var privateKey1 = configuration1["privateKey"];
-            var resourceUrlBinance = configuration1["resourceUrlBinance"];
-            var resourceUrlBinanceTr = configuration1["resourceUrlBinanceTr"];
-
-            var binanceTr = new BinanceTrManager(publicKey1, privateKey1, resourceUrlBinance, resourceUrlBinanceTr);
-
-            var order = await binanceTr.PostNewLimitOrderAsync("BTC_USDT", OrderSideEnum.SELL, quantity, binancePrice);
-
-            if (!order.Success)
+            if(await isTrueBtcTurk(btcTurkIdTextBox) == true)
             {
-                message = message + "\n" + $"Binance: Code:{order.Code} , Message: {order.Message}";
-            }
-            else
-            {
-                listBox1.Items.Add("Binance usdt Satım işlemi : " + order.Data.ToString());
-                binanceIdTextBox.Text = order.Data.OrderId.ToString();
-                binanceEmirIptalButton.Enabled = true;
-            }
+                // Do work
+                Console.WriteLine("BTCTurk islemi tamamlandi!!");
 
-            if (message != "")
-            {
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult result = MessageBox.Show(message, title, buttons);
-            }
+                binanceFunctions binance = new binanceFunctions();
 
+                var configuration1 = new ConfigurationBuilder().AddJsonFile("binanceApiKeys.json").Build();
+                var publicKey1 = configuration1["publicKey"];
+                var privateKey1 = configuration1["privateKey"];
+                var resourceUrlBinance = configuration1["resourceUrlBinance"];
+                var resourceUrlBinanceTr = configuration1["resourceUrlBinanceTr"];
+
+                var binanceTr = new BinanceTrManager(publicKey1, privateKey1, resourceUrlBinance, resourceUrlBinanceTr);
+
+                var order = await binanceTr.PostNewLimitOrderAsync("BTC_USDT", OrderSideEnum.SELL, quantity, binancePrice);
+
+                if (!order.Success)
+                {
+                    message = message + "\n" + $"Binance: Code:{order.Code} , Message: {order.Message}";
+                }
+                else
+                {
+                    listBox1.Items.Add("Binance usdt Satım işlemi : " + order.Data.ToString());
+                    binanceIdTextBox.Text = order.Data.OrderId.ToString();
+                    binanceEmirIptalButton.Enabled = true;
+                }
+
+                if (message != "")
+                {
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult result = MessageBox.Show(message, title, buttons);
+                }
+            }
+            
         }
+        //
+        //
+        //BTCTurk te satış Binance de alış yapan fonksiyon BTC
         public async Task btcTurkSellBinanceBuyBtcOrder(decimal quantity, string btcTurkPrice, string binancePrice, ListBox listBox1, TextBox btcTurkIdTextBox, TextBox binanceIdTextBox, Button btcTurkEmirIptalButton, Button binanceEmirIptalButton)
         {
             string message = "";
@@ -318,51 +356,64 @@ namespace btcturkapp.Function
             }
 
             // Wait until condition is false
-            while (await isTrueBinance(binanceIdTextBox) == false)
+            while (await isTrueBinance(binanceIdTextBox, "BTC_USDT") == false)
             {
+                if (binanceIdTextBox.Text == "")
+                {
+                    Console.WriteLine("Binance Emri iptal edildi!");
+                    break;
+                }
                 Console.WriteLine("Excel is busy");
-                await Task.Delay(500);
+                await Task.Delay(1000);
+
             }
 
-            // Do work
-            Console.WriteLine("BTCTurk islemi tamamlandi!!");
-
-            btcTurkFunction btcTurk = new btcTurkFunction();
-            var configuration = new ConfigurationBuilder().AddJsonFile("btcTurkApiKeys.json").Build();
-            var publicKey = configuration["publicKey"];
-            var privateKey = configuration["privateKey"];
-            var resourceUrl = configuration["resourceUrl"];
-            var apiClientV1 = new ApiClientV1(publicKey, privateKey, resourceUrl);
-
-            var limitSellOrder = new OrderInput
+            if (await isTrueBinance(binanceIdTextBox, "BTC_USDT") == true)
             {
-                Quantity = quantity,
-                Price = decimal.Parse(btcTurkPrice),
-                OrderMethod = OrderMethod.Limit,
-                OrderType = OrderType.Sell,
-                PairSymbol = "BTC_USDT",
-            };
-            ////Create New Order
-            ///
-            var orderOutput = await apiClientV1.CreateOrder(limitSellOrder);
+                // Do work
+                Console.WriteLine("BTCTurk islemi tamamlandi!!");
 
-            if (!orderOutput.Success)
-            {
-                message = $"BTCTurk: Code:{orderOutput.Code} , Message: {orderOutput.Message}";
+                btcTurkFunction btcTurk = new btcTurkFunction();
+                var configuration = new ConfigurationBuilder().AddJsonFile("btcTurkApiKeys.json").Build();
+                var publicKey = configuration["publicKey"];
+                var privateKey = configuration["privateKey"];
+                var resourceUrl = configuration["resourceUrl"];
+                var apiClientV1 = new ApiClientV1(publicKey, privateKey, resourceUrl);
+
+                var limitSellOrder = new OrderInput
+                {
+                    Quantity = quantity,
+                    Price = decimal.Parse(btcTurkPrice),
+                    OrderMethod = OrderMethod.Limit,
+                    OrderType = OrderType.Sell,
+                    PairSymbol = "BTC_USDT",
+                };
+                ////Create New Order
+                ///
+                var orderOutput = await apiClientV1.CreateOrder(limitSellOrder);
+
+                if (!orderOutput.Success)
+                {
+                    message = $"BTCTurk: Code:{orderOutput.Code} , Message: {orderOutput.Message}";
+                }
+                else
+                {
+                    listBox1.Items.Add("BTCTurk usdt alım işlemi : " + orderOutput.Data.ToString());
+                    btcTurkIdTextBox.Text = orderOutput.Data.Id.ToString();
+                    btcTurkEmirIptalButton.Enabled = true;
+                }
+
+                if (message != "")
+                {
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult result = MessageBox.Show(message, title, buttons);
+                }
             }
-            else
-            {
-                listBox1.Items.Add("BTCTurk usdt alım işlemi : " + orderOutput.Data.ToString());
-                btcTurkIdTextBox.Text = orderOutput.Data.Id.ToString();
-                btcTurkEmirIptalButton.Enabled = true;
-            }
-
-            if (message != "")
-            {
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult result = MessageBox.Show(message, title, buttons);
-            }
+         
         }
+        //
+        //
+        //BTCTurk emir iptal etme fonksiyonu
         public async Task btcTurkEmirIptal(ListBox listBox1, TextBox btcTurkIdTextBox, Button btcTurkEmirIptalButton)
         {
             var configuration = new ConfigurationBuilder().AddJsonFile("btcTurkApiKeys.json").Build();
@@ -399,6 +450,9 @@ namespace btcturkapp.Function
             MessageBoxButtons buttons = MessageBoxButtons.OK;
             DialogResult result = MessageBox.Show(message, title, buttons);
         }
+        //
+        //
+        //Binance emir iptal etme fonksiyonu
         public async Task binanceEmirIptal(ListBox listBox1, TextBox binanceIdTextBox, Button binanceEmirIptalButton, string symbolForCancelBinance)
         {
             string message = "";

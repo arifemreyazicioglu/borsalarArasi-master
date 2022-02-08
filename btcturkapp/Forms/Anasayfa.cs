@@ -1,24 +1,8 @@
-﻿using APIClient.ApiClientV1;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using btcturkapp.BTCTurkFunction;
-using System.Globalization;
-using btcturkapp.BinanceFunctions;
-using System.IO;
-using Binance;
-using System.Text.RegularExpressions;
-using APIClient.Models;
 using btcturkapp.Function;
-using BinanceTR.Business.Concrete;
-using BinanceTR.Models;
+
 
 namespace btcturkapp
 { 
@@ -66,6 +50,7 @@ namespace btcturkapp
             abritajGridView.Rows.Add();
             abritajGridView.Rows.Add();
             abritajGridView.Rows.Add();
+            abritajGridView.Rows.Add();
 
             abritajGridView.Rows[0].Cells[0].Value = "USDTTRY";
             abritajGridView.Rows[0].Cells[1].Value = "Binance -> BTCTurk";
@@ -83,15 +68,13 @@ namespace btcturkapp
             abritajGridView.Rows[3].Cells[1].Value = "BTCTurk -> Binance";
             abritajGridView.Rows[3].Cells[2].Value = 10.0;
 
+            abritajGridView.AllowUserToAddRows = false;
         }
         private void Anasayfa_Load(object sender, EventArgs e)
         {
-
             Control.CheckForIllegalCrossThreadCalls = false;
-
             FormLoadFunctions formFunc = new FormLoadFunctions();
-            formFunc.formFunctions(label5,label6,btcTurkIdTextBox,btcTurkEmirIptalButton,binanceIdTextBox,binanceEmirIptalButton,assetGridView,priceDataGridView,priceDifferenceGridView,sellBuyBuySellDifferenceGridView,abritajGridView,listBox1);
-           
+            formFunc.formFunctions(label5,label6,btcTurkIdTextBox,btcTurkEmirIptalButton,binanceIdTextBox,binanceEmirIptalButton,assetGridView,priceDataGridView,priceDifferenceGridView,sellBuyBuySellDifferenceGridView,abritajGridView,listBox1);           
         }
         private async void usdtBinanceSellBtcTurkBuyButton_Click(object sender, EventArgs e)
         {
@@ -149,6 +132,7 @@ namespace btcturkapp
         {
             e.Column.SortMode = DataGridViewColumnSortMode.NotSortable;
         }
+
         private void Anasayfa_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
@@ -185,6 +169,6 @@ namespace btcturkapp
             {
                 e.Handled = true;
             }
-        }  
+        }
     }
 }

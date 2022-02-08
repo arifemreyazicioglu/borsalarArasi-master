@@ -1,19 +1,9 @@
 ﻿using APIClient.ApiClientV1;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Timers;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Windows.Forms;
-using btcturkapp.BTCTurkFunction;
-using System.Globalization;
 using APIClient.Models;
-using APIClient.Helpers;
+
 
 namespace btcturkapp.BTCTurkFunction
 {
@@ -51,19 +41,6 @@ namespace btcturkapp.BTCTurkFunction
             
         }
       
-        public async Task<OpenOrderOutput> BTCTurkOpenOrders(string symbol)
-        {
-            var configuration = new ConfigurationBuilder().AddJsonFile("btcTurkApiKeys.json").Build();
-            var publicKey = configuration["publicKey"];
-            var privateKey = configuration["privateKey"];
-            var resourceUrl = configuration["resourceUrl"];
-            var apiClientV1 = new ApiClientV1(publicKey, privateKey, resourceUrl);
-            
-            var openOrders = await apiClientV1.GetOpenOrders(symbol);
-
-            return openOrders.Data;
-        }
-
         public async Task<OrderBook> BTCTurkGetOrderBookAsync(string symbol)
         {
             OrderBook responseString = new OrderBook();
@@ -72,18 +49,19 @@ namespace btcturkapp.BTCTurkFunction
             var privateKey = configuration["privateKey"];
             var resourceUrl = configuration["resourceUrl"];
             var apiClientV1 = new ApiClientV1(publicKey, privateKey, resourceUrl);
-           
-                var tickerList = await apiClientV1.GetOrderBook(symbol);
-                if (tickerList.Success)
-                {
-                    responseString = tickerList.Data;
-                    return responseString;
-                }
-                else
-                {
-                    Console.WriteLine(tickerList.ToString());
-                }
-                return responseString;
+            
+            var tickerList = await apiClientV1.GetOrderBook(symbol);
+            
+            if (tickerList.Success)
+            {
+                 responseString = tickerList.Data;
+                 return responseString;
+            }
+            else
+            {
+                 Console.WriteLine(tickerList.ToString());
+            }
+            return responseString;
            
         }
 

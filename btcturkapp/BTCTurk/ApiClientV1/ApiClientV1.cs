@@ -112,10 +112,7 @@ namespace APIClient.ApiClientV1
 
             }
 
-            var startDate = new DateTime(2022, 1, 1);
-            var endDate = new DateTime(2022, 1, 28);
-
-            var requestUrl = $"api/v1/users/transactions/trade?{typeBuilder}{symbolBuilder}startDate={startDate.ToUnixTime()}&endDate={endDate.ToUnixTime()}";
+            var requestUrl = $"api/v1/users/transactions/trade?{typeBuilder}{symbolBuilder}";
 
             var response = await SendRequest(HttpVerbs.Get, requestUrl,requiresAuthentication: true);
            

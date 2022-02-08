@@ -38,10 +38,26 @@ namespace btcturkapp.Function
             //    listbox1.Items.Add(ayse.Price + " " + ayse.Status);
             //}
 
+            var timerCancel = new Timer { Interval = 100 };
+            timerCancel.Tick +=  (o, args) =>
+            {
+                if (binanceIdTextBox.Text != "")
+                {
+                    binanceEmirIptalButton.Enabled = true;
+                }
+                if (btcTurkIdTextBox.Text != "")
+                {
+                    btcTurkEmirIptalButton.Enabled = true;
+                }
+
+            };
+            timerCancel.Start();
+
             var timer = new Timer { Interval = 1500 };
             timer.Tick += async (o, args) =>
             {
-               
+                
+
                 var arif = await binance.BinanceGetOrderBookAsync("USDTTRY");
                 label5.Text = arif.Bids[0][0].ToString("0.####") + "  " + arif.Bids[0][1].ToString("0.####");
 
